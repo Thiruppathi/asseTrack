@@ -158,11 +158,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
 
             <section data-route="users">
-
+              <user-list></user-list>
             </section>
 
             <section data-route="user-info">
+              <user-info empid="[[params.empId]]"></user-info>
+            </section>
 
+            <section data-route="assets">
+              <asset-list></asset-List>
+            </section>
+
+            <section data-route="asset-info">
+              <asset-info assetid="[[params.assetId]]"></asset-info>
+            </section>
+
+            <section data-route="createUser">
+              <paper-material elevation="1" class="animated bounceInUp">
+                <h2 class="paper-font-display2">Create User</h2>
+                <create-user></create-user>
+              </paper-material>
+            </section>
+
+            <section data-route="createAsset">
+              <paper-material elevation="1" class="animated bounceInUp">
+                <h2 class="paper-font-display2">Create Asset</h2>
+                <create-asset></create-asset>
+              </paper-material>
+            </section>
+
+            <section data-route="logBook">
+              <paper-material elevation="1" class="animated bounceInUp">
+                <h2 class="paper-font-display2">Log Book</h2>
+              </paper-material>
+            </section>
+
+            <section data-route="logBook">
+              <paper-material elevation="1" class="animated bounceInUp">
+                <h2 class="paper-font-display2">Log Book</h2>
+              </paper-material>
+            </section>
+
+            <section data-route="login">
+              <paper-material elevation="1" class="animated bounceInUp">
+                <h2 class="paper-font-display2">Log In</h2>
+                <!-- <hi9-login></hi9-login> -->
+              </paper-material>
             </section>
 
             <section data-route="contact">

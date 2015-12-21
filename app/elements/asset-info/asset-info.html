@@ -28,6 +28,7 @@
       <iron-icon icon="{{computeAssetIcon(asset)}}" class="assetIcon"></iron-icon>
       <p>{{asset.assetid}}</p>
       <p>{{computeFullName(asset)}}</p>
+      <p><b>Asset ID: </b><span>{{computeAssetId(asset)}}</span></p>
       <b>Checked Out By:</b> <span>{{computeUserName(user)}}</span>
       <p>{{asset.isCheckedIn}}</p>
     </paper-material>

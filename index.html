@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Assetrack by Thiruppathi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Assetrack</h1>
+      <h2 class="project-tagline">Asset Management System</h2>
+      <a href="https://github.com/Thiruppathi/asseTrack" class="btn">View on GitHub</a>
+      <a href="https://github.com/Thiruppathi/asseTrack/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Thiruppathi/asseTrack/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="assetrack" class="anchor" href="#assetrack" aria-hidden="true"><span class="octicon octicon-link"></span></a>asseTrack</h2>
+
+<p>Asset Management System</p>
+
+<h2>
+<a id="problem-description" class="anchor" href="#problem-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Problem Description</h2>
+
+<p>QA Team uses various type of devices(assets) such as Mobile Phones, Tablets, Mac &amp; PCs on a daily basis for testing WebApp/MobileApp.</p>
+
+<p>Team Tracks these assets with following details through a mundane manual process.</p>
+
+<ul>
+<li>List of Available assets and their details. (Spreadsheet)</li>
+<li>Who is the owner and who holds responsibility of the asset. (Spreadsheet)</li>
+<li>Current status of the asset such as who has it, last user of the asset. (Paperwork using a Device Register)</li>
+<li>Date &amp; Time of the asset CheckIn/CheckOut Details. (Paperwork using a Device Register)</li>
+</ul>
+
+<p>Here is the list of problems with this process.</p>
+
+<ul>
+<li>No Control over the Spreadsheet info. Can't rely on this for concrete info.</li>
+<li>Paperwork is not reliable and maintainable</li>
+<li>Can't find the status of a asset quickly, without having access to the Device Register.</li>
+<li>If Device Register is gone, we loose all the details and historical data.</li>
+</ul>
+
+<h2>
+<a id="solution" class="anchor" href="#solution" aria-hidden="true"><span class="octicon octicon-link"></span></a>Solution</h2>
+
+<p>The proposed solution is to track the assets through asseTrack - a Web Application.
+Note that the solution is about automating the tracking process; not automating the secured way of CheckIn/CheckOut process.</p>
+
+<h3>
+<a id="proposed-features" class="anchor" href="#proposed-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proposed Features</h3>
+
+<p>Here is the list of features proposed for asseTrack.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Create an Asset</td>
+</tr>
+<tr>
+<td align="left">Create a User</td>
+</tr>
+<tr>
+<td align="left">See List of Assets and their status</td>
+</tr>
+<tr>
+<td align="left">See List of Users and the details of the assets they have</td>
+</tr>
+<tr>
+<td align="left">Historical data of the CheckIn/CheckOut process of all assets</td>
+</tr>
+<tr>
+<td align="left">Search an asset based on Brand(Apple, Samsung), Platform(iOs, Android, Blackberry), Availability(CheckedIn/CheckedOut)</td>
+</tr>
+<tr>
+<td align="left">Search a user based on UserName, Project Name(DTO,ESP,V4), Practice(QA,Dev,AEM)</td>
+</tr>
+<tr>
+<td align="left">Create alerts to notify the availability of the device</td>
+</tr>
+<tr>
+<td align="left">Authentication using oAuth(Google for MVP); Email Authentication for Final product</td>
+</tr>
+<tr>
+<td align="left">DashBoard to show the following details</td>
+</tr>
+<tr>
+<td align="left">No of Available devices (8/10)</td>
+</tr>
+<tr>
+<td align="left">List of users who didn't return the device.</td>
+</tr>
+<tr>
+<td align="left">Send an alert to the admin and the respective user, when an asset is not returned by EOD. (Push Notification)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="constraintsdependencies" class="anchor" href="#constraintsdependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Constraints/Dependencies</h3>
+
+<ul>
+<li>User has to CheckOut through asseTrack when he takes an asset for usage.</li>
+<li>User has to CheckIn through asseTrack when he returns an asset.</li>
+</ul>
+
+<h2>
+<a id="mvp" class="anchor" href="#mvp" aria-hidden="true"><span class="octicon octicon-link"></span></a>MVP</h2>
+
+<p>The task is to create a MVP(Minimal Viable Product) in 32 Hours, which should have the MVP features listed here.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Features</th>
+<th align="left">Due Date</th>
+<th align="left">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Create an Asset</td>
+<td align="left">21-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">Create a User</td>
+<td align="left">21-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">See List of Assets and their status</td>
+<td align="left">22-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">See List of Users and the details of the assets they have</td>
+<td align="left">22-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">CheckOut an Asset</td>
+<td align="left">22-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">CheckIn an Asset</td>
+<td align="left">23-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">Historical data of the CheckIn/CheckOut process of all assets</td>
+<td align="left">23-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">Search an asset based on Brand (Apple/LG), OS (iOs/Android), Availability</td>
+<td align="left">23-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">Search a user based on UserName, Project(DTO,ESP), Practice(QA,Dev)</td>
+<td align="left">24-Dec</td>
+<td align="left">✗</td>
+</tr>
+<tr>
+<td align="left">DashBoard to show, No of Available devices (8/10)</td>
+<td align="left">24-Dec</td>
+<td align="left">✗</td>
+</tr>
+</tbody>
+</table>
+
+<p>Because of the time constraint, few of the features won't be available for MVP.</p>
+
+<h3>
+<a id="list-of-tasks" class="anchor" href="#list-of-tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>List of Tasks</h3>
+
+<ul>
+<li>UI Widgets Creation</li>
+<li>Responsive Pages</li>
+<li>Firebase DB Setup - Security rules.</li>
+<li>Data Migration from Spreadsheet to Firebase</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Thiruppathi/asseTrack">Assetrack</a> is maintained by <a href="https://github.com/Thiruppathi">Thiruppathi</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>

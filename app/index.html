@@ -109,6 +109,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Login</span>
           </a>
 
+          <a data-route="logOut" href="{{baseUrl}}logOut">
+            <iron-icon icon="icons:power-settings-new"></iron-icon>
+            <span>Logout</span>
+          </a>
           <!-- <a data-route="users" href="{{baseUrl}}users">
             <iron-icon icon="info"></iron-icon>
             <span>Users</span>
@@ -202,7 +206,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <section data-route="login">
               <paper-material elevation="1" class="animated bounceInUp">
                 <h2 class="paper-font-display2">Log In</h2>
+                <login-user></login-user>
                 <!-- <hi9-login></hi9-login> -->
+              </paper-material>
+            </section>
+
+            <section data-route="logOut">
+              <paper-material elevation="1" class="animated bounceInUp">
+                <h2 class="paper-font-display2">Log Out</h2>
+                <paper-button raised class="colorful" on-click="signOut">
+                  <iron-icon icon="icons:power-settings-new"></iron-icon>Sign Out
+                </paper-button>
               </paper-material>
             </section>
 

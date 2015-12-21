@@ -1,0 +1,49 @@
+<dom-module id="login-user">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-button.colorful {
+      color: #4285f4;
+    }
+
+    paper-button[raised].colorful {
+      background: #007878;
+      color: #fff;
+      margin: 10px;
+    }
+  </style>
+  <template>
+
+    <gold-email-input auto-validate error-message="Please enter a valid email" id="email" label="yourname@nttdata.com" auto-validate required></gold-email-input>
+    <paper-input label="Password" id="password" type="password" required></paper-input>
+    <paper-button tabindex="0" raised class="colorful" on-click="logIn">LOG IN</paper-button>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'login-user',
+
+      logIn: function() {
+        console.log('Initiating Sign Up');
+        var userRef = new Firebase('https://assetrack.firebaseio.com');
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        userRef.authWithPassword({
+          email: email,
+          password: password
+        }, function(error, authData) {
+          if (error) {
+            console.log('Login Failed!', error);
+          } else {
+            console.log('Authenticated successfully with payload:', authData);
+          }
+        });
+
+      }
+    });
+  </script>
+</dom-module>

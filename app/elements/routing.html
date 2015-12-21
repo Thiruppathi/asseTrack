@@ -31,6 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.closeDrawer();
       next();
     }
+    var rootRef = new Firebase('https://assetrack.firebaseio.com/');
 
     // Routes
     page('*', scrollToTop, closeDrawer, function(ctx, next) {
@@ -71,7 +72,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/createAsset', function() {
-      app.route = 'createAsset';
+      if (!rootRef.getAuth()) {
+        console.log('Not Logged In');
+        app.route = 'login';
+      } else {
+        console.log('Authorised user');
+        app.route = 'createAsset';
+      }
     });
 
     page('/logBook', function() {
@@ -79,6 +86,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/login', function() {
+      app.route = 'login';
+    });
+
+    page('/logOut', function() {
+      rootRef.unauth();
       app.route = 'login';
     });
 

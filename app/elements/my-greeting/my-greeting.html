@@ -18,22 +18,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
     <h2 class="page-title">{{greeting}}</h2>
-    <span class="paper-font-body2">Update text to change the greeting.</span>
+    <span class="paper-font-body2">Welcome to asseTrack.</span>
     <!-- Listens for "input" event and sets greeting to <input>.value -->
-    <input class="paper-font-body2" value="{{greeting::input}}">
+    <!-- <input class="paper-font-body2" value="{{greeting::input}}"> -->
   </template>
 
   <script>
     (function() {
       'use strict';
-      
+
       Polymer({
         is: 'my-greeting',
 
         properties: {
           greeting: {
             type: String,
-            value: 'Welcome!',
+            value: 'Hello!',
             notify: true
           }
         }

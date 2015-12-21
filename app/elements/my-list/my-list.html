@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script>
     (function() {
       'use strict';
-  
+
       Polymer({
         is: 'my-list',
         properties: {
@@ -37,13 +37,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         },
         ready: function() {
           this.items = [
-            'Responsive Web App boilerplate',
-            'Iron Elements and Paper Elements',
-            'End-to-end Build Tooling (including Vulcanize)',
-            'Unit testing with Web Component Tester',
-            'Routing with Page.js',
-            'Offline support with the Platinum Service Worker Elements'
-          ];
+            ' Create an Asset ',
+            ' Create a User ',
+            ' See List of Assets and their status ',
+            ' See List of Users and the details of the assets they have ',
+            ' Historical data of the CheckIn/CheckOut process of all assets ',
+            ' Search an asset based on Brand(Apple, Samsung), Platform(iOs, Android, Blackberry), Availability(CheckedIn/CheckedOut) ',
+            ' Search a user based on UserName, Project Name(DTO,ESP,V4), Practice(QA,Dev,AEM) ',
+            ' Create alerts to notify the availability of the device ',
+            ' Authentication using oAuth(Google for MVP); Email Authentication for Final product ',
+            ' DashBoard to show the following details',' No of Available devices (8/10) ',
+            ' List of users who didn\'t return the device',
+            ' Send an alert to the admin and the respective user, when an asset is not returned by EOD. (Push Notification)'];
         }
       });
     })();

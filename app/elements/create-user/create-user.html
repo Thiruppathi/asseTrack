@@ -1,0 +1,87 @@
+<dom-module id="create-user">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-button.colorful {
+      color: #4285f4;
+    }
+
+    paper-button[raised].colorful {
+      background: #007878;
+      color: #fff;
+      margin: 10px;
+    }
+  </style>
+  <template>
+
+    <paper-input label="Employee Id" allowed-pattern="[0-9]" prevent-invalid-input id="empId" auto-validate  required></paper-input>
+
+      <paper-input label="Portal ID" id="portalId"></paper-input>
+      <paper-input label="SAP ID" id="sapId"></paper-input>
+
+      <paper-input label="First Name" id="firstName"></paper-input>
+      <paper-input label="Last Name" id="lastName"></paper-input>
+      <paper-input label="Designation" id="designation"></paper-input>
+      <paper-input label="Phone Number" id="phoneNo"></paper-input>
+      <paper-input label="Practice" id="practice"></paper-input>
+      <paper-input label="Project" id="project"></paper-input>
+      <paper-input label="Reporting To" id="reportingTo"></paper-input>
+
+        <gold-email-input auto-validate error-message="Please enter a valid email" id="nttId" label="yourname@nttdata.com"></gold-email-input>
+        <gold-email-input auto-validate error-message="Please enter a valid email" id="eeId" label="yourname@ee.co.uk"></gold-email-input>
+        <gold-email-input auto-validate error-message="Please enter a valid email" id="personalId" label="yourname@gmail.com"></gold-email-input>
+
+        <upload-image></upload-image>
+      <paper-button tabindex="0" raised class="colorful" on-click="signUp">SIGN UP</paper-button>
+
+  </template>
+
+  <script>
+Polymer({
+  is: 'create-user',
+
+  signUp: function() {
+    console.log('Initiating Sign Up');
+    var userRef = new Firebase('https://assetrack.firebaseio.com/users');
+    var empId = document.getElementById('empId').value;
+    var portalId = document.getElementById('portalId').value;
+    var sapId = document.getElementById('sapId').value;
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var designation = document.getElementById('designation').value;
+    var phoneNo = document.getElementById('phoneNo').value;
+    var practice = document.getElementById('practice').value;
+    var project = document.getElementById('project').value;
+    var reportingTo = document.getElementById('reportingTo').value;
+    var nttId = document.getElementById('nttId').value;
+    var eeId = document.getElementById('eeId').value;
+    var personalId = document.getElementById('personalId').value;
+    var picture = document.getElementById('uploadedImg').src;
+    console.log('src  ' + picture);
+    var createdOn = new Date().toString();
+
+    userRef.child(empId).set({
+      'empId': empId,
+      'portalId': portalId,
+      'sapId': sapId,
+      'firstName': firstName,
+      'lastName': lastName,
+      'designation': designation,
+      'emailIds': {
+        'ee': eeId,
+        'ntt': nttId,
+        'personal': personalId
+      },
+      'phoneNo': phoneNo,
+      'practice': practice,
+      'projects': project,
+      'picture': picture,
+      'reportingTo': reportingTo,
+      'createdOn': createdOn
+    });
+  }
+});
+  </script>
+</dom-module>

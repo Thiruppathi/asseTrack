@@ -1,0 +1,93 @@
+<dom-module id="create-asset">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-button.colorful {
+      color: #4285f4;
+    }
+
+    paper-button[raised].colorful {
+      background: #007878;
+      color: #fff;
+      margin: 10px;
+    }
+  </style>
+  <template>
+
+    <paper-input label="Asset Id" id="assetId"></paper-input>
+
+    <paper-input label="Brand" id="brand"></paper-input>
+    <paper-input label="Model" id="model"></paper-input>
+
+    <paper-input label="Assigned To" id="assignedTo"></paper-input>
+    <paper-input label="Checked Out By" id="checkedOutBy"></paper-input>
+    <paper-input label="Description" id="description"></paper-input>
+    <paper-input label="IMEI Number" id="imei"></paper-input>
+
+    <div>
+      <h4><b>Platform</b></h4>
+      <paper-radio-group selected="android" id="platform">
+        <paper-radio-button name="android">Android</paper-radio-button>
+        <paper-radio-button name="ios">iOS</paper-radio-button>
+        <paper-radio-button name="windows">Windows</paper-radio-button>
+        <paper-radio-button name="blackberry">Black Berry</paper-radio-button>
+      </paper-radio-group>
+    </div>
+
+    <div>
+      <h4><b>Condition</b></h4>
+      <paper-radio-group selected="yes" id="assetCondition">
+        <paper-radio-button name="yes">Working</paper-radio-button>
+        <paper-radio-button name="no">Faulty</paper-radio-button>
+      </paper-radio-group>
+    </div>
+
+    <div>
+      <h4><b>Available</b></h4>
+      <paper-radio-group selected="yes" id="availability">
+        <paper-radio-button name="yes">Yes</paper-radio-button>
+        <paper-radio-button name="no">No</paper-radio-button>
+      </paper-radio-group>
+    </div>
+<google-recaptcha></google-recaptcha>
+    <paper-button tabindex="0" raised class="colorful" on-click="createAsset">Create Asset</paper-button>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'create-asset',
+
+      createAsset: function() {
+        console.log('Initiating Asset Creation');
+        var assetsRef = new Firebase('https://assetrack.firebaseio.com/assets');
+
+        var assetId = document.getElementById('assetId').value;
+        var brand = document.getElementById('brand').value;
+        var model = document.getElementById('model').value;
+        var assignedTo = document.getElementById('assignedTo').value;
+        var checkedOutBy = document.getElementById('checkedOutBy').value;
+        var description = document.getElementById('description').value;
+        var imei = document.getElementById('imei').value;
+        var platform = document.getElementById('platform').selected;
+        var assetCondition = document.getElementById('assetCondition').selected;
+        var availability = document.getElementById('availability').selected;
+
+        assetsRef.child(assetId).set({
+          'assetId': assetId,
+          'brand': brand,
+          'model': model,
+          'assignedTo': assignedTo,
+          'checkedOutBy': checkedOutBy,
+          'description': description,
+          'imei': imei,
+          'platform': platform,
+          'assetCondition': assetCondition,
+          'availability': availability
+        });
+      }
+    });
+  </script>
+</dom-module>

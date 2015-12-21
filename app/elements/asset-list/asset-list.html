@@ -1,0 +1,82 @@
+<dom-module id="asset-list">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-button.colorful {
+      color: #4285f4;
+    }
+
+    paper-button[raised].colorful {
+      background: #007878;
+      color: #fff;
+      margin: 10px;
+    }
+
+    #searchBar {
+      left: 0;
+      top: 0;
+      padding: 16px;
+    }
+    .break {
+      height: 1em;
+    }
+    paper-input {
+      width: 100%;
+    }
+    .asset-card {
+      text-align: center;
+      margin: 1em;
+      width: 300px;
+    }
+
+  </style>
+  <template>
+    <section>
+      <div class="horizontal layout end" id="searchBar">
+        <iron-icon icon="search"  style="margin: 0 10px 6px 0;"></iron-icon>
+        <paper-input is="iron-input" no-label-float label="Search Asset" value="{{filterVal::input}}" autofocus>
+        </paper-input>
+      </div>
+    </section>
+
+    <section class="break"></section>
+
+    <section class="layout horizontal wrap">
+      <firebase-collection
+          location="https://assetrack.firebaseio.com/assets"
+          order-by-child="platform"
+          data="{{assets}}" id="assetList">
+      </firebase-collection>
+      <template is="dom-repeat" items="[[assets]]" as="asset"
+          filter="{{_filter(filterVal)}}" >
+        <asset-card asset="{{asset}}" class="asset-card"></asset-card>
+      </template>
+    </section>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'asset-list',
+
+      _filter: function(val) {
+        return function(asset) {
+                if (!val) {
+                  return true;
+                }
+                if (!asset) {
+                  return false;
+                }
+                return (asset.brand  && ~asset.brand.toLowerCase().indexOf(val.toLowerCase())) ||
+                       (asset.description && ~asset.description.toLowerCase().indexOf(val.toLowerCase())) ||
+                       (asset.model && ~asset.model.toLowerCase().indexOf(val.toLowerCase())) ||
+                       (asset.platform && ~asset.platform.toLowerCase().indexOf(val.toLowerCase())) ||
+                       (asset.assignedTo && ~asset.assignedTo.toLowerCase().indexOf(val.toLowerCase()));
+              };
+      }
+
+    });
+  </script>
+</dom-module>

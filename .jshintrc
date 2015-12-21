@@ -1,7 +1,7 @@
 {
   "node": true,
   "browser": true,
-  "bitwise": true,
+  "bitwise": false,
   "camelcase": true,
   "curly": true,
   "eqeqeq": true,
@@ -20,5 +20,8 @@
     "Platform": true,
     "page": true,
     "app": true
+  },
+  "predef": {
+    "Firebase": false
   }
 }

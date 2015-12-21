@@ -1,0 +1,80 @@
+<dom-module id="user-list">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-button.colorful {
+      color: #4285f4;
+    }
+
+    paper-button[raised].colorful {
+      background: #007878;
+      color: #fff;
+      margin: 10px;
+    }
+
+    #searchBar {
+      left: 0;
+      top: 0;
+      padding: 16px;
+    }
+
+    .break {
+      height: 2em;
+    }
+
+    paper-input {
+      width: 100%;
+    }
+
+    .user-card {
+      text-align: center;
+      margin: 1em;
+      width: 300px;
+    }
+  </style>
+  <template>
+    <section>
+      <div class="horizontal layout end" id="searchBar">
+        <iron-icon icon="search" style="margin: 0 10px 6px 0;"></iron-icon>
+        <paper-input is="iron-input" no-label-float label="Search User" value="{{filterVal::input}}" autofocus>
+        </paper-input>
+      </div>
+    </section>
+
+    <section class="break"></section>
+
+    <section class="layout horizontal wrap">
+      <firebase-collection location="https://assetrack.firebaseio.com/users" order-by-child="firstName" data="{{users}}" id="userList">
+      </firebase-collection>
+      <template is="dom-repeat" items="[[users]]" as="user" id="usersList" filter="{{_filter(filterVal)}}">
+        <user-card user="{{user}}" class="user-card"></user-card>
+      </template>
+    </section>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'user-list',
+
+      _filter: function(val) {
+        return function(user) {
+          if (!val) {
+            return true;
+          }
+          if (!user) {
+            return false;
+          }
+          return (user.firstName && ~user.firstName.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.email && ~user.email.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.practice && ~user.practice.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.projects && ~user.projects.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.lastName && ~user.lastName.toLowerCase().indexOf(val.toLowerCase()));
+        };
+      }
+
+    });
+  </script>
+</dom-module>

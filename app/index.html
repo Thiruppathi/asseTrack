@@ -79,40 +79,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Home</span>
           </a>
 
-          <a data-route="users" href="{{baseUrl}}users">
-            <iron-icon icon="social:people"></iron-icon>
-            <span>Users</span>
-          </a>
+          <template is="dom-if" if="{{isAuth}}">
+            <a data-route="users" href="{{baseUrl}}users">
+              <iron-icon icon="social:people"></iron-icon>
+              <span>Users</span>
+            </a>
 
-          <a data-route="assets" href="{{baseUrl}}assets">
-            <iron-icon icon="device:devices"></iron-icon>
-            <span>Assets</span>
-          </a>
+            <a data-route="assets" href="{{baseUrl}}assets">
+              <iron-icon icon="device:devices"></iron-icon>
+              <span>Assets</span>
+            </a>
 
-          <a data-route="createAsset" href="{{baseUrl}}createAsset">
-            <iron-icon icon="add"></iron-icon>
-            <span>Create Asset</span>
-          </a>
+            <a data-route="createAsset" href="{{baseUrl}}createAsset">
+              <iron-icon icon="add"></iron-icon>
+              <span>Create Asset</span>
+            </a>
 
-          <a data-route="createUser" href="{{baseUrl}}createUser">
-            <iron-icon icon="social:person-add"></iron-icon>
-            <span>Create User</span>
-          </a>
+            <a data-route="createUser" href="{{baseUrl}}createUser">
+              <iron-icon icon="social:person-add"></iron-icon>
+              <span>Create User</span>
+            </a>
 
-          <a data-route="logBook" href="{{baseUrl}}logBook">
-            <iron-icon icon="list"></iron-icon>
-            <span>Log Book</span>
-          </a>
+            <a data-route="logBook" href="{{baseUrl}}logBook">
+              <iron-icon icon="list"></iron-icon>
+              <span>Log Book</span>
+            </a>
+            <a data-route="logOut" href="{{baseUrl}}logOut">
+              <iron-icon icon="icons:power-settings-new"></iron-icon>
+              <span>Logout</span>
+            </a>
+          </template>
+          <template is="dom-if" if="{{!isAuth}}">
+            <a data-route="login" href="{{baseUrl}}login">
+              <iron-icon icon="list"></iron-icon>
+              <span>Login</span>
+            </a>
+          </template>
 
-          <a data-route="login" href="{{baseUrl}}login">
-            <iron-icon icon="list"></iron-icon>
-            <span>Login</span>
-          </a>
-
-          <a data-route="logOut" href="{{baseUrl}}logOut">
-            <iron-icon icon="icons:power-settings-new"></iron-icon>
-            <span>Logout</span>
-          </a>
           <!-- <a data-route="users" href="{{baseUrl}}users">
             <iron-icon icon="info"></iron-icon>
             <span>Users</span>
@@ -223,7 +226,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <section data-route="contact">
               <paper-material elevation="1">
                 <h2 class="page-title">Contact</h2>
-                <p>This is the contact section</p>
+                <p>@thiruppathi</p>
               </paper-material>
             </section>
 

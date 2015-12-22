@@ -9,7 +9,7 @@
     }
 
     paper-button[raised].colorful {
-      background: #007878;
+      background: #3F51B5;
       color: #fff;
       margin: 10px;
     }
@@ -37,9 +37,11 @@
           password: password
         }, function(error, authData) {
           if (error) {
-            console.log('Login Failed!', error);
+            console.log('Login Failed!', error, '. isAuth: ', app.isAuth);
           } else {
-            console.log('Authenticated successfully with payload:', authData);
+            app.isAuth = true;
+            console.log('Authenticated successfully with payload:', authData, 'isAuth ', app.isAuth);
+            page.redirect(app.baseUrl);
           }
         });
 

@@ -64,7 +64,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/createUser', function() {
-      app.route = 'createUser';
+      if (app.isAuth) {
+        app.route = 'createUser';
+      } else {
+        app.$.toast.text = 'Please login to create user. Redirected you to Login Page';
+        app.$.toast.show();
+        app.route = 'login';
+      }
     });
 
     page('/searchUser', function() {
@@ -91,7 +97,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     page('/logOut', function() {
       rootRef.unauth();
-      app.route = 'login';
+      app.isAuth = false;
+      app.$.toast.text = 'You have been successfully logged out';
+      page.redirect(app.baseUrl + '/login');
+      app.$.toast.show();
     });
 
     page('/contact', function() {

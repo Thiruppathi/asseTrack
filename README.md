@@ -52,7 +52,7 @@ The task is to create a MVP(Minimal Viable Product) in 32 Hours, which should ha
 | :------------- | :------------- | :------------- |
 | Create an Asset |21-Dec |✓|
 | Create a User |21-Dec|✓|
-| See List of Assets and their status |22-Dec|✗|
+| See List of Assets and their status |22-Dec|✓|
 | See List of Users and the details of the assets they have |22-Dec|✗|
 | CheckOut an Asset |22-Dec|✗|
 | CheckIn an Asset |23-Dec|✗|

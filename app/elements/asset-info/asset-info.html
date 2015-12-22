@@ -31,6 +31,9 @@
       <p><b>Asset ID: </b><span>{{computeAssetId(asset)}}</span></p>
       <b>Checked Out By:</b> <span>{{computeUserName(user)}}</span>
       <p>{{asset.isCheckedIn}}</p>
+      <paper-button raised class="colorful" on-click="checkOut">
+        <iron-icon class="power" icon="icons:power-settings-new"></iron-icon>
+        Check Out</paper-button>
     </paper-material>
   </template>
 
@@ -71,6 +74,23 @@
           icon = 'hardware:smartphone';
         }
         return icon;
+      },
+      checkIn: function() {
+        window.alert('Check In');
+      },
+      checkOut: function() {
+        var ref = new Firebase("https://assetrack.firebaseio.com");
+        var authData = ref.getAuth();
+
+        if (authData) {
+          console.log("User " + authData.uid + " checked out " + this.assetid);
+          ref.child('assets').child(this.assetid).set({
+            'checkedOutBy': authData.uid,
+            'availability': false
+          });
+        } else {
+          console.log("Log In to check out the device " + this.assetid);
+        }
       }
     });
   </script>

@@ -44,7 +44,7 @@
 
       signUp: function() {
         console.log('Initiating Sign Up');
-        var userRef = new Firebase('https://assetrack.firebaseio.com/users');
+        var userRef = new Firebase('https://assetrack.firebaseio.com');
         var empId = document.getElementById('empId').value;
         var portalId = document.getElementById('portalId').value;
         var sapId = document.getElementById('sapId').value;
@@ -62,26 +62,6 @@
         console.log('src  ' + picture);
         var createdOn = new Date().toString();
 
-        userRef.child(empId).set({
-          'empId': empId,
-          'portalId': portalId,
-          'sapId': sapId,
-          'firstName': firstName,
-          'lastName': lastName,
-          'designation': designation,
-          'emailIds': {
-            'ee': eeId,
-            'ntt': nttId,
-            'personal': personalId
-          },
-          'phoneNo': phoneNo,
-          'practice': practice,
-          'projects': project,
-          'picture': picture,
-          'reportingTo': reportingTo,
-          'createdOn': createdOn
-        });
-
         userRef.createUser({
           email: nttId,
           password: 'keane@123'
@@ -90,8 +70,30 @@
             console.log('Error creating user:', error);
           } else {
             console.log('Successfully created user account with uid:', userData.uid);
+            userRef.child('users').child(userData.uid).set({
+              'uid': userData.uid,
+              'empId': empId,
+              'portalId': portalId,
+              'sapId': sapId,
+              'firstName': firstName,
+              'lastName': lastName,
+              'designation': designation,
+              'emailIds': {
+                'ee': eeId,
+                'ntt': nttId,
+                'personal': personalId
+              },
+              'phoneNo': phoneNo,
+              'practice': practice,
+              'projects': project,
+              'picture': picture,
+              'reportingTo': reportingTo,
+              'createdOn': createdOn
+            });
           }
         });
+
+
       }
     });
   </script>

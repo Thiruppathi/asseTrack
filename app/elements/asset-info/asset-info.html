@@ -111,7 +111,7 @@
         return this.computeUserName(user);
       },
       computeAssetIcon: function(asset) {
-        var platform = asset.platform;
+        var platform = (asset) ? asset.platform : '';
         var icon = 'hardware:smartphone';
         if (platform === 'android') {
           icon = 'hardware:phone-android';

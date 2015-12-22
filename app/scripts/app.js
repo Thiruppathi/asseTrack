@@ -15,8 +15,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
 
+  app.db = new Firebase('https://assetrack.firebaseio.com');
+
   /* TODO Sets application's Authentication Status */
-  app.isAuth = false;
+
+  app.isAuthenticated = function() {
+    var authData = app.db.getAuth();
+    return (authData) ? true : false;
+  };
+
+  app.logOut = function() {
+    app.db.unauth();
+    app.isAuthenticated();
+  };
+
+  app.getLoggedInUserId = function() {
+    var authData = app.db.getAuth();
+    if (authData) {
+      return authData.uid;
+    } else {
+      return null;
+    }
+  };
+
+  app.isAuth = app.isAuthenticated();
 
   // Sets app default base URL
   app.baseUrl = '/';

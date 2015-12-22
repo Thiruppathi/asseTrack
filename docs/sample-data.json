@@ -1,0 +1,670 @@
+{
+  "assets" : {
+    "EE00155" : {
+      "assetId" : "EE00155",
+      "assignedTo" : "UAT",
+      "availability" : true,
+      "brand" : "Samsung",
+      "checkedOutBy" : "",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "Galaxy Note 3",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE00156" : {
+      "assetId" : "EE00156",
+      "assignedTo" : "UAT",
+      "availability" : true,
+      "brand" : "Samsung",
+      "checkedOutBy" : "",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "Galaxy S4 Mini",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE00157" : {
+      "assetId" : "EE00157",
+      "assignedTo" : "UAT",
+      "availability" : false,
+      "brand" : "Samsung",
+      "checkedOutBy" : "8131",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "Galaxy S5",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE00158" : {
+      "assetId" : "EE00158",
+      "assignedTo" : "UAT",
+      "brand" : "Sony",
+      "checkedOutBy" : "8131",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "Experia",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE00159" : {
+      "assetId" : "EE00159",
+      "assignedTo" : "UAT",
+      "brand" : "HTC",
+      "checkedOutBy" : "",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "One M8",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE00161" : {
+      "assetId" : "EE00161",
+      "assignedTo" : "UAT",
+      "brand" : "Kestrel",
+      "checkedOutBy" : "",
+      "description" : "Android Jelly Bean",
+      "imei" : "1234567890123456",
+      "model" : "4G",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE00197" : {
+      "assetId" : "EE00197",
+      "assignedTo" : "UAT",
+      "brand" : "LG",
+      "checkedOutBy" : "",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "Nexus 5",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE0055" : {
+      "assetId" : "EE0055",
+      "assignedTo" : "UAT",
+      "brand" : "Black Berry",
+      "checkedOutBy" : "",
+      "description" : "OS10 - RIM",
+      "imei" : "1234567890123456",
+      "model" : "Q10",
+      "platform" : "blackberry",
+      "status" : "Working"
+    },
+    "EE0056" : {
+      "assetId" : "EE0056",
+      "assignedTo" : "UAT",
+      "brand" : "Black Berry",
+      "checkedOutBy" : "",
+      "description" : "OS10",
+      "imei" : "1234567890123456",
+      "model" : "Z10",
+      "platform" : "blackberry",
+      "status" : "Working"
+    },
+    "EE0057" : {
+      "assetId" : "EE0057",
+      "assignedTo" : "UAT",
+      "brand" : "Black Berry",
+      "checkedOutBy" : "",
+      "description" : "OS10",
+      "imei" : "1234567890123456",
+      "model" : "Lumia 820",
+      "platform" : "blackberry",
+      "status" : "Working"
+    },
+    "EE0058" : {
+      "assetId" : "EE0058",
+      "assignedTo" : "UAT",
+      "brand" : "Nokia",
+      "checkedOutBy" : "",
+      "description" : "OS 8.0 - LTE - Matts Phone",
+      "imei" : "1234567890123456",
+      "model" : "Lumia 920",
+      "platform" : "windows",
+      "status" : "Working"
+    },
+    "EE0059" : {
+      "assetId" : "EE0059",
+      "assignedTo" : "UAT",
+      "brand" : "Apple",
+      "checkedOutBy" : "",
+      "description" : "ios6 - Tammy/Ross Armstrong",
+      "imei" : "1234567890123456",
+      "model" : "iPhone 4s",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "EE0060" : {
+      "assetId" : "EE0060",
+      "assignedTo" : "UAT",
+      "brand" : "Apple",
+      "checkedOutBy" : "",
+      "description" : "Matt Phones",
+      "imei" : "1234567890123456",
+      "model" : "iPhone 5",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "EE0061" : {
+      "assetId" : "EE0061",
+      "assignedTo" : "UAT",
+      "brand" : "HTC",
+      "checkInDetails" : {
+        "checkInDate" : "Wed Aug 05 2015 18:21:16 GMT+0100 (BST)"
+      },
+      "checkOutDetails" : {
+        "checkOutDate" : "Wed Aug 05 2015 09:21:16 GMT+0100 (BST)"
+      },
+      "checkedOutBy" : "19008",
+      "description" : "HTC ONE",
+      "imei" : "1234567890123456",
+      "model" : "ONE",
+      "platform" : "android",
+      "status" : "WORKING"
+    },
+    "EE0062" : {
+      "assetId" : "EE0062",
+      "assignedTo" : "UAT",
+      "brand" : "Huawei",
+      "checkInDetails" : {
+        "checkInDate" : "",
+        "checkInTime" : ""
+      },
+      "checkOutDetails" : {
+        "checkOutDate" : "",
+        "checkOutTime" : ""
+      },
+      "checkedOutBy" : "8131",
+      "description" : "Ascend",
+      "imei" : "1234567890",
+      "model" : "Ascend",
+      "platform" : "android",
+      "status" : "Available"
+    },
+    "EE0063" : {
+      "assetId" : "EE0063",
+      "assignedTo" : "UAT",
+      "brand" : "Samsung",
+      "checkedOutBy" : "8131",
+      "description" : "Adam Standeven",
+      "imei" : "1234567890123456",
+      "model" : "S3",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE0064" : {
+      "assetId" : "EE0064",
+      "assignedTo" : "UAT",
+      "brand" : "Samsung",
+      "checkedOutBy" : "8131",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "Galaxy S4",
+      "platform" : "android",
+      "status" : "Working"
+    },
+    "EE0151" : {
+      "assetId" : "EE0151",
+      "assignedTo" : "UAT",
+      "brand" : "Nokia",
+      "checkedOutBy" : "",
+      "description" : "OS 8.0",
+      "imei" : "1234567890123456",
+      "model" : "Lumia 820",
+      "platform" : "windows",
+      "status" : "Working"
+    },
+    "EE0152" : {
+      "assetId" : "EE0152",
+      "assignedTo" : "Digital",
+      "brand" : "Apple",
+      "checkedOutBy" : "",
+      "description" : "Blue - Tammy",
+      "imei" : "1234567890123456",
+      "model" : "iPhone 5c",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "EE0153" : {
+      "assetId" : "EE0153",
+      "assignedTo" : "UAT",
+      "brand" : "Apple",
+      "checkedOutBy" : "",
+      "description" : "Matt Phones",
+      "imei" : "1234567890123456",
+      "model" : "iPhone 5s",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "EE0154" : {
+      "assetId" : "EE0154",
+      "assignedTo" : "Digital",
+      "brand" : "Apple",
+      "checkedOutBy" : "",
+      "description" : "Tammy",
+      "imei" : "1234567890123456",
+      "model" : "iPad Air",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "EE0163" : {
+      "assetId" : "EE0163",
+      "assignedTo" : "UAT",
+      "brand" : "Apple",
+      "checkedOutBy" : "",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "iPhone 6",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "EE0164" : {
+      "availability" : false,
+      "checkedOutBy" : "f335874c-3434-4584-83c7-4bf46dbc3e82",
+      "assetId" : "EE0163",
+      "assignedTo" : "UAT",
+      "brand" : "Apple",
+      "description" : "",
+      "imei" : "1234567890123456",
+      "model" : "iPhone 6S",
+      "platform" : "ios",
+      "status" : "Working"
+    },
+    "Faulty-EE-1" : {
+      "assetCondition" : false,
+      "assetId" : "Faulty-EE-1",
+      "assignedTo" : "UAT",
+      "availability" : false,
+      "brand" : "Samsung",
+      "checkedOutBy" : "",
+      "description" : "GingerBread - Faulty Device",
+      "imei" : "",
+      "model" : "Galaxy S2",
+      "platform" : "android"
+    }
+  },
+  "projects" : {
+    "BAU" : {
+      "description" : "Direct Topup Optimisation",
+      "wbsElement" : "K-002294-010"
+    },
+    "DTO" : {
+      "description" : "Direct Topup Optimisation",
+      "wbsElement" : "K-002294-010"
+    }
+  },
+  "timeTest" : {
+    "myTime" : {
+      "-Jx4OIp0Fe_op1gH9LmC" : {
+        "end" : 1439978311943,
+        "start" : 1439978308113
+      },
+      "-Jx4OduykOfSY4glO4rp" : {
+        "end" : 1439978403081,
+        "start" : 1439978398380
+      },
+      "-K5A5AbDvKzdXNTul_SV" : {
+        "end" : 1449737643532,
+        "start" : 1449737642591
+      },
+      "-K5A5n5PP4kIXBAc99Ap" : {
+        "end" : 1449737806588,
+        "start" : 1449737802585
+      }
+    }
+  },
+  "users" : {
+    "333" : {
+      "createdOn" : "Mon Dec 21 2015 18:05:46 GMT+0000 (GMT)",
+      "designation" : "Developer",
+      "emailIds" : {
+        "ee" : "",
+        "ntt" : "thiru.androider@gmail.com",
+        "personal" : ""
+      },
+      "empId" : "333",
+      "firstName" : "Thiru",
+      "lastName" : "Androider",
+      "phoneNo" : "",
+      "picture" : "",
+      "portalId" : "",
+      "practice" : "UI",
+      "projects" : "DTO",
+      "reportingTo" : "",
+      "sapId" : ""
+    },
+    "8131" : {
+      "createdOn" : "Wed Aug 05 2015 16:21:16 GMT+0100 (BST)",
+      "designation" : "Assistant Project Manager",
+      "emailIds" : {
+        "ee" : "Thiruppathi.Muthukumar@ee.co.uk",
+        "ntt" : "Thiruppathi.Muthukumar@nttdata.com",
+        "personal" : "Thiruppathi.Muthukumar@gmail.com"
+      },
+      "empId" : "8131",
+      "firstName" : "Thiruppathi",
+      "lastName" : "Muthukumar",
+      "phoneNos" : "07424045650, 07854073865",
+      "picture" : "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QBoRXhpZgAASUkqAAgAAAADABIBAwABAAAAAQAAADEBAgAQAAAAMgAAAGmHBAABAAAAQgAAAAAAAABTaG90d2VsbCAwLjE4LjAAAgACoAkAAQAAAGMAAAADoAkAAQAAAGMAAAAAAAAA/+EJ8Gh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8APD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNC40LjAtRXhpdjIiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iIGV4aWY6UGl4ZWxYRGltZW5zaW9uPSI5OSIgZXhpZjpQaXhlbFlEaW1lbnNpb249Ijk5IiB0aWZmOkltYWdlV2lkdGg9Ijk5IiB0aWZmOkltYWdlSGVpZ2h0PSI5OSIgdGlmZjpPcmllbnRhdGlvbj0iMSIvPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDw/eHBhY2tldCBlbmQ9InciPz7/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoH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",
+      "portalId" : "030128",
+      "practice" : "DEV",
+      "projects" : "DTO",
+      "reportingTo" : "Vishwas.Veerajappa@ee.co.uk",
+      "sapId" : "2801",
+      "userName" : "Thiru"
+    },
+    "13006" : {
+      "designation" : "Test Manager",
+      "emailIds" : {
+        "ee" : "Palaniappan.Senthilnathan@ee.co.uk",
+        "ntt" : "Palaniappan.Senthilnathan@nttdata.com",
+        "personal" : "Palaniappan.Senthilnathan@gmail.com"
+      },
+      "empId" : "13006",
+      "firstName" : "Palaniappan",
+      "lastName" : "Senthilnathan",
+      "phoneNos" : "07854065754,07466975597",
+      "picture" : "",
+      "portalId" : "032683",
+      "practice" : "QA",
+      "projects" : "BAU",
+      "reportingTo" : "13006",
+      "sapId" : "3042"
+    },
+    "14870" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Murali.ramanujam@ee.co.uk",
+        "ntt" : "Murali.ramanujam@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "14870",
+      "firstName" : "Murali",
+      "lastName" : "Ramanujam",
+      "phoneNos" : "07438775532",
+      "portalId" : "070682",
+      "practice" : "QA",
+      "projects" : "ESP Billing",
+      "reportingTo" : "13006",
+      "sapId" : "7482"
+    },
+    "15170" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Dilip.Hiremath@ee.co.uk",
+        "ntt" : "Dilip11.Hiremath@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "15170",
+      "firstName" : "Dilip",
+      "lastName" : "Hiremath",
+      "phoneNos" : "07459755697",
+      "portalId" : "071198",
+      "practice" : "QA",
+      "projects" : "DTO",
+      "reportingTo" : "13006",
+      "sapId" : "4769"
+    },
+    "15428" : {
+      "designation" : "Test Lead",
+      "emailIds" : {
+        "ee" : "Nethra.Sathyanarayana@ee.co.uk",
+        "ntt" : "Nethra.Sathyanarayana@nttdata.com",
+        "personal" : "Nethra.Sathyanarayana@gmail.com"
+      },
+      "empId" : "15428",
+      "firstName" : "Nethra",
+      "lastName" : "Sathyanarayana",
+      "phoneNos" : "07459700157",
+      "portalId" : "072447",
+      "practice" : "QA",
+      "projects" : "MyEE App",
+      "reportingTo" : "13006",
+      "sapId" : "3653"
+    },
+    "15985" : {
+      "designation" : "Test Lead",
+      "emailIds" : {
+        "ee" : "Prabhu.Shekar@ee.co.uk",
+        "ntt" : "Prabhu.Shekar@nttdata.com",
+        "personal" : "Prabhu.Shekar@gmail.com"
+      },
+      "empId" : "15985",
+      "firstName" : "Prabhu",
+      "lastName" : "Shekar",
+      "phoneNos" : "07424045650,07534883833",
+      "portalId" : "072369",
+      "practice" : "QA",
+      "projects" : "BAU",
+      "reportingTo" : "13006",
+      "sapId" : "2808"
+    },
+    "16051" : {
+      "designation" : "Test Lead",
+      "emailIds" : {
+        "ee" : "Arvind.Girichander@ee.co.uk",
+        "ntt" : "Arvind.Girichander@nttdata.com",
+        "personal" : "ArvindGirichander@gmail.com"
+      },
+      "empId" : "16051",
+      "firstName" : "Arvind",
+      "lastName" : "Girichander",
+      "phoneNos" : "07404118410 / 07432520949",
+      "portalId" : "072447",
+      "practice" : "QA",
+      "projects" : "MyEE App",
+      "reportingTo" : "13006",
+      "sapId" : "7503"
+    },
+    "18366" : {
+      "designation" : "Assistant Project Manager",
+      "emailIds" : {
+        "ee" : "Vishal.Krishnamoorthy@ee.co.uk",
+        "ntt" : "Vishal.Krishnamoorthy@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "18366",
+      "firstName" : "Vishal",
+      "lastName" : "Krishnamoorthy",
+      "phoneNos" : "07404600522",
+      "portalId" : "075814",
+      "practice" : "QA",
+      "projects" : "MyEE App",
+      "reportingTo" : "13006",
+      "sapId" : "3212"
+    },
+    "18450" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Srikar.Gudodagi@ee.co.uk",
+        "ntt" : "Srikar.Gudodagi@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "18450",
+      "firstName" : "Srikar",
+      "lastName" : "Gudodagi",
+      "phoneNos" : "07479874124/7440628533",
+      "portalId" : "075957",
+      "practice" : "QA",
+      "projects" : "MyEE App",
+      "reportingTo" : "13006",
+      "sapId" : "3220"
+    },
+    "18988" : {
+      "createdOn" : "Fri Aug 07 2015 12:38:56 GMT+0100 (BST)",
+      "designation" : "Team Lead",
+      "emailIds" : {
+        "ee" : "Muneer.Ahamed@ee.co.uk",
+        "ntt" : "Muneer.Ahamed@nttdata.com",
+        "personal" : "sb.muneer@gmail.com"
+      },
+      "empId" : "18988",
+      "firstName" : "Muneer",
+      "lastName" : "Ahamed",
+      "phoneNo" : "07459462324",
+      "portalId" : "076832",
+      "practice" : "UI",
+      "project" : "ESP Access",
+      "projects" : "ESP Access",
+      "reportingTo" : "",
+      "sapId" : ""
+    },
+    "19008" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Rayeez.Ahmed@ee.co.uk",
+        "ntt" : "Rayees11.Ahmed@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "19008",
+      "firstName" : "Rayees",
+      "lastName" : "Ahmed",
+      "phoneNos" : "07438526685",
+      "portalId" : "076855",
+      "practice" : "QA",
+      "projects" : "ESP Account Access",
+      "reportingTo" : "13006",
+      "sapId" : "3256"
+    },
+    "19010" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Vanjinathan.balasubramanian@ee.co.uk",
+        "ntt" : "Vanjinathan.balasubramanian@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "19010",
+      "firstName" : "Vanjinathan",
+      "lastName" : "Balasubramanian",
+      "phoneNos" : "07405554375 / 07939893256",
+      "portalId" : "077293",
+      "practice" : "QA",
+      "projects" : "ESP Billing",
+      "reportingTo" : "13006",
+      "sapId" : "4051"
+    },
+    "20963" : {
+      "designation" : "Test Lead",
+      "emailIds" : {
+        "ee" : "Pooja.Tyagi@ee.co.uk",
+        "ntt" : "Pooja.Tyagi@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "20963",
+      "firstName" : "Pooja",
+      "lastName" : "Tyagi",
+      "phoneNos" : "07466011319",
+      "portalId" : "080072",
+      "practice" : "QA",
+      "projects" : "LDD",
+      "reportingTo" : "13006",
+      "sapId" : "4360"
+    },
+    "21537" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Rajesh.dubey@ee.co.uk",
+        "ntt" : "Rajesh11.dubey@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "21537",
+      "firstName" : "Rajesh",
+      "lastName" : "Dubey",
+      "phoneNos" : "07448005363",
+      "portalId" : "081031",
+      "practice" : "QA",
+      "projects" : "LDD",
+      "reportingTo" : "13006",
+      "sapId" : "3760"
+    },
+    "21555" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Sathiavathi.palanisamy@ee.co.uk",
+        "ntt" : "Sathiavathi.palanisamy@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "21555",
+      "firstName" : "Sathiavathi",
+      "lastName" : "Palanisamy",
+      "phoneNos" : "07404617736",
+      "portalId" : "081062",
+      "practice" : "QA",
+      "projects" : "ESP Account Access",
+      "reportingTo" : "13006",
+      "sapId" : "7407"
+    },
+    "21588" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Sanjay.Ramamurthy@ee.co.uk",
+        "ntt" : "Sanjay.Ramamurthy@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "21588",
+      "firstName" : "Sanjay",
+      "lastName" : "Ramamurthy",
+      "phoneNos" : "07459133926/07960101550",
+      "portalId" : "081107",
+      "practice" : "QA",
+      "projects" : "DTO",
+      "reportingTo" : "13006",
+      "sapId" : "4534"
+    },
+    "24789" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Alari.nayuni@ee.co.uk",
+        "ntt" : "Alari11.nayuni@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "24789",
+      "firstName" : "Alari",
+      "lastName" : "Nayuni",
+      "phoneNos" : "07448414112",
+      "portalId" : "089434",
+      "practice" : "QA",
+      "projects" : "DTO",
+      "reportingTo" : "13006",
+      "sapId" : "4276"
+    },
+    "24840" : {
+      "designation" : "Test Analyst",
+      "emailIds" : {
+        "ee" : "Anushree.mitra@ee.co.uk",
+        "ntt" : "anushree11.mitra@nttdata.com",
+        "personal" : ""
+      },
+      "empId" : "24840",
+      "firstName" : "Anushree",
+      "lastName" : "Mitra",
+      "phoneNos" : "",
+      "portalId" : "089543",
+      "practice" : "QA",
+      "projects" : "DTO",
+      "reportingTo" : "13006",
+      "sapId" : ""
+    },
+    "f335874c-3434-4584-83c7-4bf46dbc3e82" : {
+      "createdOn" : "Mon Dec 21 2015 23:51:17 GMT+0000 (GMT)",
+      "designation" : "",
+      "emailIds" : {
+        "ee" : "",
+        "ntt" : "thiru.androider@gmail.com",
+        "personal" : ""
+      },
+      "empId" : "694",
+      "firstName" : "Joisa",
+      "lastName" : "M",
+      "phoneNo" : "",
+      "picture" : "",
+      "portalId" : "",
+      "practice" : "",
+      "projects" : "",
+      "reportingTo" : "",
+      "sapId" : "",
+      "uid" : "f335874c-3434-4584-83c7-4bf46dbc3e82"
+    }
+  }
+}

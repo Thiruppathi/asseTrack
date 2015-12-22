@@ -40,6 +40,8 @@ Here is the list of features proposed for asseTrack.
 | No of Available devices (8/10) |
 | List of users who didn't return the device. |
 | Send an alert to the admin and the respective user, when an asset is not returned by EOD. (Push Notification) |
+| Display battery status of the device using BatteryAPI |
+| Notify When a device is available |
 
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.

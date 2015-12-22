@@ -42,8 +42,10 @@
             app.isAuth = true;
             console.log('Authenticated successfully with payload:', authData, 'isAuth ', app.isAuth);
             page.redirect(app.baseUrl);
+            app.$.toast.text = 'Successfully logged in.';
+            app.$.toast.show();
           }
-        });
+        }/*, {remember: 'sessionOnly'}*/);
 
       }
     });

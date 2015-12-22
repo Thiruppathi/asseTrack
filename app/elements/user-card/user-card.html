@@ -68,7 +68,7 @@
   </style>
   <template>
     <a data-route="user-info" href="[[computeHref(user)]]" class="user-card-inner">
-      <paper-material class="animated bounceInUp user-card" id="[[user.empId]]">
+      <paper-material class="animated bounceInUp user-card" id="[[user.uid]]">
         <div class="user-card-header">
           <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{computeProfilePic(user)}}"></iron-image>
           <h4>{{computeFullName(user)}}</h4>
@@ -95,13 +95,13 @@
         return user.designation;
       },
       computeEmpId: function(user) {
-        return user.empId;
+        return user.uid;
       },
       computeHref: function(user) {
-        return 'users/' + user.empId;
+        return 'users/' + user.uid;
       },
       computeDbHref: function(user) {
-        return 'https://assetrack.firebaseio.com/users/' + user.empId;
+        return 'https://assetrack.firebaseio.com/users/' + user.uid;
       },
       computeProfilePic: function(user) {
         return user.picture || user.avatar ||

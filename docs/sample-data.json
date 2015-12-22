@@ -5,9 +5,10 @@
       "assignedTo" : "UAT",
       "availability" : true,
       "brand" : "Samsung",
-      "checkedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
+      "lastCheckOutDateTime" : "",
+      "lastCheckedOutBy" : "",
       "model" : "Galaxy Note 3",
       "platform" : "android",
       "status" : "Working"
@@ -17,9 +18,10 @@
       "assignedTo" : "UAT",
       "availability" : true,
       "brand" : "Samsung",
-      "checkedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
+      "lastCheckOutDateTime" : "",
+      "lastCheckedOutBy" : "",
       "model" : "Galaxy S4 Mini",
       "platform" : "android",
       "status" : "Working"
@@ -27,9 +29,9 @@
     "EE00157" : {
       "assetId" : "EE00157",
       "assignedTo" : "UAT",
-      "availability" : false,
+      "availability" : true,
       "brand" : "Samsung",
-      "checkedOutBy" : "8131",
+      "lastCheckedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "Galaxy S5",
@@ -39,8 +41,9 @@
     "EE00158" : {
       "assetId" : "EE00158",
       "assignedTo" : "UAT",
+      "availability" : true,
       "brand" : "Sony",
-      "checkedOutBy" : "8131",
+      "lastCheckedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "Experia",
@@ -51,7 +54,8 @@
       "assetId" : "EE00159",
       "assignedTo" : "UAT",
       "brand" : "HTC",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "One M8",
@@ -61,10 +65,12 @@
     "EE00161" : {
       "assetId" : "EE00161",
       "assignedTo" : "UAT",
+      "availability" : true,
       "brand" : "Kestrel",
-      "checkedOutBy" : "",
       "description" : "Android Jelly Bean",
       "imei" : "1234567890123456",
+      "lastCheckOutDateTime" : "",
+      "lastCheckedOutBy":"",
       "model" : "4G",
       "platform" : "android",
       "status" : "Working"
@@ -73,7 +79,8 @@
       "assetId" : "EE00197",
       "assignedTo" : "UAT",
       "brand" : "LG",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "Nexus 5",
@@ -84,7 +91,8 @@
       "assetId" : "EE0055",
       "assignedTo" : "UAT",
       "brand" : "Black Berry",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "OS10 - RIM",
       "imei" : "1234567890123456",
       "model" : "Q10",
@@ -95,7 +103,8 @@
       "assetId" : "EE0056",
       "assignedTo" : "UAT",
       "brand" : "Black Berry",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "OS10",
       "imei" : "1234567890123456",
       "model" : "Z10",
@@ -106,7 +115,8 @@
       "assetId" : "EE0057",
       "assignedTo" : "UAT",
       "brand" : "Black Berry",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "OS10",
       "imei" : "1234567890123456",
       "model" : "Lumia 820",
@@ -117,7 +127,8 @@
       "assetId" : "EE0058",
       "assignedTo" : "UAT",
       "brand" : "Nokia",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "OS 8.0 - LTE - Matts Phone",
       "imei" : "1234567890123456",
       "model" : "Lumia 920",
@@ -128,7 +139,8 @@
       "assetId" : "EE0059",
       "assignedTo" : "UAT",
       "brand" : "Apple",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "ios6 - Tammy/Ross Armstrong",
       "imei" : "1234567890123456",
       "model" : "iPhone 4s",
@@ -139,7 +151,8 @@
       "assetId" : "EE0060",
       "assignedTo" : "UAT",
       "brand" : "Apple",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "Matt Phones",
       "imei" : "1234567890123456",
       "model" : "iPhone 5",
@@ -150,13 +163,8 @@
       "assetId" : "EE0061",
       "assignedTo" : "UAT",
       "brand" : "HTC",
-      "checkInDetails" : {
-        "checkInDate" : "Wed Aug 05 2015 18:21:16 GMT+0100 (BST)"
-      },
-      "checkOutDetails" : {
-        "checkOutDate" : "Wed Aug 05 2015 09:21:16 GMT+0100 (BST)"
-      },
-      "checkedOutBy" : "19008",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "HTC ONE",
       "imei" : "1234567890123456",
       "model" : "ONE",
@@ -167,15 +175,8 @@
       "assetId" : "EE0062",
       "assignedTo" : "UAT",
       "brand" : "Huawei",
-      "checkInDetails" : {
-        "checkInDate" : "",
-        "checkInTime" : ""
-      },
-      "checkOutDetails" : {
-        "checkOutDate" : "",
-        "checkOutTime" : ""
-      },
-      "checkedOutBy" : "8131",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "Ascend",
       "imei" : "1234567890",
       "model" : "Ascend",
@@ -186,7 +187,8 @@
       "assetId" : "EE0063",
       "assignedTo" : "UAT",
       "brand" : "Samsung",
-      "checkedOutBy" : "8131",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "Adam Standeven",
       "imei" : "1234567890123456",
       "model" : "S3",
@@ -197,7 +199,8 @@
       "assetId" : "EE0064",
       "assignedTo" : "UAT",
       "brand" : "Samsung",
-      "checkedOutBy" : "8131",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "Galaxy S4",
@@ -208,7 +211,8 @@
       "assetId" : "EE0151",
       "assignedTo" : "UAT",
       "brand" : "Nokia",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "OS 8.0",
       "imei" : "1234567890123456",
       "model" : "Lumia 820",
@@ -219,7 +223,8 @@
       "assetId" : "EE0152",
       "assignedTo" : "Digital",
       "brand" : "Apple",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "Blue - Tammy",
       "imei" : "1234567890123456",
       "model" : "iPhone 5c",
@@ -229,10 +234,12 @@
     "EE0153" : {
       "assetId" : "EE0153",
       "assignedTo" : "UAT",
+      "availability" : true,
       "brand" : "Apple",
-      "checkedOutBy" : "",
       "description" : "Matt Phones",
       "imei" : "1234567890123456",
+      "lastCheckOutDateTime" : "",
+      "lastCheckedOutBy":"",
       "model" : "iPhone 5s",
       "platform" : "ios",
       "status" : "Working"
@@ -240,10 +247,12 @@
     "EE0154" : {
       "assetId" : "EE0154",
       "assignedTo" : "Digital",
+      "avaialability" : true,
       "brand" : "Apple",
-      "checkedOutBy" : "",
       "description" : "Tammy",
       "imei" : "1234567890123456",
+      "lastCheckOutDateTime" : "",
+      "lastCheckedOutBy" : "",
       "model" : "iPad Air",
       "platform" : "ios",
       "status" : "Working"
@@ -252,7 +261,8 @@
       "assetId" : "EE0163",
       "assignedTo" : "UAT",
       "brand" : "Apple",
-      "checkedOutBy" : "",
+      "availability" : true,
+      "lastCheckedOutBy" : "",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "iPhone 6",
@@ -260,11 +270,11 @@
       "status" : "Working"
     },
     "EE0164" : {
-      "availability" : false,
-      "checkedOutBy" : "f335874c-3434-4584-83c7-4bf46dbc3e82",
-      "assetId" : "EE0163",
+      "assetId" : "EE0164",
       "assignedTo" : "UAT",
+      "availability" : true,
       "brand" : "Apple",
+      "lastCheckedOutBy":"",
       "description" : "",
       "imei" : "1234567890123456",
       "model" : "iPhone 6S",
@@ -275,9 +285,9 @@
       "assetCondition" : false,
       "assetId" : "Faulty-EE-1",
       "assignedTo" : "UAT",
-      "availability" : false,
+      "availability" : true,
       "brand" : "Samsung",
-      "checkedOutBy" : "",
+      "lastCheckedOutBy" : "",
       "description" : "GingerBread - Faulty Device",
       "imei" : "",
       "model" : "Galaxy S2",
@@ -294,48 +304,9 @@
       "wbsElement" : "K-002294-010"
     }
   },
-  "timeTest" : {
-    "myTime" : {
-      "-Jx4OIp0Fe_op1gH9LmC" : {
-        "end" : 1439978311943,
-        "start" : 1439978308113
-      },
-      "-Jx4OduykOfSY4glO4rp" : {
-        "end" : 1439978403081,
-        "start" : 1439978398380
-      },
-      "-K5A5AbDvKzdXNTul_SV" : {
-        "end" : 1449737643532,
-        "start" : 1449737642591
-      },
-      "-K5A5n5PP4kIXBAc99Ap" : {
-        "end" : 1449737806588,
-        "start" : 1449737802585
-      }
-    }
-  },
   "users" : {
-    "333" : {
-      "createdOn" : "Mon Dec 21 2015 18:05:46 GMT+0000 (GMT)",
-      "designation" : "Developer",
-      "emailIds" : {
-        "ee" : "",
-        "ntt" : "thiru.androider@gmail.com",
-        "personal" : ""
-      },
-      "empId" : "333",
-      "firstName" : "Thiru",
-      "lastName" : "Androider",
-      "phoneNo" : "",
-      "picture" : "",
-      "portalId" : "",
-      "practice" : "UI",
-      "projects" : "DTO",
-      "reportingTo" : "",
-      "sapId" : ""
-    },
-    "8131" : {
-      "createdOn" : "Wed Aug 05 2015 16:21:16 GMT+0100 (BST)",
+    "f335874c-3434-4584-83c7-4bf46dbc3e82" : {
+      "createdOn" : "Mon Dec 21 2015 23:51:17 GMT+0000 (GMT)",
       "designation" : "Assistant Project Manager",
       "emailIds" : {
         "ee" : "Thiruppathi.Muthukumar@ee.co.uk",
@@ -352,318 +323,7 @@
       "projects" : "DTO",
       "reportingTo" : "Vishwas.Veerajappa@ee.co.uk",
       "sapId" : "2801",
-      "userName" : "Thiru"
-    },
-    "13006" : {
-      "designation" : "Test Manager",
-      "emailIds" : {
-        "ee" : "Palaniappan.Senthilnathan@ee.co.uk",
-        "ntt" : "Palaniappan.Senthilnathan@nttdata.com",
-        "personal" : "Palaniappan.Senthilnathan@gmail.com"
-      },
-      "empId" : "13006",
-      "firstName" : "Palaniappan",
-      "lastName" : "Senthilnathan",
-      "phoneNos" : "07854065754,07466975597",
-      "picture" : "",
-      "portalId" : "032683",
-      "practice" : "QA",
-      "projects" : "BAU",
-      "reportingTo" : "13006",
-      "sapId" : "3042"
-    },
-    "14870" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Murali.ramanujam@ee.co.uk",
-        "ntt" : "Murali.ramanujam@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "14870",
-      "firstName" : "Murali",
-      "lastName" : "Ramanujam",
-      "phoneNos" : "07438775532",
-      "portalId" : "070682",
-      "practice" : "QA",
-      "projects" : "ESP Billing",
-      "reportingTo" : "13006",
-      "sapId" : "7482"
-    },
-    "15170" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Dilip.Hiremath@ee.co.uk",
-        "ntt" : "Dilip11.Hiremath@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "15170",
-      "firstName" : "Dilip",
-      "lastName" : "Hiremath",
-      "phoneNos" : "07459755697",
-      "portalId" : "071198",
-      "practice" : "QA",
-      "projects" : "DTO",
-      "reportingTo" : "13006",
-      "sapId" : "4769"
-    },
-    "15428" : {
-      "designation" : "Test Lead",
-      "emailIds" : {
-        "ee" : "Nethra.Sathyanarayana@ee.co.uk",
-        "ntt" : "Nethra.Sathyanarayana@nttdata.com",
-        "personal" : "Nethra.Sathyanarayana@gmail.com"
-      },
-      "empId" : "15428",
-      "firstName" : "Nethra",
-      "lastName" : "Sathyanarayana",
-      "phoneNos" : "07459700157",
-      "portalId" : "072447",
-      "practice" : "QA",
-      "projects" : "MyEE App",
-      "reportingTo" : "13006",
-      "sapId" : "3653"
-    },
-    "15985" : {
-      "designation" : "Test Lead",
-      "emailIds" : {
-        "ee" : "Prabhu.Shekar@ee.co.uk",
-        "ntt" : "Prabhu.Shekar@nttdata.com",
-        "personal" : "Prabhu.Shekar@gmail.com"
-      },
-      "empId" : "15985",
-      "firstName" : "Prabhu",
-      "lastName" : "Shekar",
-      "phoneNos" : "07424045650,07534883833",
-      "portalId" : "072369",
-      "practice" : "QA",
-      "projects" : "BAU",
-      "reportingTo" : "13006",
-      "sapId" : "2808"
-    },
-    "16051" : {
-      "designation" : "Test Lead",
-      "emailIds" : {
-        "ee" : "Arvind.Girichander@ee.co.uk",
-        "ntt" : "Arvind.Girichander@nttdata.com",
-        "personal" : "ArvindGirichander@gmail.com"
-      },
-      "empId" : "16051",
-      "firstName" : "Arvind",
-      "lastName" : "Girichander",
-      "phoneNos" : "07404118410 / 07432520949",
-      "portalId" : "072447",
-      "practice" : "QA",
-      "projects" : "MyEE App",
-      "reportingTo" : "13006",
-      "sapId" : "7503"
-    },
-    "18366" : {
-      "designation" : "Assistant Project Manager",
-      "emailIds" : {
-        "ee" : "Vishal.Krishnamoorthy@ee.co.uk",
-        "ntt" : "Vishal.Krishnamoorthy@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "18366",
-      "firstName" : "Vishal",
-      "lastName" : "Krishnamoorthy",
-      "phoneNos" : "07404600522",
-      "portalId" : "075814",
-      "practice" : "QA",
-      "projects" : "MyEE App",
-      "reportingTo" : "13006",
-      "sapId" : "3212"
-    },
-    "18450" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Srikar.Gudodagi@ee.co.uk",
-        "ntt" : "Srikar.Gudodagi@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "18450",
-      "firstName" : "Srikar",
-      "lastName" : "Gudodagi",
-      "phoneNos" : "07479874124/7440628533",
-      "portalId" : "075957",
-      "practice" : "QA",
-      "projects" : "MyEE App",
-      "reportingTo" : "13006",
-      "sapId" : "3220"
-    },
-    "18988" : {
-      "createdOn" : "Fri Aug 07 2015 12:38:56 GMT+0100 (BST)",
-      "designation" : "Team Lead",
-      "emailIds" : {
-        "ee" : "Muneer.Ahamed@ee.co.uk",
-        "ntt" : "Muneer.Ahamed@nttdata.com",
-        "personal" : "sb.muneer@gmail.com"
-      },
-      "empId" : "18988",
-      "firstName" : "Muneer",
-      "lastName" : "Ahamed",
-      "phoneNo" : "07459462324",
-      "portalId" : "076832",
-      "practice" : "UI",
-      "project" : "ESP Access",
-      "projects" : "ESP Access",
-      "reportingTo" : "",
-      "sapId" : ""
-    },
-    "19008" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Rayeez.Ahmed@ee.co.uk",
-        "ntt" : "Rayees11.Ahmed@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "19008",
-      "firstName" : "Rayees",
-      "lastName" : "Ahmed",
-      "phoneNos" : "07438526685",
-      "portalId" : "076855",
-      "practice" : "QA",
-      "projects" : "ESP Account Access",
-      "reportingTo" : "13006",
-      "sapId" : "3256"
-    },
-    "19010" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Vanjinathan.balasubramanian@ee.co.uk",
-        "ntt" : "Vanjinathan.balasubramanian@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "19010",
-      "firstName" : "Vanjinathan",
-      "lastName" : "Balasubramanian",
-      "phoneNos" : "07405554375 / 07939893256",
-      "portalId" : "077293",
-      "practice" : "QA",
-      "projects" : "ESP Billing",
-      "reportingTo" : "13006",
-      "sapId" : "4051"
-    },
-    "20963" : {
-      "designation" : "Test Lead",
-      "emailIds" : {
-        "ee" : "Pooja.Tyagi@ee.co.uk",
-        "ntt" : "Pooja.Tyagi@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "20963",
-      "firstName" : "Pooja",
-      "lastName" : "Tyagi",
-      "phoneNos" : "07466011319",
-      "portalId" : "080072",
-      "practice" : "QA",
-      "projects" : "LDD",
-      "reportingTo" : "13006",
-      "sapId" : "4360"
-    },
-    "21537" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Rajesh.dubey@ee.co.uk",
-        "ntt" : "Rajesh11.dubey@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "21537",
-      "firstName" : "Rajesh",
-      "lastName" : "Dubey",
-      "phoneNos" : "07448005363",
-      "portalId" : "081031",
-      "practice" : "QA",
-      "projects" : "LDD",
-      "reportingTo" : "13006",
-      "sapId" : "3760"
-    },
-    "21555" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Sathiavathi.palanisamy@ee.co.uk",
-        "ntt" : "Sathiavathi.palanisamy@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "21555",
-      "firstName" : "Sathiavathi",
-      "lastName" : "Palanisamy",
-      "phoneNos" : "07404617736",
-      "portalId" : "081062",
-      "practice" : "QA",
-      "projects" : "ESP Account Access",
-      "reportingTo" : "13006",
-      "sapId" : "7407"
-    },
-    "21588" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Sanjay.Ramamurthy@ee.co.uk",
-        "ntt" : "Sanjay.Ramamurthy@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "21588",
-      "firstName" : "Sanjay",
-      "lastName" : "Ramamurthy",
-      "phoneNos" : "07459133926/07960101550",
-      "portalId" : "081107",
-      "practice" : "QA",
-      "projects" : "DTO",
-      "reportingTo" : "13006",
-      "sapId" : "4534"
-    },
-    "24789" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Alari.nayuni@ee.co.uk",
-        "ntt" : "Alari11.nayuni@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "24789",
-      "firstName" : "Alari",
-      "lastName" : "Nayuni",
-      "phoneNos" : "07448414112",
-      "portalId" : "089434",
-      "practice" : "QA",
-      "projects" : "DTO",
-      "reportingTo" : "13006",
-      "sapId" : "4276"
-    },
-    "24840" : {
-      "designation" : "Test Analyst",
-      "emailIds" : {
-        "ee" : "Anushree.mitra@ee.co.uk",
-        "ntt" : "anushree11.mitra@nttdata.com",
-        "personal" : ""
-      },
-      "empId" : "24840",
-      "firstName" : "Anushree",
-      "lastName" : "Mitra",
-      "phoneNos" : "",
-      "portalId" : "089543",
-      "practice" : "QA",
-      "projects" : "DTO",
-      "reportingTo" : "13006",
-      "sapId" : ""
-    },
-    "f335874c-3434-4584-83c7-4bf46dbc3e82" : {
-      "createdOn" : "Mon Dec 21 2015 23:51:17 GMT+0000 (GMT)",
-      "designation" : "",
-      "emailIds" : {
-        "ee" : "",
-        "ntt" : "thiru.androider@gmail.com",
-        "personal" : ""
-      },
-      "empId" : "694",
-      "firstName" : "Joisa",
-      "lastName" : "M",
-      "phoneNo" : "",
-      "picture" : "",
-      "portalId" : "",
-      "practice" : "",
-      "projects" : "",
-      "reportingTo" : "",
-      "sapId" : "",
+      "userName" : "Thiru",
       "uid" : "f335874c-3434-4584-83c7-4bf46dbc3e82"
     }
   }

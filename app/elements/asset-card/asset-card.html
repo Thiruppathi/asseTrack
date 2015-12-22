@@ -35,16 +35,19 @@
       margin: 5px auto 5px auto;
     }
 
-    a, a:link {
+    a,
+    a:link {
       text-decoration: none;
     }
 
     a span {
       color: #111111;
     }
+
     .asset-card-inner {
       display: block;
     }
+
     .asset-card-inner:hover {
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
     }
@@ -76,11 +79,11 @@
     }
 
     .asset-card .user-image {
-        border-radius: 100%;
-        display: block;
-        height: 25px;
-        width: 25px;
-        margin: 10px auto 10px auto;
+      border-radius: 100%;
+      display: block;
+      height: 25px;
+      width: 25px;
+      margin: 10px auto 10px auto;
     }
 
     paper-fab {
@@ -123,7 +126,6 @@
       width: 300px;
       height: 300px;
     }
-
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeUserHref(asset)]]" data="{{user}}"></firebase-document>
@@ -138,7 +140,7 @@
             <paper-fab mini icon="create" class="blue" data-dialog="[[computeDialogId(asset)]]"></paper-fab>
         </div> -->
         <div class="asset-card-footer">
-            <p class="asset-info">{{computeUserName(user)}}</p>
+          <p class="asset-info">{{computeLastCheckedOutName(user)}}</p>
         </div>
       </paper-material>
     </a>
@@ -151,13 +153,13 @@
       },
 
       computeUserHref: function(asset) {
-        return 'https://assetrack.firebaseio.com/users/' + asset.checkedOutBy;
+        return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckedOutBy;
       },
       computeFullName: function(asset) {
         return asset.brand + ' ' + asset.model;
       },
       computeUserName: function(user) {
-        if (user.firstName && user.lastName) {
+        if (user) {
           return (user.firstName || '') + ' ' + (user.lastName || '');
         } else {
           return 'Available';
@@ -173,16 +175,10 @@
         return 'assets/' + asset.assetId;
       },
       computeCheckedOutBy: function(asset) {
-        return asset.checkedOutBy || '';
+        return asset.lastCheckedOutBy || '';
       },
-      isAvailable: function(asset) {
-        if (asset.availability === 'yes') {
-          console.log('Available');
-          return true;
-        } else {
-          console.log('Not Available');
-          return false;
-        }
+      computeLastCheckedOutName: function(user) {
+        return this.computeUserName(user);
       },
       computeAssetIcon: function(asset) {
         var platform = asset.platform;

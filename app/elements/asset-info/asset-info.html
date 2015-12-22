@@ -19,21 +19,63 @@
       width: 100px;
       height: 100px;
     }
+
+    iron-icon.cart-icon.style-scope.asset-info.x-scope.iron-icon-0 {
+      width: 24px;
+      height: 24px;
+    }
+
+    paper-button[raised].colorful {
+      background: #3F51B5;
+      color: #fff;
+      margin: 10px;
+    }
+
+    .user-card {
+      text-align: center;
+      margin: 1em;
+      width: 100px;
+    }
   </style>
   <template>
-    <firebase-document id="getUserFB" location="[[computeUserHref(asset)]]" data="{{user}}"></firebase-document>
+    <firebase-document id="getUserFB" location="[[computeUserHref(asset)]]" data="{{currentUserOfAsset}}"></firebase-document>
     <firebase-document id="getAssetFB" location="[[computeAssetHref(assetid)]]" data="{{asset}}"></firebase-document>
-    <paper-material class="assetData" id="[[assetid]]" entry-animation="scale-up-animation"
-              exit-animation="fade-out-animation">
+
+    <paper-material class="assetData" id="[[assetid]]" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
       <iron-icon icon="{{computeAssetIcon(asset)}}" class="assetIcon"></iron-icon>
       <p>{{asset.assetid}}</p>
       <p>{{computeFullName(asset)}}</p>
-      <p><b>Asset ID: </b><span>{{computeAssetId(asset)}}</span></p>
-      <b>Checked Out By:</b> <span>{{computeUserName(user)}}</span>
-      <p>{{asset.isCheckedIn}}</p>
-      <paper-button raised class="colorful" on-click="checkOut">
-        <iron-icon class="power" icon="icons:power-settings-new"></iron-icon>
-        Check Out</paper-button>
+      <p><b>Asset ID: </b>
+        <span>{{computeAssetId(asset)}}</span>
+      </p>
+
+      <!-- If asset avaialble for check out-->
+      <template is="dom-if" if="{{asset.availability}}">
+        <paper-button raised class="colorful" on-click="checkOut">
+          <iron-icon class="cart-icon" icon="icons:add-shopping-cart"></iron-icon>Check Out</paper-button>
+      </template>
+
+      <!-- If asset checked in by logged in user -->
+      <template is="dom-if" if="{{isCheckInAvailableForLoggedInUser(asset,currentUserOfAsset)}}">
+        <p><b>Checked Out By:</b>
+          <span>{{computeLastCheckedOutName(currentUserOfAsset)}}</span>
+        </p>
+        <paper-button raised class="colorful" on-click="checkIn">
+          <iron-icon class="cart-icon" icon="icons:assignment-turned-in"></iron-icon>Check In</paper-button>
+      </template>
+
+      <!-- If asset not available for check out -->
+      <!-- <template is="dom-if" if="{{isCheckInAvailableForLoggedInUser(asset,currentUserOfAsset)}}">
+        <p><b>Checked Out By:</b>
+          <span>{{computeLastCheckedOutName(currentUserOfAsset)}}</span>
+        </p>
+        <p><b>Checked Out Time:</b>
+          <span>{{asset.lastCheckOutDateTime}}</span>
+        </p>
+        <paper-button raised class="colorful" on-click="notifyMe">
+          <iron-icon class="cart-icon" icon="icons:add-alert"></iron-icon>Notify</paper-button>
+      </template> -->
+
     </paper-material>
   </template>
 
@@ -47,19 +89,26 @@
         return 'https://assetrack.firebaseio.com/assets/' + assetid;
       },
       computeUserHref: function(asset) {
-        return 'https://assetrack.firebaseio.com/users/' + asset.checkedOutBy;
+        if (asset) {
+          return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckedOutBy;
+        }
       },
       computeFullName: function(asset) {
         return asset.brand + ' ' + asset.model;
       },
       computeUserName: function(user) {
-        return (user.firstName || '') + ' ' + (user.lastName || '');
+        if (user) {
+          return (user.firstName || '') + ' ' + (user.lastName || '');
+        }
       },
       computeAssetId: function(asset) {
         return asset.assetId;
       },
       computeHref: function(asset) {
         return 'assets/' + asset.assetId;
+      },
+      computeLastCheckedOutName: function(user) {
+        return this.computeUserName(user);
       },
       computeAssetIcon: function(asset) {
         var platform = asset.platform;
@@ -75,21 +124,52 @@
         }
         return icon;
       },
+      isCheckInAvailableForLoggedInUser: function(asset, currentUserOfAsset) {
+        if (asset.availability && currentUserOfAsset && (currentUserOfAsset.uid === this.getLoggedInUserId())) {
+          return false;
+        } else if (!asset.availability && currentUserOfAsset && (currentUserOfAsset.uid === this.getLoggedInUserId())) {
+          return true;
+        }
+      },
       checkIn: function() {
         window.alert('Check In');
       },
       checkOut: function() {
         var ref = new Firebase('https://assetrack.firebaseio.com');
         var authData = ref.getAuth();
-
+        var checkOutDateTime = new Date().toString();
+        var assetid = this.assetid;
+        // Refactor this
         if (authData) {
-          console.log('User ' + authData.uid + ' checked out ' + this.assetid);
-          ref.child('assets').child(this.assetid).set({
-            'checkedOutBy': authData.uid,
+          var uid = authData.uid;
+          console.log('User ' + uid + ' checked out ' + this.assetid);
+          ref.child('assets').child(this.assetid).update({
+            'lastCheckedOutBy': uid,
+            'lastCheckOutDateTime': checkOutDateTime,
             'availability': false
+          });
+          ref.child('assets').child(this.assetid).child('checkOutHistory').push({
+            'lastCheckedOutBy': uid,
+            'lastCheckOutDateTime': checkOutDateTime
+          });
+          ref.child('users').child(uid).child('assets').push({
+            'assetId': assetid,
+            'checkOutDateTime': checkOutDateTime
           });
         } else {
           console.log('Log In to check out the device ' + this.assetid);
+          page.redirect(app.baseUrl + '/login');
+          app.$.toast.text = 'Login to check out the device . Redirected you to Login Page.';
+          app.$.toast.show();
+        }
+      },
+      getLoggedInUserId: function() {
+        var ref = new Firebase('https://assetrack.firebaseio.com');
+        var authData = ref.getAuth();
+        if (authData) {
+          return authData.uid;
+        } else {
+          return null;
         }
       }
     });

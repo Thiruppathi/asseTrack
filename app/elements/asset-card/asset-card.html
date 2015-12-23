@@ -153,7 +153,7 @@
       },
 
       computeUserHref: function(asset) {
-        return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckedOutBy;
+        return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckOutBy;
       },
       computeFullName: function(asset) {
         return asset.brand + ' ' + asset.model;
@@ -175,7 +175,7 @@
         return 'assets/' + asset.assetId;
       },
       computeCheckedOutBy: function(asset) {
-        return asset.lastCheckedOutBy || '';
+        return asset.lastCheckOutBy || '';
       },
       computeLastCheckedOutName: function(user) {
         return this.computeUserName(user);

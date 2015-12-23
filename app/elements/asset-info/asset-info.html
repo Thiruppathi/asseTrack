@@ -90,7 +90,7 @@
       },
       computeUserHref: function(asset) {
         if (asset) {
-          return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckedOutBy;
+          return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckOutBy;
         }
       },
       computeFullName: function(asset) {
@@ -132,7 +132,35 @@
         }
       },
       checkIn: function() {
-        window.alert('Check In');
+        var ref = new Firebase('https://assetrack.firebaseio.com');
+        var authData = ref.getAuth();
+        var assetid = this.assetid;
+        if (authData) {
+            var uid = authData.uid;
+            var checkInDateTime = new Date().toString();
+            console.log('User ' + uid + ' checked in ' + this.assetid);
+            ref.child('assets').child(this.assetid).update({
+              'lastCheckInBy': uid,
+              'lastCheckInDateTime': checkInDateTime,
+              'availability': true
+            });
+            ref.child('assets').child(this.assetid).child('checkInHistory').push({
+              'checkedInBy': uid,
+              'checkInDateTime': checkInDateTime
+            });
+            ref.child('users').child(uid).child('assets').child(assetid).remove();
+            ref.child('history').push({
+              'action': 'CHECK IN',
+              'checkedInBy': uid,
+              'checkInDateTime': checkInDateTime,
+              'assetId': assetid
+            });
+        } else {
+          console.log('Log In to check in the device ' + this.assetid);
+          page.redirect(app.baseUrl + '/login');
+          app.$.toast.text = 'Login to check in the device . Redirected you to Login Page.';
+          app.$.toast.show();
+        }
       },
       checkOut: function() {
         var ref = new Firebase('https://assetrack.firebaseio.com');
@@ -144,17 +172,23 @@
           var uid = authData.uid;
           console.log('User ' + uid + ' checked out ' + this.assetid);
           ref.child('assets').child(this.assetid).update({
-            'lastCheckedOutBy': uid,
+            'lastCheckOutBy': uid,
             'lastCheckOutDateTime': checkOutDateTime,
             'availability': false
           });
           ref.child('assets').child(this.assetid).child('checkOutHistory').push({
-            'lastCheckedOutBy': uid,
-            'lastCheckOutDateTime': checkOutDateTime
+            'checkedOutBy': uid,
+            'checkOutDateTime': checkOutDateTime
           });
-          ref.child('users').child(uid).child('assets').push({
+          ref.child('users').child(uid).child('assets').child(assetid).set({
             'assetId': assetid,
             'checkOutDateTime': checkOutDateTime
+          });
+          ref.child('history').push({
+            'action': 'CHECK OUT',
+            'checkedOutBy': uid,
+            'checkOutDateTime': checkOutDateTime,
+            'assetId': assetid
           });
         } else {
           console.log('Log In to check out the device ' + this.assetid);

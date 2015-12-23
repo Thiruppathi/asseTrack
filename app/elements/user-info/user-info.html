@@ -21,18 +21,12 @@
       <span>{{user.empId}}</span>
       <span>{{computeFullName(user)}}</span>
     </paper-material>
-    <paper-material class="userData">
-      <h4>Currently Checked Out Device</h4>
+    <h4>Currently Checked Out Device</h4>
+    <section class="layout horizontal wrap">
       <template is="dom-repeat" items="[[computeAssetHistory(user)]]" as="asset" id="assetList">
-        <ol>
-          <li>
-            <span>{{asset.assetId}}</span> -
-            <span>{{asset.checkOutDateTime}}</span>
-          </li>
-        </ol>
+        <asset-info assetid="[[asset.assetId]]"></asset-info>
       </template>
-    </paper-material>
-
+    </section>
   </template>
 
   <script>

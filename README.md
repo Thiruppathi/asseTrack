@@ -49,6 +49,7 @@ Here is the list of features proposed for asseTrack.
 | Have tabs for different type of users in Users Page. e.g. Project, Practice, Company |
 | Handle Mulitiple session and concurrent transaction|
 | Enable offline support using service worker|
+| Add Animation.css |
 
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.
@@ -70,6 +71,8 @@ The task is to create a MVP(Minimal Viable Product) in 32 Hours, which should ha
 | Search a user based on UserName, Project(DTO,ESP), Practice(QA,Dev) |24-Dec|✓|
 | Handle Mulitiple session and concurrent transaction| 24-Dec |✓|
 | Enable offline support using service worker|24-Dec|✗|
+| Mobile Support and Splash Screen | 24-Dec |✗|
+| User Info beautification |24-Dec|✗|
 
 Because of the time constraint, few of the features won't be available for MVP.
 

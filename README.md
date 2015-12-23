@@ -47,6 +47,9 @@ Here is the list of features proposed for asseTrack.
 | Restrict Signup process through verification system |
 | Have tabs for different kind of devices in Assets page e.g. iOs, android, tablet |
 | Have tabs for different type of users in Users Page. e.g. Project, Practice, Company |
+| Handle Mulitiple session and concurrent transaction|
+| Enable offline support using service worker|
+
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.
 - User has to CheckIn through asseTrack when he returns an asset.
@@ -64,8 +67,9 @@ The task is to create a MVP(Minimal Viable Product) in 32 Hours, which should ha
 | CheckIn an Asset |23-Dec|✓|
 | Historical data of the CheckIn/CheckOut process of all assets |23-Dec|✓|
 | Search an asset based on Brand (Apple/LG), OS (iOs/Android), Availability, Asset ID, IMEI |23-Dec|✓|
-| Search a user based on UserName, Project(DTO,ESP), Practice(QA,Dev) |24-Dec|✗|
-| DashBoard to show, No of Available devices (8/10)| 24-Dec | ✗ |
+| Search a user based on UserName, Project(DTO,ESP), Practice(QA,Dev) |24-Dec|✓|
+| Handle Mulitiple session and concurrent transaction| 24-Dec |✓|
+| Enable offline support using service worker|24-Dec|✗|
 
 Because of the time constraint, few of the features won't be available for MVP.
 

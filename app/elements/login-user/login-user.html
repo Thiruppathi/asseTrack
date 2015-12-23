@@ -37,10 +37,12 @@
           password: password
         }, function(error, authData) {
           if (error) {
+            app.$.toast.text = 'Unable to Login. Please retry!';
+            app.$.toast.show();
             console.log('Login Failed!', error, '. isAuth: ', app.isAuth);
           } else {
             app.isAuth = true;
-            console.log('Authenticated successfully with payload:', authData, 'isAuth ', app.isAuth);
+            console.log('Authenticated successfully using ', authData.provider);
             page.redirect(app.baseUrl);
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();

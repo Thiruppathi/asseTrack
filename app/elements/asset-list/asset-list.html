@@ -51,6 +51,7 @@
                 location="https://assetrack.firebaseio.com/assets"
                 order-by-child="platform"
                 data="{{assets}}">
+      </firebase-collection>
       <template is="dom-repeat" items="[[assets]]" as="asset" filter="{{_filter(filterVal)}}">
         <asset-card asset="{{asset}}" class="asset-card"></asset-card>
       </template>

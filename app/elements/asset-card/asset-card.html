@@ -8,10 +8,6 @@
       background-color: white;
     }
 
-    .available {
-      border: 2px solid #007878;
-    }
-
     .asset-card-header {
       width: 100%;
       background: #fff;
@@ -32,7 +28,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 100%;
-      margin: 5px auto 5px auto;
+      margin: 5px auto 25px auto;
     }
 
     a,
@@ -54,21 +50,30 @@
 
     .asset-card-footer {
       padding: 8px 10px 10px 10px;
-      background-color: #eee;
       display: block;
       text-decoration: none;
+      background-color: #EFEFEF;
     }
 
     .available {
-      background-color: #8CC34B;
+      color: #4F8A10;
+      background-color: #DFF2BF;
     }
 
-    .unavailable {
-      background-color: #E53935;
+    .available p {
+      color: #4F8A10;
+    }
+
+    .not-available {
+      background-color: #EFEFEF;
+    }
+
+    .not-available p {
+      color: #777;
     }
 
     .asset-icon {
-      border: 5px solid #eee;
+      border: 2px solid #e3e3e3;
       border-radius: 100%;
       padding: 0.5em;
       display: block;
@@ -88,8 +93,11 @@
 
     paper-fab {
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+    }
+
+    paper-fab.grey {
+      --paper-fab-background: #777;
+      --paper-fab-keyboard-focus-background: #e5e5e5;
     }
 
     paper-fab.blue {
@@ -113,7 +121,10 @@
     }
 
     .fab {
-      position: absolute;
+      position: relative;
+      float: right;
+      margin-right: 15px;
+      margin-top: -15px;
     }
 
     paper-dialog.size-position {
@@ -135,10 +146,17 @@
         <div class="asset-card-header">
           <iron-icon icon="{{computeAssetIcon(asset)}}" class="asset-icon"></iron-icon>
           <h4>{{computeFullName(asset)}}</h4>
+          <template is="dom-if" if="{{asset.availability}}">
+            <div class="fab">
+              <paper-fab mini icon="add-shopping-cart" class="green"></paper-fab>
+            </div>
+          </template>
+          <template is="dom-if" if="{{!asset.availability}}">
+            <div class="fab">
+              <paper-fab mini icon="block" class="grey"></paper-fab>
+            </div>
+          </template>
         </div>
-        <!-- <div class="fab">
-            <paper-fab mini icon="create" class="blue" data-dialog="[[computeDialogId(asset)]]"></paper-fab>
-        </div> -->
         <div class="asset-card-footer">
           <p class="asset-info">{{computeLastCheckedOutName(asset,user)}}</p>
         </div>

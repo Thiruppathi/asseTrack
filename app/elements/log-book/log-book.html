@@ -1,0 +1,75 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="log-book">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      div {
+        clear: both;
+      }
+    </style>
+    <h2 class="page-title">Log Book</h2>
+    <span class="paper-font-body2">Complete history of CheckIn/CheckOut details.</span>
+    <firebase-collection location="https://assetrack.firebaseio.com/history" order-by-child="checkOutDateTime" data="{{history}}" id="historyCollection">
+    </firebase-collection>
+    <hr>
+    <section>
+      <template is="dom-repeat" items="[[history]]" as="record" id="recordList">
+        <div>
+          <p><b><span>Asset ID: </b></span>
+            <span>{{record.assetId}}</span>
+          </p>
+          <p><b><span>Action: </b></span>
+            <span>{{record.action}}</span>
+          </p>
+          <template is="dom-if" if="{{isCheckIn(record.action)}}">
+            <p><b><span>Date &amp; Time: </b></span>
+              <span>{{record.checkInDateTime}}</span>
+            </p>
+            <p><b><span>User: </b></span>
+              <span>{{record.checkedInBy}}</span>
+            </p>
+          </template>
+          <template is="dom-if" if="{{!isCheckIn(record.action)}}">
+            <p><b><span>Date &amp; Time: </b></span>
+              <span>{{record.checkOutDateTime}}</span>
+            </p>
+            <p><b><span>User: </b></span>
+              <span>{{record.checkedOutBy}}</span>
+            </p>
+          </template>
+        </div>
+        <hr>
+      </template>
+    </section>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'log-book',
+
+        properties: {},
+        isCheckIn: function(action) {
+          return (action === 'CHECK IN') ? true : false;
+        },
+      });
+    })();
+  </script>
+
+</dom-module>

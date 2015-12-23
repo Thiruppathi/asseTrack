@@ -89,12 +89,10 @@
         return 'https://assetrack.firebaseio.com/assets/' + assetid;
       },
       computeUserHref: function(asset) {
-        if (asset) {
-          return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckOutBy;
-        }
+          return (asset) ? ('https://assetrack.firebaseio.com/users/' + asset.lastCheckOutBy) : '';
       },
       computeFullName: function(asset) {
-        return asset.brand + ' ' + asset.model;
+        return (asset) ? (asset.brand + ' ' + asset.model) : '';
       },
       computeUserName: function(user) {
         if (user) {
@@ -102,7 +100,7 @@
         }
       },
       computeAssetId: function(asset) {
-        return asset.assetId;
+        return (asset) ? asset.assetId : '';
       },
       computeHref: function(asset) {
         return 'assets/' + asset.assetId;

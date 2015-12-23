@@ -80,14 +80,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </a>
 
           <template is="dom-if" if="{{isAuth}}">
-            <a data-route="users" href="{{baseUrl}}users">
-              <iron-icon icon="social:people"></iron-icon>
-              <span>Users</span>
-            </a>
 
             <a data-route="assets" href="{{baseUrl}}assets">
               <iron-icon icon="device:devices"></iron-icon>
               <span>Assets</span>
+            </a>
+
+            <a data-route="users" href="{{baseUrl}}users">
+              <iron-icon icon="social:people"></iron-icon>
+              <span>Users</span>
             </a>
 
             <a data-route="createAsset" href="{{baseUrl}}createAsset">
@@ -234,7 +235,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </paper-toast>
 
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
-    <!--
     <paper-toast id="caching-complete"
                  duration="6000"
                  text="Caching complete! This app will work offline.">
@@ -248,11 +248,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                          cache-config-file="cache-config.json">
       </platinum-sw-cache>
     </platinum-sw-register>
-    -->
 
   </template>
 
   <!-- build:js scripts/app.js -->
+  <script src="../bower_components/firebase/firebase.js"></script>
   <script src="scripts/app.js"></script>
   <!-- endbuild-->
 </body>

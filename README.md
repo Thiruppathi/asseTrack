@@ -61,9 +61,9 @@ The task is to create a MVP(Minimal Viable Product) in 32 Hours, which should ha
 | See List of Assets and their status |22-Dec|✓|
 | See List of Users and the details of the assets they have |22-Dec|✓|
 | CheckOut an Asset |22-Dec|✓|
-| CheckIn an Asset |23-Dec|✗|
-| Historical data of the CheckIn/CheckOut process of all assets |23-Dec|✗|
-| Search an asset based on Brand (Apple/LG), OS (iOs/Android), Availability |23-Dec|✗|
+| CheckIn an Asset |23-Dec|✓|
+| Historical data of the CheckIn/CheckOut process of all assets |23-Dec|✓|
+| Search an asset based on Brand (Apple/LG), OS (iOs/Android), Availability, Asset ID, IMEI |23-Dec|✓|
 | Search a user based on UserName, Project(DTO,ESP), Practice(QA,Dev) |24-Dec|✗|
 | DashBoard to show, No of Available devices (8/10)| 24-Dec | ✗ |
 

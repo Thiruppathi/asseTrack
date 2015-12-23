@@ -140,7 +140,7 @@
             <paper-fab mini icon="create" class="blue" data-dialog="[[computeDialogId(asset)]]"></paper-fab>
         </div> -->
         <div class="asset-card-footer">
-          <p class="asset-info">{{computeLastCheckedOutName(user)}}</p>
+          <p class="asset-info">{{computeLastCheckedOutName(asset,user)}}</p>
         </div>
       </paper-material>
     </a>
@@ -159,11 +159,7 @@
         return asset.brand + ' ' + asset.model;
       },
       computeUserName: function(user) {
-        if (user) {
-          return (user.firstName || '') + ' ' + (user.lastName || '');
-        } else {
-          return 'Available';
-        }
+          return (user) ? ((user.firstName || '') + ' ' + (user.lastName || '')) : '';
       },
       computeAssetId: function(asset) {
         return asset.assetId;
@@ -177,8 +173,8 @@
       computeCheckedOutBy: function(asset) {
         return asset.lastCheckOutBy || '';
       },
-      computeLastCheckedOutName: function(user) {
-        return this.computeUserName(user);
+      computeLastCheckedOutName: function(asset, user) {
+        return (asset.availability) ? 'Available' : this.computeUserName(user);
       },
       computeAssetIcon: function(asset) {
         var platform = asset.platform;

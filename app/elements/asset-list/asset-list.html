@@ -70,6 +70,8 @@
           return (asset.brand && ~asset.brand.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.description && ~asset.description.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.model && ~asset.model.toLowerCase().indexOf(val.toLowerCase())) ||
+            (asset.assetId && ~asset.assetId.toLowerCase().indexOf(val.toLowerCase())) ||
+            (asset.imei && ~asset.imei.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.platform && ~asset.platform.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.assignedTo && ~asset.assignedTo.toLowerCase().indexOf(val.toLowerCase()));
         };

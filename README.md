@@ -43,7 +43,10 @@ Here is the list of features proposed for asseTrack.
 | Display battery status of the device using BatteryAPI |
 | Notify When a device is available |
 | Preference to allow one user to checkout on behalf of another user |
-
+| Preference to have list of favorite devices, preferences |
+| Restrict Signup process through verification system |
+| Have tabs for different kind of devices in Assets page e.g. iOs, android, tablet |
+| Have tabs for different type of users in Users Page. e.g. Project, Practice, Company |
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.
 - User has to CheckIn through asseTrack when he returns an asset.

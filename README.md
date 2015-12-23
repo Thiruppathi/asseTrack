@@ -42,6 +42,7 @@ Here is the list of features proposed for asseTrack.
 | Send an alert to the admin and the respective user, when an asset is not returned by EOD. (Push Notification) |
 | Display battery status of the device using BatteryAPI |
 | Notify When a device is available |
+| Preference to allow one user to checkout on behalf of another user |
 
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.

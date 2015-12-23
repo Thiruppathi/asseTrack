@@ -47,8 +47,10 @@
     <section class="break"></section>
 
     <section class="layout horizontal wrap">
-      <firebase-collection location="https://assetrack.firebaseio.com/assets" order-by-child="platform" data="{{assets}}" id="assetList">
-      </firebase-collection>
+      <firebase-collection id="assetList"
+                location="https://assetrack.firebaseio.com/assets"
+                order-by-child="platform"
+                data="{{assets}}">
       <template is="dom-repeat" items="[[assets]]" as="asset" filter="{{_filter(filterVal)}}">
         <asset-card asset="{{asset}}" class="asset-card"></asset-card>
       </template>
@@ -72,6 +74,7 @@
             (asset.model && ~asset.model.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.assetId && ~asset.assetId.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.imei && ~asset.imei.toLowerCase().indexOf(val.toLowerCase())) ||
+            (asset.availability.toString() && ~asset.availability.toString().indexOf(val.toLowerCase())) ||
             (asset.platform && ~asset.platform.toLowerCase().indexOf(val.toLowerCase())) ||
             (asset.assignedTo && ~asset.assignedTo.toLowerCase().indexOf(val.toLowerCase()));
         };

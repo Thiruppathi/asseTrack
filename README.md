@@ -50,6 +50,8 @@ Here is the list of features proposed for asseTrack.
 | Handle Mulitiple session and concurrent transaction|
 | Enable offline support using service worker|
 | Add Animation.css |
+| Mobile Support and Splash Screen |
+| Authentication & Authorisation |
 
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.
@@ -70,9 +72,9 @@ The task is to create a MVP(Minimal Viable Product) in 32 Hours, which should ha
 | Search an asset based on Brand (Apple/LG), OS (iOs/Android), Availability, Asset ID, IMEI |23-Dec|✓|
 | Search a user based on UserName, Project(DTO,ESP), Practice(QA,Dev) |24-Dec|✓|
 | Handle Mulitiple session and concurrent transaction| 24-Dec |✓|
-| Enable offline support using service worker|24-Dec|✗|
-| Mobile Support and Splash Screen | 24-Dec |✗|
-| User Info beautification |24-Dec|✗|
+| Enable offline support using service worker|24-Dec|✓|
+| Mobile Support and Splash Screen | 24-Dec |✓|
+| Authentication & Authorisation |24-Dec|✓|
 
 Because of the time constraint, few of the features won't be available for MVP.
 

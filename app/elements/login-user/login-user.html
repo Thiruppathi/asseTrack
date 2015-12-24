@@ -47,12 +47,11 @@
             //page.redirect(app.baseUrl);
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();
-            userRef.child('users').child(authData.uid).on("value", function(snapshot) {
-              app.isAdmin = (snapshot.val().isAdmin);
+            userRef.child('users').child(authData.uid).on('value', function(snapshot) {
+              app.isAdmin = snapshot.val().isAdmin;
             });
           }
-        } /*, {remember: 'sessionOnly'}*/ );
-
+        }/*, {remember: 'sessionOnly'}*/);
       }
     });
   </script>

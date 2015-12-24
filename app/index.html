@@ -205,7 +205,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <paper-material elevation="1" class="animated bounceInUp">
                 <h2 class="paper-font-display2">Log In</h2>
                 <login-user></login-user>
-                <!-- <hi9-login></hi9-login> -->
               </paper-material>
             </section>
 
@@ -235,17 +234,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </paper-toast>
 
     <!-- Uncomment next block to enable Service Worker support (1/2) -->
-    <paper-toast id="caching-complete"
-                 duration="6000"
-                 text="Caching complete! This app will work offline.">
+    <paper-toast id="caching-complete" duration="6000" text="Caching complete! This app will work offline.">
     </paper-toast>
 
-    <platinum-sw-register auto-register
-                          clients-claim
-                          skip-waiting
-                          on-service-worker-installed="displayInstalledToast">
-      <platinum-sw-cache default-cache-strategy="fastest"
-                         cache-config-file="cache-config.json">
+    <platinum-sw-register auto-register clients-claim skip-waiting on-service-worker-installed="displayInstalledToast">
+      <platinum-sw-cache default-cache-strategy="fastest" cache-config-file="cache-config.json">
       </platinum-sw-cache>
     </platinum-sw-register>
 

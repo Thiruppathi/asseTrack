@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // More info: https://visionmedia.github.io/page.js/
 
     // Removes end / from app.baseUrl which page.base requires for production
-    if (window.location.port === '') {  // if production
+    if (window.location.port === '') { // if production
       page.base(app.baseUrl.replace(/\/$/, ''));
     }
 
@@ -47,59 +47,54 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/users', function() {
-      app.route = 'users';
+      app.requestedUrl = '/users';
+      app.route = (!rootRef.getAuth()) ? 'login' : 'users';
     });
 
     page('/users/:uid', function(data) {
-      app.route = 'user-info';
+      console.log('data params: ' + data.path);
+      app.requestedUrl = data.path;
+      app.route = (!rootRef.getAuth()) ? 'login' : 'user-info';
       app.params = data.params;
     });
+
     page('/assets', function() {
-      app.route = 'assets';
+      app.requestedUrl = '/assets';
+      app.route = (!rootRef.getAuth()) ? 'login' : 'assets';
     });
 
     page('/assets/:assetId', function(data) {
-      app.route = 'asset-info';
+      console.log('data params: ' + data.path);
+      app.requestedUrl = data.path;
       app.params = data.params;
+      app.route = (!rootRef.getAuth()) ? 'login' : 'asset-info';
     });
 
     page('/createUser', function() {
-      if (app.isAuth) {
-        app.route = 'createUser';
-      } else {
-        app.$.toast.text = 'Please login to create user. Redirected you to Login Page';
-        app.$.toast.show();
-        app.route = 'login';
-      }
-    });
-
-    page('/searchUser', function() {
-      app.route = 'searchUser';
+      app.requestedUrl = '/createUser';
+      app.route = (!rootRef.getAuth()) ? 'login' : 'createUser';
     });
 
     page('/createAsset', function() {
-      if (!rootRef.getAuth()) {
-        console.log('Not Logged In');
-        app.route = 'login';
-      } else {
-        console.log('Authorised user');
-        app.route = 'createAsset';
-      }
+      app.requestedUrl = '/createAsset';
+      app.route = (!rootRef.getAuth()) ? 'login' : 'createAsset';
     });
 
     page('/logBook', function() {
-      app.route = 'logBook';
+      app.requestedUrl = '/logBook';
+      app.route = (!rootRef.getAuth()) ? 'login' : 'logBook';
     });
 
     page('/login', function() {
+      app.requestedUrl = '/';
       app.route = 'login';
     });
 
     page('/logOut', function() {
       rootRef.unauth();
       app.isAuth = false;
-      app.$.toast.text = 'You have been successfully logged out';
       page.redirect(app.baseUrl);
+      app.$.toast.text = 'You have been successfully logged out';
       app.$.toast.show();
     });
 
@@ -107,18 +102,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'contact';
     });
 
-    /*page('/users/:name', function(data) {
-      app.route = 'user-info';
-      app.params = data.params;
-    });*/
-
-    page('/contact', function() {
-      app.route = 'contact';
-    });
-
     // 404
     page('*', function() {
-      app.$.toast.text = 'Can\'t find: ' + window.location.href  + '. Redirected you to Home Page';
+      app.$.toast.text = 'Can\'t find: ' + window.location.href + '. Redirected you to Home Page';
       app.$.toast.show();
       page.redirect(app.baseUrl);
     });

@@ -16,7 +16,7 @@
   </style>
   <template>
 
-    <gold-email-input auto-validate error-message="Please enter a valid email" id="email" label="yourname@nttdata.com" auto-validate autocomplete  required></gold-email-input>
+    <gold-email-input auto-validate error-message="Please enter a valid email" id="email" label="yourname@domain.com" auto-validate autocomplete required></gold-email-input>
     <paper-input label="Password" id="password" type="password" required></paper-input>
     <paper-button tabindex="0" raised class="colorful" on-click="logIn">LOG IN</paper-button>
 
@@ -47,8 +47,11 @@
             //page.redirect(app.baseUrl);
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();
+            userRef.child('users').child(authData.uid).on("value", function(snapshot) {
+              app.isAdmin = (snapshot.val().isAdmin);
+            });
           }
-        }/*, {remember: 'sessionOnly'}*/);
+        } /*, {remember: 'sessionOnly'}*/ );
 
       }
     });

@@ -91,10 +91,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <span>Users</span>
             </a>
 
-            <a data-route="createAsset" href="{{baseUrl}}createAsset">
-              <iron-icon icon="add"></iron-icon>
-              <span>Create Asset</span>
-            </a>
+            <template is="dom-if" if="{{isAdmin}}">
+              <a data-route="createAsset" href="{{baseUrl}}createAsset">
+                <iron-icon icon="add"></iron-icon>
+                <span>Create Asset</span>
+              </a>
+            </template>
 
             <a data-route="createUser" href="{{baseUrl}}createUser">
               <iron-icon icon="social:person-add"></iron-icon>
@@ -105,6 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <iron-icon icon="list"></iron-icon>
               <span>Log Book</span>
             </a>
+
             <a data-route="logOut" href="{{baseUrl}}logOut">
               <iron-icon icon="icons:power-settings-new"></iron-icon>
               <span>Logout</span>

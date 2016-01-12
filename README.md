@@ -52,6 +52,8 @@ Here is the list of features proposed for asseTrack.
 | Add Animation.css |
 | Mobile Support and Splash Screen |
 | Authentication & Authorisation |
+| Add Easter Eggs - Arvi & Girls. :) |
+| Add Comment Box before CheckedIn/checkout |
 
 ### Constraints/Dependencies
 - User has to CheckOut through asseTrack when he takes an asset for usage.

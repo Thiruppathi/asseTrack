@@ -5,3 +5,5 @@ bower_components
 .publish/
 
 app/index_.html
+
+npm-debug.log

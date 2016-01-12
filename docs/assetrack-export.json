@@ -288,6 +288,7 @@
     "c37ff04a-fc83-492b-ae2a-ce92929131ce" : {
       "createdOn" : "Mon Dec 23 2015 12:51:17 GMT+0000 (GMT)",
       "designation" : "Assistant Project Manager",
+      "isAdmin" : true,
       "emailIds" : {
         "ee" : "Thiruppathi.Muthukumar@ee.co.uk",
         "ntt" : "Thiruppathi.Muthukumar@nttdata.com",

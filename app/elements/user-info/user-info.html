@@ -18,7 +18,6 @@
     <firebase-document id="getUserFB" location="[[computeFbHref(empid)]]" data="{{user}}"></firebase-document>
     <paper-material class="userData" id="[[empid]]">
       <img src={{computeProfilePic(user)}} id="user-image">
-      <span>{{user.empId}}</span>
       <span>{{computeFullName(user)}}</span>
     </paper-material>
     <section class="layout horizontal wrap">

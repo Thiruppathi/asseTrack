@@ -13,6 +13,7 @@
       color: #fff;
       margin: 10px;
     }
+
   </style>
   <template>
 
@@ -58,8 +59,8 @@
         var nttId = document.getElementById('nttId').value;
         var eeId = document.getElementById('eeId').value;
         var personalId = document.getElementById('personalId').value;
-        var picture = document.getElementById('myImage').src;
-        console.log('src  ' + picture);
+        var picture = app.dataUrl;
+        console.log('dataUrl  ' + app.dataUrl);
         var createdOn = new Date().toString();
 
         userRef.createUser({

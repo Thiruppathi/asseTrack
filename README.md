@@ -34,12 +34,12 @@ Here is the list of features proposed for asseTrack.
 | Historical data of the CheckIn/CheckOut process of all assets |
 | Search an asset based on Brand(Apple, Samsung), Platform(iOs, Android, Blackberry), Availability(CheckedIn/CheckedOut) |
 | Search a user based on UserName, Project Name(DTO,ESP,V4), Practice(QA,Dev,AEM) |
-| Create alerts to notify the availability of the device |
+| Create alerts to notify the availability of the device on slack |
 | Authentication using oAuth(Google for MVP); Email Authentication for Final product |
 | DashBoard to show the following details |
 | No of Available devices (8/10) |
 | List of users who didn't return the device. |
-| Send an alert to the admin and the respective user, when an asset is not returned by EOD. (Push Notification) |
+| Send an alert to the admin and the respective user, when an asset is not returned by EOD. (Push Notification/slack) |
 | Display battery status of the device using BatteryAPI |
 | Notify When a device is available |
 | Preference to allow one user to checkout on behalf of another user |
@@ -52,7 +52,7 @@ Here is the list of features proposed for asseTrack.
 | Add Animation.css |
 | Mobile Support and Splash Screen |
 | Authentication & Authorisation |
-| Add Easter Eggs - Arvi & Girls. :) |
+| Add Easter Eggs - Arvy & Girls. :) |
 | Add Comment Box before CheckedIn/checkout |
 
 ### Constraints/Dependencies

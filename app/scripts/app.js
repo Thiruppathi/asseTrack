@@ -38,6 +38,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
+  app.getLoggedInUserEmailId = function() {
+    var authData = app.db.getAuth();
+    if (authData) {
+      return authData.password.email;
+    } else {
+      return null;
+    }
+  };
+
   app.isAuth = app.isAuthenticated();
 
   // Sets app default base URL

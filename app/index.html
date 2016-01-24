@@ -103,7 +103,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <iron-icon icon="social:person-add"></iron-icon>
               <span>Create User</span>
             </a>
-
+            <a data-route="editProfile" href="{{baseUrl}}editProfile">
+              <iron-icon icon="social:person"></iron-icon>
+              <span>My Account</span>
+            </a>
             <a data-route="logBook" href="{{baseUrl}}logBook">
               <iron-icon icon="list"></iron-icon>
               <span>Log Book</span>
@@ -131,10 +134,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Contact</span>
           </a>
 
-          <a data-route='readme' href="readme">
+          <!-- <a data-route='readme' href="readme">
             <iron-icon icon="description"></iron-icon>
             <span>Documentation</span>
-          </a>
+          </a> -->
         </paper-menu>
       </paper-scroll-header-panel>
 
@@ -195,6 +198,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 class="paper-font-display2">Create User</h2>
                 <create-user></create-user>
               </paper-material>
+            </section>
+
+            <section data-route="editProfile">
+                <h2 class="paper-font-display2">My Profile</h2>
+                <edit-profile></edit-profile>
             </section>
 
             <section data-route="createAsset">

@@ -119,8 +119,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </template>
           <template is="dom-if" if="{{!isAuth}}">
             <a data-route="login" href="{{baseUrl}}login">
-              <iron-icon icon="list"></iron-icon>
-              <span>Login</span>
+              <iron-icon icon="power-settings-new"></iron-icon>
+              <span>Sign In</span>
             </a>
           </template>
 
@@ -213,10 +213,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
 
             <section data-route="login">
-              <paper-material elevation="1" class="animated bounceInUp">
-                <h2 class="paper-font-display2">Log In</h2>
                 <login-user></login-user>
-              </paper-material>
             </section>
 
             <section data-route="logOut">

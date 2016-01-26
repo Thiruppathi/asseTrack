@@ -118,7 +118,7 @@
       computeFbHref: function() {
         console.log('Editing ' + app.getLoggedInUserId() + 'details');
         var uid = app.getLoggedInUserId();
-        return 'https://assetrack.firebaseio.com/users/' + uid;
+        return env.db.users + uid;
       },
       computeFullName: function(user) {
         return (user) ? (user.firstName + ' ' + user.lastName) : '';
@@ -134,7 +134,7 @@
       },
       changePassword: function() {
         console.log('Requesting Password Change.');
-        var ref = new Firebase('https://assetrack.firebaseio.com/users/' + app.getLoggedInUserId());
+        var ref = new Firebase(env.db.users + app.getLoggedInUserId());
         var oldPassword = document.getElementById('oldPassword').value;
         var newPassword = document.getElementById('newPassword').value;
         var reTypeNewPassword = document.getElementById('reTypeNewPassword').value;

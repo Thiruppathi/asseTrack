@@ -46,7 +46,7 @@
     <section class="break"></section>
 
     <section class="layout horizontal wrap">
-      <firebase-collection location="https://assetrack.firebaseio.com/users" order-by-child="firstName" data="{{users}}" id="userList">
+      <firebase-collection location="{{getDbLocation()}}" order-by-child="firstName" data="{{users}}" id="userList">
       </firebase-collection>
       <template is="dom-repeat" items="[[users]]" as="user" id="usersList" filter="{{_filter(filterVal)}}">
         <user-card user="{{user}}" class="user-card"></user-card>
@@ -58,6 +58,10 @@
   <script>
     Polymer({
       is: 'user-list',
+
+      getDbLocation: function() {
+        return env.db.users;
+      },
 
       _filter: function(val) {
         return function(user) {

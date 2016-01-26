@@ -60,7 +60,7 @@
 
     <section class="layout horizontal wrap">
       <firebase-collection id="assetList"
-                location="https://assetrack.firebaseio.com/assets"
+                location="{{getDbLocation()}}"
                 order-by-child="platform"
                 data="{{assets}}">
       </firebase-collection>
@@ -73,6 +73,10 @@
   <script>
     Polymer({
       is: 'asset-list',
+
+      getDbLocation: function() {
+        return env.db.assets;
+      },
 
       _filter: function(val) {
         return function(asset) {

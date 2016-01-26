@@ -171,7 +171,7 @@
       },
 
       computeUserHref: function(asset) {
-        return 'https://assetrack.firebaseio.com/users/' + asset.lastCheckOutBy;
+        return env.db.users + asset.lastCheckOutBy;
       },
       computeFullName: function(asset) {
         return asset.brand + ' ' + asset.model;

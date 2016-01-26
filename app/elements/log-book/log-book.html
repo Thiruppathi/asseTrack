@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
     <h2 class="page-title">Log Book</h2>
     <span class="paper-font-body2">Complete history of CheckIn/CheckOut details.</span>
-    <firebase-collection location="https://assetrack.firebaseio.com/history" order-by-child="checkOutDateTime" data="{{history}}" id="historyCollection">
+    <firebase-collection location="{{getDbLocation()}}" order-by-child="checkOutDateTime" data="{{history}}" id="historyCollection">
     </firebase-collection>
     <hr>
     <section>
@@ -63,6 +63,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       Polymer({
         is: 'log-book',
+
+        getDbLocation: function() {
+          return env.db.history;
+        },
 
         properties: {},
         isCheckIn: function(action) {

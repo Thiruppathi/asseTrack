@@ -102,7 +102,7 @@
         return 'users/' + user.uid;
       },
       computeDbHref: function(user) {
-        return 'https://assetrack.firebaseio.com/users/' + user.uid;
+        return env.db.users + user.uid;
       },
       computeProfilePic: function(user) {
         return user.picture || user.avatar || app.defaultAvatar;

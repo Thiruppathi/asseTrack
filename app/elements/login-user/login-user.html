@@ -85,7 +85,8 @@
 
       logIn: function() {
         console.log('Initiating Sign Up');
-        var userRef = new Firebase('https://assetrack.firebaseio.com');
+        // var userRef = new Firebase('https://assetrack.firebaseio.com');
+        var userRef = new Firebase(env.db.baseUrl);
         var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 

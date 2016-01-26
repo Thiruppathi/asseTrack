@@ -15,6 +15,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
 
+  app.env = {
+    db: {
+      baseUrl: 'https://assetrack.firebaseio.com',
+      users: 'https://assetrack.firebaseio.com/users/',
+      assets: 'https://assetrack.firebaseio.com/assets/',
+      history: 'https://assetrack.firebaseio.com/history/'
+    }
+  };
+
   app.db = new Firebase('https://assetrack.firebaseio.com');
 
   /* TODO Sets application's Authentication Status */

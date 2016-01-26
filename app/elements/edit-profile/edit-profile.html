@@ -118,7 +118,7 @@
       computeFbHref: function() {
         console.log('Editing ' + app.getLoggedInUserId() + 'details');
         var uid = app.getLoggedInUserId();
-        return env.db.users + uid;
+        return app.env.db.users + uid;
       },
       computeFullName: function(user) {
         return (user) ? (user.firstName + ' ' + user.lastName) : '';
@@ -127,14 +127,14 @@
         return (user) ? user.picture : app.defaultAvatar;
       },
       computeTitle: function(user) {
-        return (user) ? user.designation: ' ';
+        return (user) ? user.designation : ' ';
       },
       computeProject: function(user) {
         return (user) ? user.projects : 'Bench';
       },
       changePassword: function() {
         console.log('Requesting Password Change.');
-        var ref = new Firebase(env.db.users + app.getLoggedInUserId());
+        var ref = new Firebase(app.env.db.users + app.getLoggedInUserId());
         var oldPassword = document.getElementById('oldPassword').value;
         var newPassword = document.getElementById('newPassword').value;
         var reTypeNewPassword = document.getElementById('reTypeNewPassword').value;

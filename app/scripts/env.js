@@ -6,3 +6,5 @@ var env = {
     history: 'https://assetrack.firebaseio.com/history/'
   }
 };
+
+console.log(env);

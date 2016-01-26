@@ -102,7 +102,7 @@
         return 'users/' + user.uid;
       },
       computeDbHref: function(user) {
-        return env.db.users + user.uid;
+        return app.env.db.users + user.uid;
       },
       computeProfilePic: function(user) {
         return user.picture || user.avatar || app.defaultAvatar;

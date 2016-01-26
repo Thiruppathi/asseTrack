@@ -62,7 +62,7 @@
 
       createAsset: function() {
         console.log('Initiating Asset Creation');
-        var assetsRef = new Firebase('https://assetrack.firebaseio.com/assets');
+        var assetsRef = new Firebase(env.db.assets);
 
         var assetId = document.getElementById('assetId').value;
         var brand = document.getElementById('brand').value;

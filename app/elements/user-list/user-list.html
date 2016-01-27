@@ -41,6 +41,18 @@
         <paper-input is="iron-input" no-label-float label="Search User" value="{{filterVal::input}}" autofocus>
         </paper-input>
       </div>
+      <div class="horizontal layout end" id="filterBar">
+        <paper-radio-group selected="all">
+          <paper-radio-button name="" on-click="applyFilter">All</paper-radio-button>
+          <paper-radio-button name="dev" on-click="applyFilter">Developers</paper-radio-button>
+          <paper-radio-button name="qa" on-click="applyFilter">QA</paper-radio-button>
+          <paper-radio-button name="dto" on-click="applyFilter">DTO</paper-radio-button>
+          <paper-radio-button name="v4" on-click="applyFilter">V4</paper-radio-button>
+          <paper-radio-button name="ui" on-click="applyFilter">UI</paper-radio-button>
+          <paper-radio-button name="java" on-click="applyFilter">Java</paper-radio-button>
+          <paper-radio-button name="aem" on-click="applyFilter">AEM</paper-radio-button>
+        </paper-radio-group>
+      </div>
     </section>
 
     <section class="break"></section>
@@ -48,7 +60,7 @@
     <section class="layout horizontal wrap">
       <firebase-collection location="{{getDbLocation()}}" order-by-child="firstName" data="{{users}}" id="userList">
       </firebase-collection>
-      <template is="dom-repeat" items="[[users]]" as="user" id="usersList" filter="{{_filter(filterVal)}}">
+      <template is="dom-repeat" items="[[users]]" as="user" id="usersList" filter="{{_filter(filterVal)}}" id="userListDom">
         <user-card user="{{user}}" class="user-card"></user-card>
       </template>
     </section>
@@ -62,7 +74,10 @@
       getDbLocation: function() {
         return app.env.db.users;
       },
-
+      applyFilter: function(event) {
+        this.filterVal = event.currentTarget.name;
+        this.$.userListDom.render();
+      },
       _filter: function(val) {
         return function(user) {
           if (!val) {

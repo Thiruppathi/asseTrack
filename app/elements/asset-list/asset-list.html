@@ -1,5 +1,11 @@
 <dom-module id="asset-list">
   <style>
+    :root {
+      --my-custom-color: grey;
+      --paper-tab-ink: var(--my-custom-color);
+      --paper-tabs-selection-bar-color: grey;
+    }
+
     :host {
       display: block;
     }
@@ -34,37 +40,43 @@
       width: 300px;
     }
 
+    paper-tabs {
+      background-color: #e3e3e3;
+      width: 100%;
+    }
   </style>
   <template>
 
-      <paper-tabs selected="0" scrollable>
-        <paper-tab>All</paper-tab>
-        <paper-tab>iOS</paper-tab>
-        <paper-tab>Android</paper-tab>
-        <paper-tab>Windows</paper-tab>
-        <paper-tab>Available</paper-tab>
-        <paper-tab>Mobile</paper-tab>
-        <paper-tab>Tablet</paper-tab>
-        <paper-tab>iPad</paper-tab>
-      </paper-tabs>
+
 
     <section>
       <div class="horizontal layout end" id="searchBar">
         <iron-icon icon="search" style="margin: 0 10px 6px 0;"></iron-icon>
-        <paper-input is="iron-input" no-label-float label="Search Asset" value="{{filterVal::input}}" autofocus>
+        <paper-input is="iron-input" no-label-float label="Search Asset" value="{{filterVal::input}}">
         </paper-input>
+      </div>
+
+      <div class="horizontal layout end" id="filterBar">
+        <paper-radio-group selected="all">
+          <paper-radio-button name="" on-click="applyFilter">All</paper-radio-button>
+          <paper-radio-button name="ios" on-click="applyFilter">iOS</paper-radio-button>
+          <paper-radio-button name="android" on-click="applyFilter">Android</paper-radio-button>
+          <paper-radio-button name="windows" on-click="applyFilter">Windows</paper-radio-button>
+          <paper-radio-button name="iphone" on-click="applyFilter">iPhone</paper-radio-button>
+          <paper-radio-button name="samsung" on-click="applyFilter">Samsung</paper-radio-button>
+          <paper-radio-button name="ipad" on-click="applyFilter">iPad</paper-radio-button>
+          <paper-radio-button name="true" on-click="applyFilter">Available</paper-radio-button>
+          <paper-radio-button name="false" on-click="applyFilter">Not Available</paper-radio-button>
+        </paper-radio-group>
       </div>
     </section>
 
     <section class="break"></section>
 
     <section class="layout horizontal wrap">
-      <firebase-collection id="assetList"
-                location="{{getDbLocation()}}"
-                order-by-child="platform"
-                data="{{assets}}">
+      <firebase-collection id="assetList" location="{{getDbLocation()}}" order-by-child="platform" data="{{assets}}">
       </firebase-collection>
-      <template is="dom-repeat" items="[[assets]]" as="asset" filter="{{_filter(filterVal)}}">
+      <template is="dom-repeat" items="[[assets]]" as="asset" filter="{{_filter(filterVal)}}" id="assetListDom">
         <asset-card asset="{{asset}}" class="asset-card"></asset-card>
       </template>
     </section>
@@ -73,11 +85,13 @@
   <script>
     Polymer({
       is: 'asset-list',
-
       getDbLocation: function() {
         return app.env.db.assets;
       },
-
+      applyFilter: function(event) {
+        this.filterVal = event.currentTarget.name;
+        this.$.assetListDom.render();
+      },
       _filter: function(val) {
         return function(asset) {
           if (!val) {
@@ -97,7 +111,6 @@
             (asset.assignedTo && ~asset.assignedTo.toLowerCase().indexOf(val.toLowerCase()));
         };
       }
-
     });
   </script>
 </dom-module>

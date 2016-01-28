@@ -21,7 +21,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   /* Application theme */
 
-  :root {
+:root {
+  --dark-primary-color: #303F9F;
+  --default-primary-color: #19363D;
+  /*--default-primary-color: #131931; dark nasa blue*/
+  --light-primary-color: #C5CAE9;
+  --text-primary-color: #ffffff; /*text/icons*/
+  --accent-color: #FF4081;
+  --primary-background-color: #c5cae9;
+  --primary-text-color: #212121;
+  --secondary-text-color: #727272;
+  --disabled-text-color: #bdbdbd;
+  --divider-color: #B6B6B6;
+
+  /* Components */
+
+  /* paper-drawer-panel */
+  --drawer-menu-color: #ffffff;
+  --drawer-border-color: 1px solid #ccc;
+  --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+
+  /* paper-menu */
+  --paper-menu-background-color: #fff;
+  --menu-link-color: #111111;
+}
+  .my-old-root {
     --dark-primary-color: #303F9F;
     --default-primary-color: #3F51B5;
     --light-primary-color: #C5CAE9;
@@ -97,6 +121,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     -webkit-transform-origin: left center;
     transform-origin: left center;
   }
+
+  paper-toolbar.tall .app-logo {
+    width: 100px;
+    height: 100px;
+    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+  }
+
 
   #mainToolbar .middle-container  {
     height: 100%;

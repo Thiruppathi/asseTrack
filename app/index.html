@@ -155,12 +155,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <!-- Application name -->
           <div class="middle middle-container center horizontal layout">
+            <iron-image class="app-logo" sizing="cover" preload fade src="../images/jarvis.png"></iron-image>
             <div class="app-name">JARVIS</div>
+
           </div>
 
           <!-- Application sub title -->
           <div class="bottom bottom-container center horizontal layout">
-            <div class="bottom-title paper-font-subhead">Asset Management System</div>
+            <div class="bottom-title paper-font-subhead"></div>
           </div>
 
         </paper-toolbar>
@@ -169,7 +171,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
             <section data-route="home">
-                <dash-board></dash-board>
+              <landing-page></landing-page>
             </section>
 
             <section data-route="users">
@@ -196,7 +198,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </section>
 
             <section data-route="editProfile">
-                <edit-profile></edit-profile>
+              <edit-profile></edit-profile>
             </section>
 
             <section data-route="createAsset">

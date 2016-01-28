@@ -1,0 +1,31 @@
+<dom-module id="landing-page">
+  <style>
+    :host {
+      display: block;
+    }
+
+    paper-button[raised].colorful {
+      background: var(--default-primary-color);
+      color: #fff;
+      margin: 10px;
+    }
+
+    iron-image {
+      width: 500px;
+      height: 500px;
+    }
+  </style>
+  <template>
+      <iron-image class="user-image animated bounceInUp" size="50" sizing="cover" preload fade src="../../images/jarvis.png"></iron-image>
+            <iron-image class="user-image animated bounceInUp" size="50" sizing="cover" preload fade src="../../images/radar.png"></iron-image>
+
+                        <iron-image class="user-image animated bounceInUp" size="50" sizing="cover" preload fade src="../../images/jarvis-radar.png"></iron-image>
+      <!-- <paper-button tabindex="0" raised class="colorful animated bounceInUp" id="getStarted">GET STARTED</paper-button> -->
+  </template>
+
+  <script>
+    Polymer({
+      is: 'landing-page'
+    });
+  </script>
+</dom-module>

@@ -90,6 +90,7 @@
             (user.email && ~user.email.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.practice && ~user.practice.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.projects && ~user.projects.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.tags && ~user.tags.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.lastName && ~user.lastName.toLowerCase().indexOf(val.toLowerCase()));
         };
       }

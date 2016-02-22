@@ -17,14 +17,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   app.env = {
     db: {
-      baseUrl: 'https://assetrack.firebaseio.com',
-      users: 'https://assetrack.firebaseio.com/users/',
-      assets: 'https://assetrack.firebaseio.com/assets/',
-      history: 'https://assetrack.firebaseio.com/history/'
+      baseUrl: 'https://myjarvis.firebaseio.com',
+      users: 'https://myjarvis.firebaseio.com/users/',
+      assets: 'https://myjarvis.firebaseio.com/assets/',
+      history: 'https://myjarvis.firebaseio.com/history/'
     }
   };
 
-  app.db = new Firebase('https://assetrack.firebaseio.com');
+  app.db = new Firebase('https://myjarvis.firebaseio.com');
 
   /* TODO Sets application's Authentication Status */
 

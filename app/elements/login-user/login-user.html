@@ -56,6 +56,11 @@
       width: 100px;
       margin: 10px auto 10px auto;
     }
+
+    .signUpLink {
+      padding: 1em;
+      text-decoration: none;
+    }
   </style>
   <template>
 
@@ -71,8 +76,12 @@
       <paper-input label="Password" auto-validate error-message="Please enter a valid password" id="password" type="password" required></paper-input>
     </paper-material>
     <paper-material class="animated bounceInUp login-button-card">
+      <a data-route="createUser" href="{{baseUrl}}createUser" class="signUpLink">
+        <span>Create account</span>
+      </a>
       <paper-button tabindex="0" raised class="colorful" on-click="logIn">Sign In</paper-button>
     </paper-material>
+
   </template>
 
   <script>

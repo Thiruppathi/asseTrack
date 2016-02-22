@@ -13,10 +13,17 @@
       color: #fff;
       margin: 10px;
     }
-
+    paper-material {
+      max-width: 764px;
+      padding: 1em;
+    }
+    h2 {
+      text-align: center;
+    }
   </style>
   <template>
-
+    <paper-material elevation="1" class="animated bounceInUp">
+      <h2 class="paper-font-display2">Create your Jarvis Account</h2>
     <paper-input label="Employee Id" allowed-pattern="[0-9]" prevent-invalid-input id="empId" auto-validate required></paper-input>
 
     <paper-input label="Portal ID" id="portalId"></paper-input>
@@ -36,6 +43,7 @@
 
     <upload-image></upload-image>
     <paper-button tabindex="0" raised class="colorful" on-click="signUp">SIGN UP</paper-button>
+  </paper-material>
 
   </template>
 

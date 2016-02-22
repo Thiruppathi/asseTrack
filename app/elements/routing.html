@@ -72,7 +72,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     page('/createUser', function() {
       app.requestedUrl = '/createUser';
-      app.route = (!rootRef.getAuth()) ? 'login' : 'createUser';
+      // app.route = (!rootRef.getAuth()) ? 'login' : 'createUser';
+      app.route = 'createUser';
     });
 
     page('/editProfile', function(data) {

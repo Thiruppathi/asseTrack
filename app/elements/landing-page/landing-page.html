@@ -7,20 +7,39 @@
       height: auto;
     }
 
-    paper-button[raised].colorful {
-      background: var(--default-primary-color);
-      color: #fff;
-      margin: 10px;
-    }
-
     iron-image {
       width: 500px;
       height: 500px;
     }
+
+    .signUpLink {
+      padding: 1em;
+      text-decoration: none;
+      background: var(--default-primary-color);
+      color: #fff;
+      margin: 10px;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      min-width: 5.14em;
+      background: transparent;
+      text-align: center;
+      text-transform: uppercase;
+      outline-width: 0;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 0.7em 0.57em;
+    }
   </style>
   <template>
       <iron-image class="user-image animated bounceInUp" size="50" sizing="cover" preload fade src="../../images/jarvis.png"></iron-image>
-      <paper-button tabindex="0" raised class="colorful animated bounceInUp" id="getStarted">GET STARTED</paper-button>
+      <a data-route="createUser" href="{{baseUrl}}createUser" class="signUpLink"  id="getStarted">
+        <span>Get Started</span>
+      </a>
+      <a data-route="login" href="{{baseUrl}}login" class="signUpLink"  id="loginLink">
+        <span>Sign In</span>
+      </a>
   </template>
 
   <script>

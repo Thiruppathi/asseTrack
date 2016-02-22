@@ -8,51 +8,75 @@
       color: #4285f4;
     }
 
+    paper-material {
+      max-width: 764px;
+      padding: 1em;
+    }
+
     paper-button[raised].colorful {
       background: var(--default-primary-color);
       color: #fff;
       margin: 10px;
     }
+
+    h4 {
+      display: inline-block;
+    }
+
+    h2 {
+      text-align: center;
+    }
+    #osVersion {
+      display: inline-block;
+    }
   </style>
   <template>
+    <paper-material elevation="1" class="animated bounceInUp">
+    <h2 class="paper-font-display2">Create Asset</h2>
+    <paper-input label="Asset Id" id="assetId" auto-validate required></paper-input>
+    <paper-input label="Brand" id="brand" auto-validate required></paper-input>
+    <paper-input label="Model" id="model" auto-validate required></paper-input>
 
-    <paper-input label="Asset Id" id="assetId"></paper-input>
-
-    <paper-input label="Brand" id="brand"></paper-input>
-    <paper-input label="Model" id="model"></paper-input>
-
-    <paper-input label="Assigned To" id="assignedTo"></paper-input>
+    <paper-input label="Assigned To" id="assignedTo" auto-validate required></paper-input>
     <paper-input label="Checked Out By" id="checkedOutBy"></paper-input>
-    <paper-input label="Description" id="description"></paper-input>
-    <paper-input label="IMEI Number" id="imei"></paper-input>
+    <paper-input label="Description" id="description" auto-validate required></paper-input>
+    <paper-input label="IMEI Number" id="imei" auto-validate required></paper-input>
+    <paper-input label="Location" id="location" auto-validate required></paper-input>
+    <paper-input label="Currently Owned By Company" id="currentCompany" auto-validate required></paper-input>
+    <paper-input label="Currently Owned By User" id="currentUser"></paper-input>
+    <paper-input label="Screen Resolution" id="screenResolution" auto-validate required></paper-input>
+
 
     <div>
-      <h4><b>Platform</b></h4>
-      <paper-radio-group selected="android" id="platform">
+      <h4><b>Operating System</b></h4>
+      <paper-radio-group selected="android" id="platform" auto-validate required>
         <paper-radio-button name="android">Android</paper-radio-button>
         <paper-radio-button name="ios">iOS</paper-radio-button>
         <paper-radio-button name="windows">Windows</paper-radio-button>
         <paper-radio-button name="blackberry">Black Berry</paper-radio-button>
       </paper-radio-group>
+      <paper-input label="OS Version" id="osVersion" auto-validate required></paper-input>
+
     </div>
 
     <div>
       <h4><b>Condition</b></h4>
-      <paper-radio-group selected="yes" id="assetCondition">
+      <paper-radio-group selected="yes" id="assetCondition" auto-validate required>
         <paper-radio-button name="yes">Working</paper-radio-button>
         <paper-radio-button name="no">Faulty</paper-radio-button>
       </paper-radio-group>
+      <paper-checkbox id="isOutdated">Outdated</paper-checkbox>
     </div>
 
     <div>
       <h4><b>Available</b></h4>
-      <paper-radio-group selected="yes" id="availability">
+      <paper-radio-group selected="yes" id="availability" auto-validate required>
         <paper-radio-button name="yes">Yes</paper-radio-button>
         <paper-radio-button name="no">No</paper-radio-button>
       </paper-radio-group>
     </div>
-<google-recaptcha></google-recaptcha>
     <paper-button tabindex="0" raised class="colorful" on-click="createAsset">Create Asset</paper-button>
+  </paper-material>
 
   </template>
 
@@ -71,8 +95,14 @@
         var checkedOutBy = document.getElementById('checkedOutBy').value;
         var description = document.getElementById('description').value;
         var imei = document.getElementById('imei').value;
+        var location = document.getElementById('location').value;
+        var currentCompany = document.getElementById('currentCompany').value;
+        var currentUser = document.getElementById('currentUser').value;
+        var screenResolution = document.getElementById('screenResolution').value;
         var platform = document.getElementById('platform').selected;
+        var osVersion = document.getElementById('osVersion').value;
         var assetCondition = document.getElementById('assetCondition').selected;
+        var isOutdated =  document.getElementById('isOutdated').checked;
         var availability = document.getElementById('availability').selected;
 
         assetsRef.child(assetId).set({
@@ -83,8 +113,14 @@
           'checkedOutBy': checkedOutBy,
           'description': description,
           'imei': imei,
+          'location': location,
+          'currentCompany': currentCompany,
+          'currentUser': currentUser,
+          'screenResolution': screenResolution,
           'platform': platform,
+          'osVersion': osVersion,
           'assetCondition': assetCondition,
+          'isOutdated': isOutdated,
           'availability': availability
         });
       }

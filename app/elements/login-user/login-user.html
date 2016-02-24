@@ -27,6 +27,7 @@
       text-align: right;
       padding: 0 1em 0 1em;
       max-width: 400px;
+      margin-bottom: 1em;
     }
 
     h2 {
@@ -61,6 +62,20 @@
       padding: 1em;
       text-decoration: none;
     }
+
+    .forgotPassword {
+      text-align: center;
+      display: block;
+    }
+
+    .forgotPassword a,
+    .forgotPassword a:visited {
+      text-decoration: none;
+    }
+
+    .forgotPassword a:hover {
+      text-decoration: underline;
+    }
   </style>
   <template>
 
@@ -72,8 +87,8 @@
       <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{getDefaultAvatar()}}">
       </iron-image>
 
-      <gold-email-input auto-validate error-message="Please enter a valid email" id="email" label="Email Address" auto-validate autocomplete required></gold-email-input>
-      <paper-input label="Password" auto-validate error-message="Please enter a valid password" id="password" type="password" required></paper-input>
+      <gold-email-input id="email" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
+      <paper-input label="Password" error-message="Please enter a valid password" id="loginPassword" type="password" required></paper-input>
     </paper-material>
     <paper-material class="animated bounceInUp login-button-card">
       <a data-route="createUser" href="{{baseUrl}}createUser" class="signUpLink">
@@ -81,7 +96,11 @@
       </a>
       <paper-button tabindex="0" raised class="colorful" on-click="logIn">Sign In</paper-button>
     </paper-material>
-
+    <span class="forgotPassword animated bounceInUp ">
+    <a data-route="forgotPassword" href="{{baseUrl}}forgotPassword">
+      <span>Forgot Password?</span>
+    </a>
+    </span>
   </template>
 
   <script>
@@ -93,15 +112,14 @@
       },
 
       logIn: function() {
-        console.log('Initiating Sign Up');
-        // var userRef = new Firebase('https://assetrack.firebaseio.com');
+        // var userRef = new Firebase('https://myjarvis.firebaseio.com');
         var userRef = new Firebase(app.env.db.baseUrl);
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-
+        console.log('userRef', userRef);
+        var email = document.querySelector('#email').value;
+        var loginPassword = document.querySelector('#loginPassword').value;
         userRef.authWithPassword({
           email: email,
-          password: password
+          password: loginPassword
         }, function(error, authData) {
           if (error) {
             app.$.toast.text = 'Unable to Login. Please retry!';
@@ -118,7 +136,7 @@
               app.isAdmin = snapshot.val().isAdmin;
             });
           }
-        } /*, {remember: 'sessionOnly'}*/);
+        } /*, {remember: 'sessionOnly'}*/ );
       }
     });
   </script>

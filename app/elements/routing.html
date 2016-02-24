@@ -31,7 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.closeDrawer();
       next();
     }
-    var rootRef = new Firebase('https://assetrack.firebaseio.com/');
+    var rootRef = app.db;
 
     // Routes
     page('*', scrollToTop, closeDrawer, function(ctx, next) {
@@ -72,8 +72,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     page('/createUser', function() {
       app.requestedUrl = '/createUser';
-      // app.route = (!rootRef.getAuth()) ? 'login' : 'createUser';
       app.route = 'createUser';
+    });
+
+    page('/forgotPassword', function() {
+      app.requestedUrl = '/forgotPassword';
+      app.route = 'forgotPassword';
     });
 
     page('/editProfile', function(data) {

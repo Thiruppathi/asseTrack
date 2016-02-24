@@ -6,6 +6,7 @@
 
     paper-button.colorful {
       color: #4285f4;
+      margin-top: 1em;
     }
 
     paper-button[raised].colorful {
@@ -13,38 +14,74 @@
       color: #fff;
       margin: 10px;
     }
+
     paper-material {
-      max-width: 764px;
+      max-width: 700px;
       padding: 1em;
+      text-align: center;
+      min-width: 350px;
     }
+
     h2 {
       text-align: center;
+    }
+
+    #imgToBase64 {
+      text-align: center;
+      padding: 1em;
+      margin: 1em;
+    }
+
+    paper-input,
+    gold-email-input {
+      display: inline-block;
+      min-width: 300px;
+      padding-right: 1em;
+      text-align: left;
+    }
+
+    .signInLink {
+      text-align: center;
+      margin-top: 1em;
+      max-width: 700px;
+      text-decoration: none;
+
+    }
+
+    a.style-scope.create-user {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    paper-button.colorful.signUpButton {
+      margin-top: 2em;
     }
   </style>
   <template>
     <paper-material elevation="1" class="animated bounceInUp">
       <h2 class="paper-font-display2">Create your Jarvis Account</h2>
-    <paper-input label="Employee Id" allowed-pattern="[0-9]" prevent-invalid-input id="empId" auto-validate required></paper-input>
+      <img-base64 id="imgToBase64" width="150px" height="150px" title="Select your profile Image" placeholder="data:image/png;base64,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"></img-base64>
+      <paper-input label="First Name" id="firstName" error-message="Please enter your First Name" auto-validate required></paper-input>
+      <paper-input label="Last Name" id="lastName" error-message="Please enter your Second Name" auto-validate required></paper-input>
+      <paper-input label="Designation" id="designation" error-message="Please enter your designation or Job Title" auto-validate required></paper-input>
+      <paper-input label="Practice" id="practice" error-message="Please enter your practice. (QA, Developer)" auto-validate required></paper-input>
+      <paper-input label="Project" id="project" error-message="Please enter your project name.(DTO, v4)" auto-validate required></paper-input>
+      <paper-input label="Reporting Manager" id="reportingTo" error-message="Please enter your Reporting Manager" auto-validate required></paper-input>
+      <paper-input label="Company Name" id="companyName" error-message="Please enter your Company Name (EE, NTT Data, epam)" auto-validate required></paper-input>
+      <paper-input label="Phone Number" id="phoneNo" error-message="Please enter your Phone Number" auto-validate required></paper-input>
+      <paper-input label="Employee Id" id="empId" error-message="Please enter a valid Employee Id" auto-validate required></paper-input>
+      <paper-input label="Location" id="location" error-message="Please enter your work location" auto-validate required></paper-input>
+      <gold-email-input id="emailId" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
+      <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
+      <paper-button tabindex="0" raised class="colorful signUpButton" on-click="signUp">Create my Jarvis Account</paper-button>
+    </paper-material>
 
-    <paper-input label="Portal ID" id="portalId"></paper-input>
-    <paper-input label="SAP ID" id="sapId"></paper-input>
-
-    <paper-input label="First Name" id="firstName"></paper-input>
-    <paper-input label="Last Name" id="lastName"></paper-input>
-    <paper-input label="Designation" id="designation"></paper-input>
-    <paper-input label="Phone Number" id="phoneNo"></paper-input>
-    <paper-input label="Practice" id="practice"></paper-input>
-    <paper-input label="Project" id="project"></paper-input>
-    <paper-input label="Reporting To" id="reportingTo"></paper-input>
-
-    <gold-email-input auto-validate error-message="Please enter a valid email" id="nttId" label="yourname@nttdata.com"></gold-email-input>
-    <gold-email-input auto-validate error-message="Please enter a valid email" id="eeId" label="yourname@ee.co.uk"></gold-email-input>
-    <gold-email-input auto-validate error-message="Please enter a valid email" id="personalId" label="yourname@gmail.com"></gold-email-input>
-
-    <upload-image></upload-image>
-    <paper-button tabindex="0" raised class="colorful" on-click="signUp">SIGN UP</paper-button>
-  </paper-material>
-
+    <div class="signInLink animated bounceInUp">
+      Already have an account?
+      <a data-route="login" href="{{baseUrl}}login">
+        <span>Sign In</span>
+      </a>
+    </div>
   </template>
 
   <script>
@@ -53,10 +90,8 @@
 
       signUp: function() {
         console.log('Initiating Sign Up');
-        var userRef = new Firebase('https://assetrack.firebaseio.com');
-        var empId = document.getElementById('empId').value;
-        var portalId = document.getElementById('portalId').value;
-        var sapId = document.getElementById('sapId').value;
+        var userRef = new Firebase(app.env.db.baseUrl);
+        var picture = document.querySelector('#imagePreview').src;
         var firstName = document.getElementById('firstName').value;
         var lastName = document.getElementById('lastName').value;
         var designation = document.getElementById('designation').value;
@@ -64,16 +99,15 @@
         var practice = document.getElementById('practice').value;
         var project = document.getElementById('project').value;
         var reportingTo = document.getElementById('reportingTo').value;
-        var nttId = document.getElementById('nttId').value;
-        var eeId = document.getElementById('eeId').value;
-        var personalId = document.getElementById('personalId').value;
-        var picture = app.dataUrl;
+        var empId = document.getElementById('empId').value;
+        var emailId = document.getElementById('emailId').value;
+        var password = document.getElementById('password').value;
         console.log('dataUrl  ' + app.dataUrl);
         var createdOn = new Date().toString();
 
         userRef.createUser({
-          email: nttId,
-          password: 'keane@123'
+          email: emailId,
+          password: password
         }, function(error, userData) {
           if (error) {
             console.log('Error creating user:', error);
@@ -81,22 +115,16 @@
             console.log('Successfully created user account with uid:', userData.uid);
             userRef.child('users').child(userData.uid).set({
               'uid': userData.uid,
-              'empId': empId,
-              'portalId': portalId,
-              'sapId': sapId,
+              'picture': picture,
               'firstName': firstName,
               'lastName': lastName,
               'designation': designation,
-              'emailIds': {
-                'ee': eeId,
-                'ntt': nttId,
-                'personal': personalId
-              },
               'phoneNo': phoneNo,
               'practice': practice,
               'projects': project,
-              'picture': picture,
               'reportingTo': reportingTo,
+              'empId': empId,
+              'emailId': emailId,
               'createdOn': createdOn
             });
             page.redirect(app.baseUrl);

@@ -1,0 +1,84 @@
+<dom-module id="img-base64">
+
+  <style>
+    :host {
+      display: block;
+      box-sizing: border-box;
+    }
+
+    #imageInput {
+      display: none;
+    }
+
+    #imagePreview {
+      height: 100%;
+      width: 100%;
+      background: lightgrey;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+
+    span.changePic {
+      padding: 0.25em;
+      display: block;
+      z-index: 100;
+      position: relative;
+      margin: 0 auto;
+      margin-top: -60px;
+      font-size: 0.85em;
+      color: rgba(0,0,0,.54);
+    }
+
+    iron-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: rgba(0,0,0,0.26);
+      padding: 5px;
+      color: rgba(255,255,255,0.749);
+      cursor: pointer;
+
+    }
+  </style>
+
+  <template>
+    <iron-image src="{{image}}" placeholder="{{placeholder}}" id="imagePreview" sizing="contain" preload fade width="{{width}}" height="{{height}}" on-tap="_tapped"></iron-image>
+    <input id="imageInput" is="iron-input" type="file">
+    <span class="changePic">
+      <iron-icon icon="image:camera-alt" on-tap="_tapped"></iron-icon>
+    </span>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+
+    is: 'img-base64',
+
+    properties: {
+      image: {
+        type: String,
+        notify: true
+      }
+    },
+    listeners: {
+      'imageInput.change': '_readImage'
+    },
+    _tapped: function() {
+      this.$.imageInput.click();
+    },
+    _readImage: function() {
+      var fr = new FileReader();
+      fr.onload = function(e) {
+        this.image = e.target.result;
+        this.$.imageInput.value = '';
+      }.bind(this);
+
+      fr.readAsDataURL(this.$.imageInput.files[0]);
+    },
+    reset: function() {
+      this.image = '';
+    }
+  });
+</script>

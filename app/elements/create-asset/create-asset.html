@@ -33,19 +33,18 @@
   <template>
     <paper-material elevation="1" class="animated bounceInUp">
     <h2 class="paper-font-display2">Create Asset</h2>
-    <paper-input label="Asset Id" id="assetId" auto-validate required></paper-input>
-    <paper-input label="Brand" id="brand" auto-validate required></paper-input>
-    <paper-input label="Model" id="model" auto-validate required></paper-input>
+    <paper-input label="Asset Id" id="assetId" error-message="Enter an Asset Id" auto-validate required></paper-input>
+    <paper-input label="Brand" id="brand" error-message="Enter Brand Name (Apple, Samsung, LG, Nokia, etc.,)" auto-validate required></paper-input>
+    <paper-input label="Model" id="model" error-message="Enter Model Name (iPhone5, iPhone6s, Nexus5)" auto-validate required></paper-input>
 
-    <paper-input label="Assigned To" id="assignedTo" auto-validate required></paper-input>
+    <paper-input label="Assigned To" id="assignedTo" error-message="Enter name " auto-validate required></paper-input>
     <paper-input label="Checked Out By" id="checkedOutBy"></paper-input>
-    <paper-input label="Description" id="description" auto-validate required></paper-input>
-    <paper-input label="IMEI Number" id="imei" auto-validate required></paper-input>
-    <paper-input label="Location" id="location" auto-validate required></paper-input>
-    <paper-input label="Currently Owned By Company" id="currentCompany" auto-validate required></paper-input>
-    <paper-input label="Currently Owned By User" id="currentUser"></paper-input>
-    <paper-input label="Screen Resolution" id="screenResolution" auto-validate required></paper-input>
-
+    <paper-input label="Description" id="description" error-message="" auto-validate required></paper-input>
+    <paper-input label="IMEI Number" id="imei" error-message="" auto-validate required></paper-input>
+    <paper-input label="Location" id="location" error-message="" auto-validate required></paper-input>
+    <paper-input label="Currently Owned By Company" id="currentCompany" error-message="" auto-validate required></paper-input>
+    <paper-input label="Currently Owned By User" id="currentUser" error-message="" ></paper-input>
+    <paper-input label="Screen Resolution" id="screenResolution" error-message="" auto-validate required></paper-input>
 
     <div>
       <h4><b>Operating System</b></h4>

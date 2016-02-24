@@ -56,6 +56,11 @@
     paper-button.colorful.signUpButton {
       margin-top: 2em;
     }
+
+    .yellow-button {
+      text-transform: none;
+      color: #eeff41;
+    }
   </style>
   <template>
     <paper-material elevation="1" class="animated bounceInUp">
@@ -82,6 +87,10 @@
         <span>Sign In</span>
       </a>
     </div>
+
+<paper-toast id="toast1" duration="0" text="This toast will stay opened until you close it, or open another toast.">
+  <paper-button onclick="toast1.toggle()" class="yellow-button">Close now!</paper-button>
+</paper-toast>
   </template>
 
   <script>
@@ -89,7 +98,7 @@
       is: 'create-user',
 
       signUp: function() {
-        console.log('Initiating Sign Up');
+        console.log('Creating new Account...');
         var userRef = new Firebase(app.env.db.baseUrl);
         var picture = document.querySelector('#imagePreview').src;
         var firstName = document.getElementById('firstName').value;
@@ -110,7 +119,9 @@
           password: password
         }, function(error, userData) {
           if (error) {
-            console.log('Error creating user:', error);
+            console.log('Error creating new Account:', error);
+            app.$.toast.text = 'Error creating new Account:';
+            app.$.toast.show();
           } else {
             console.log('Successfully created user account with uid:', userData.uid);
             userRef.child('users').child(userData.uid).set({
@@ -127,7 +138,10 @@
               'emailId': emailId,
               'createdOn': createdOn
             });
-            page.redirect(app.baseUrl);
+            app.$.toast.text = 'Successfully created user account. Please login.';
+            app.$.toast.duration = 5000;
+            app.$.toast.show();
+            page.redirect(app.baseUrl + 'login');
           }
         });
       }

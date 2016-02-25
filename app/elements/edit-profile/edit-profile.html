@@ -118,7 +118,7 @@
     }
   </style>
   <template>
-    <firebase-document location="[[computeFbHref()]]" data="{{user}}" id="userUrl" on-data-changed="userInfoUpdated"></firebase-document>
+    <firebase-document location="[[computeFbHref()]]" data="{{user}}"></firebase-document>
     <paper-material class="animated fadeIn user-card" id="[[user.uid]]">
       <div class="user-card-header">
         <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{user.picture}}" placeholder="{{computePlaceHolder}}"></iron-image>
@@ -171,10 +171,6 @@
       is: 'edit-profile',
       attached: function() {
         document.querySelector('paper-tabs').selected = 0;
-      },
-      userInfoUpdated: function() {
-        app.$.toast.text = 'Successfully updated!';
-        app.$.toast.show();
       },
       computeFbHref: function() {
         var uid = app.getLoggedInUserId();

@@ -17,9 +17,10 @@
 
     paper-material {
       max-width: 700px;
-      padding: 1em;
+      padding: 0.5em;
       text-align: center;
       min-width: 350px;
+      margin: 0 auto;
     }
 
     h2 {
@@ -42,15 +43,15 @@
 
     .signInLink {
       text-align: center;
-      margin-top: 1em;
       max-width: 700px;
       text-decoration: none;
-
+      margin: 0 auto;
+      margin-top: 1em;
     }
 
     a.style-scope.create-user {
-      text-decoration: none;
       color: inherit;
+      margin-left: 0.5em;
     }
 
     paper-button.colorful.signUpButton {
@@ -108,7 +109,9 @@
         var practice = document.getElementById('practice').value;
         var project = document.getElementById('project').value;
         var reportingTo = document.getElementById('reportingTo').value;
+        var companyName = document.getElementById('companyName').value;
         var empId = document.getElementById('empId').value;
+        var location = document.getElementById('location').value;
         var emailId = document.getElementById('emailId').value;
         var password = document.getElementById('password').value;
         console.log('dataUrl  ' + app.dataUrl);
@@ -134,7 +137,9 @@
               'practice': practice,
               'projects': project,
               'reportingTo': reportingTo,
+              'companyName': companyName,
               'empId': empId,
+              'location': location,
               'emailId': emailId,
               'createdOn': createdOn
             });

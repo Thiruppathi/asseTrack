@@ -23,6 +23,8 @@
       width: 100%;
       background: #fff;
       padding: 6px 0 6px 0;
+      max-width: 500px;
+      min-width: 250px;
     }
 
     .user-title {
@@ -52,6 +54,8 @@
       background-color: #eee;
       text-decoration: none;
       color: white;
+      max-width: 500px;
+      min-width: 250px;
     }
 
     .user-card-inner {
@@ -60,6 +64,10 @@
 
     .user-card {
       text-align: center;
+      max-width: 500px;
+      min-width: 250px;
+      margin: 0 auto;
+      margin-top: 1em;
     }
 
     .user-card .user-image {
@@ -82,41 +90,92 @@
 
     .password-card {
       background-color: #fff;
+      text-align: left;
+      max-width: 500px;
+      min-width: 250px;
+      padding-bottom: 1em;
+      margin: 0 auto;
     }
 
     .password-button-card {
       background-color: #fff;
       text-align: right;
+      max-width: 500px;
+      min-width: 250px;
+      margin: 0 auto;
+    }
+
+    paper-tabs,
+    paper-toolbar {
+      background-color: var(--default-primary-color);
+      color: #fff;
+    }
+
+    #successToast {
+      --paper-toast-background-color: green;
+      --paper-toast-color: white;
     }
   </style>
   <template>
-    <firebase-document location="[[computeFbHref()]]" data="{{user}}"></firebase-document>
-
-    <paper-material class="animated bounceInUp user-card" id="[[user.uid]]">
+    <firebase-document location="[[computeFbHref()]]" data="{{user}}" id="userUrl" on-data-changed="userInfoUpdated"></firebase-document>
+    <paper-material class="animated fadeIn user-card" id="[[user.uid]]">
       <div class="user-card-header">
-        <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{computeProfilePic(user)}}"></iron-image>
-        <h4>{{computeFullName(user)}}</h4>
-        <p class="user-title">{{computeTitle(user)}}</p>
-        <p class="user-title">{{computeProject(user)}}</p>
+        <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{user.picture}}" placeholder="{{computePlaceHolder}}"></iron-image>
+        <h4><span>{{user.firstName}}</span>&nbsp;<span>{{user.lastName}}</span></h4>
+        <p class="user-title"><span>{{user.designation}}</span>&nbsp;-&nbsp;<span>{{user.companyName}}</span></p>
+        <p class="user-title">{{user.emailId}}</p>
+        <p class="user-title">{{user.projects}}</p>
       </div>
+      <paper-tabs selected="{{selected}}" class="animated fadeIn">
+        <paper-tab focused>About Me</paper-tab>
+        <paper-tab>Contact</paper-tab>
+        <paper-tab>Password</paper-tab>
+      </paper-tabs>
     </paper-material>
+    <iron-pages selected="{{selected}}">
+      <div>
+        <paper-material class="animated fadeIn password-card">
+          <paper-input label="First Name" id="firstName" value="{{user.firstName}}" error-message="Please enter your First Name" auto-validate required></paper-input>
+          <paper-input label="Last Name" id="lastName" value="{{user.lastName}}" error-message="Please enter your Second Name" auto-validate required></paper-input>
+          <paper-input label="Designation" id="designation" value="{{user.designation}}" error-message="Please enter your designation or Job Title" auto-validate required></paper-input>
+          <paper-input label="Practice" id="practice" value="{{user.practice}}" error-message="Please enter your practice. (QA, Developer)" auto-validate required></paper-input>
+          <paper-input label="Project" id="project" value="{{user.projects}}" error-message="Please enter your project name.(DTO, v4)" auto-validate required></paper-input>
+          <paper-input label="Reporting Manager" id="reportingTo" value="{{user.reportingTo}}" error-message="Please enter your Reporting Manager" auto-validate required></paper-input>
+          <paper-input label="Company Name" id="companyName" value="{{user.companyName}}" error-message="Please enter your Company Name (EE, NTT Data, epam)" auto-validate required></paper-input>
+        </paper-material>
+      </div>
+      <div>
+        <paper-material class="animated fadeIn password-card">
+          <paper-input label="Phone Number" id="phoneNo" value="{{user.phoneNo}}" error-message="Please enter your Phone Number" auto-validate required></paper-input>
+          <paper-input label="Employee Id" id="empId" value="{{user.empId}}" error-message="Please enter a valid Employee Id" auto-validate required></paper-input>
+          <paper-input label="Location" id="location" value="{{user.location}}" error-message="Please enter your work location" auto-validate required></paper-input>
+        </paper-material>
+      </div>
+      <div>
+        <paper-material class="animated fadeIn password-card">
+          <paper-input label="Current Password" id="oldPassword" type="password" required></paper-input>
+          <paper-input label="New Password" id="newPassword" type="password" required></paper-input>
+          <paper-input label="Re-enter New Password" id="reTypeNewPassword" type="password" required></paper-input>
+        </paper-material>
+        <paper-material class="animated fadeIn password-button-card">
+          <paper-button tabindex="0" raised class="colorful" on-click="changePassword" id="changePassword">Change Password</paper-button>
+        </paper-material>
+      </div>
+    </iron-pages>
 
-    <paper-material class="animated bounceInUp password-card">
-      <paper-input label="Current Password" id="oldPassword" type="password" required></paper-input>
-      <paper-input label="New Password" id="newPassword" type="password" required></paper-input>
-      <paper-input label="Re-enter New Password" id="reTypeNewPassword" type="password" required></paper-input>
-    </paper-material>
-    <paper-material class="animated bounceInUp password-button-card">
-      <paper-button tabindex="0" raised class="colorful" on-click="changePassword" id="changePassword">Change Password</paper-button>
-    </paper-material>
   </template>
 
   <script>
     Polymer({
       is: 'edit-profile',
-
+      attached: function() {
+        document.querySelector('paper-tabs').selected = 0;
+      },
+      userInfoUpdated: function() {
+        app.$.toast.text = 'Successfully updated!';
+        app.$.toast.show();
+      },
       computeFbHref: function() {
-        console.log('Editing ' + app.getLoggedInUserId() + 'details');
         var uid = app.getLoggedInUserId();
         return app.env.db.users + uid;
       },
@@ -125,6 +184,9 @@
       },
       computeProfilePic: function(user) {
         return (user) ? user.picture : app.defaultAvatar;
+      },
+      computePlaceHolder: function() {
+        return app.defaultAvatar;
       },
       computeTitle: function(user) {
         return (user) ? user.designation : ' ';

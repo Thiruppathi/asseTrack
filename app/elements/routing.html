@@ -96,8 +96,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/login', function() {
-      app.requestedUrl = '/';
-      app.route = 'login';
+      app.requestedUrl = '/assets';
+      if(!rootRef.getAuth()) {
+        app.route = 'login';
+      } else {
+        page.redirect(app.requestedUrl);
+      }
     });
 
     page('/logOut', function() {

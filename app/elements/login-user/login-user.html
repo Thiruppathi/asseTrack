@@ -124,7 +124,6 @@
             app.isAuth = true;
             console.log('Authenticated successfully using ', authData.provider);
             page.redirect(app.requestedUrl);
-            //page.redirect(app.baseUrl);
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();
           }

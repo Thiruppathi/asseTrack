@@ -94,7 +94,7 @@
       createAsset: function() {
         console.log('Initiating Asset Creation');
         var assetsRef = new Firebase(app.env.db.assets);
-        var picture = document.querySelector('#squareImage').src;
+        var picture = document.querySelector('#squareImage').querySelector('iron-image').src;
         var assetId = document.getElementById('assetId').value;
         var brand = document.getElementById('brand').value;
         var model = document.getElementById('model').value;
@@ -131,6 +131,10 @@
           'isOutdated': isOutdated,
           'availability': availability
         });
+        app.$.toast.text = 'Successfully created asset.';
+        app.$.toast.duration = 5000;
+        app.$.toast.show();
+        page.redirect(app.baseUrl + 'assets');
       }
     });
   </script>

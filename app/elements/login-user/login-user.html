@@ -78,28 +78,25 @@
     }
   </style>
   <template>
-
     <paper-material elevation="1" class="animated bounceInUp login-card">
       <h2 class="paper-font-display2">Sign In</h2>
-      <h3>
-        Sign in to use Jarvis.
-      </h3>
-      <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{getDefaultAvatar()}}">
-      </iron-image>
-
+      <h3>Sign in to use Jarvis.</h3>
+      <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{getDefaultAvatar()}}"></iron-image>
       <gold-email-input id="email" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
       <paper-input label="Password" error-message="Please enter a valid password" id="loginPassword" type="password" required></paper-input>
     </paper-material>
+
     <paper-material class="animated bounceInUp login-button-card">
       <a data-route="createUser" href="{{baseUrl}}createUser" class="signUpLink">
         <span>Create account</span>
       </a>
       <paper-button tabindex="0" raised class="colorful" on-click="logIn">Sign In</paper-button>
     </paper-material>
+
     <span class="forgotPassword animated bounceInUp ">
-    <a data-route="forgotPassword" href="{{baseUrl}}forgotPassword">
-      <span>Forgot Password?</span>
-    </a>
+      <a data-route="forgotPassword" href="{{baseUrl}}forgotPassword">
+        <span>Forgot Password?</span>
+      </a>
     </span>
   </template>
 
@@ -112,9 +109,7 @@
       },
 
       logIn: function() {
-        // var userRef = new Firebase('https://myjarvis.firebaseio.com');
         var userRef = new Firebase(app.env.db.baseUrl);
-        console.log('userRef', userRef);
         var email = document.querySelector('#email').value;
         var loginPassword = document.querySelector('#loginPassword').value;
         userRef.authWithPassword({
@@ -132,11 +127,8 @@
             //page.redirect(app.baseUrl);
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();
-            userRef.child('users').child(authData.uid).on('value', function(snapshot) {
-              app.isAdmin = snapshot.val().isAdmin;
-            });
           }
-        } /*, {remember: 'sessionOnly'}*/);
+        });
       }
     });
   </script>

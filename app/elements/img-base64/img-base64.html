@@ -13,11 +13,22 @@
     #imagePreview {
       height: 100%;
       width: 100%;
-      background: lightgrey;
-      border-radius: 100%;
       cursor: pointer;
     }
 
+    #circleImage {
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 100%;
+    }
+
+    #squareImage {
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 0%;
+    }
     span.changePic {
       padding: 0.25em;
       display: block;
@@ -37,12 +48,11 @@
       padding: 5px;
       color: rgba(255,255,255,0.749);
       cursor: pointer;
-
     }
   </style>
 
   <template>
-    <iron-image src="{{image}}" placeholder="{{placeholder}}" id="imagePreview" sizing="contain" preload fade width="{{width}}" height="{{height}}" on-tap="_tapped"></iron-image>
+    <iron-image src="{{image}}" placeholder="{{placeholder}}" class="{{class}}" id="{{id}}" sizing="contain" preload fade width="{{width}}" height="{{height}}" style="{{style}}" on-tap="_tapped"></iron-image>
     <input id="imageInput" is="iron-input" type="file">
     <span class="changePic">
       <iron-icon icon="image:camera-alt" on-tap="_tapped"></iron-icon>

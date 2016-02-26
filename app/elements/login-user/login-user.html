@@ -117,7 +117,7 @@
           password: loginPassword
         }, function(error, authData) {
           if (error) {
-            app.$.toast.text = 'Unable to Login. Please retry!';
+            app.$.toast.text = error.message + '. Please retry!';
             app.$.toast.show();
             console.log('Login Failed!', error, '. isAuth: ', app.isAuth);
           } else {

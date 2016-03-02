@@ -88,10 +88,10 @@
         assetid: Number
       },
       computeAssetHref: function(assetid) {
-        return 'https://assetrack.firebaseio.com/assets/' + assetid;
+        return app.env.db.assets + assetid;
       },
       computeCurrentUserHref: function(asset) {
-        return (asset) ? ('https://assetrack.firebaseio.com/users/' + asset.currentUser) : '';
+        return (asset) ? (app.env.db.users + asset.currentUser) : '';
       },
       computeFullName: function(asset) {
         return (asset) ? (asset.brand + ' ' + asset.model) : '';
@@ -136,7 +136,7 @@
         }
       },
       checkIn: function() {
-        var ref = new Firebase('https://assetrack.firebaseio.com');
+        var ref = new Firebase(app.env.db.baseUrl);
         var authData = ref.getAuth();
         var assetid = this.assetid;
         if (authData) {
@@ -168,7 +168,7 @@
         }
       },
       checkOut: function() {
-        var ref = new Firebase('https://assetrack.firebaseio.com');
+        var ref = new Firebase(app.env.db.baseUrl);
         var authData = ref.getAuth();
         var checkOutDateTime = new Date().toString();
         var assetid = this.assetid;
@@ -204,7 +204,7 @@
         }
       },
       getLoggedInUserId: function() {
-        var ref = new Firebase('https://assetrack.firebaseio.com');
+        var ref = new Firebase(app.env.db.baseUrl);
         var authData = ref.getAuth();
         if (authData) {
           return authData.uid;

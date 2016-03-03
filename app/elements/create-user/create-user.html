@@ -101,7 +101,7 @@
       signUp: function() {
         console.log('Creating new Account...');
         var userRef = new Firebase(app.env.db.baseUrl);
-        var picture = document.querySelector('#circleImage').src;
+        var picture = document.querySelector('#circleImage').querySelector('iron-image').src;
         var firstName = document.getElementById('firstName').value;
         var lastName = document.getElementById('lastName').value;
         var designation = document.getElementById('designation').value;
@@ -126,7 +126,6 @@
             app.$.toast.text = 'Error creating new Account:';
             app.$.toast.show();
           } else {
-            console.log('Successfully created user account with uid:', userData.uid);
             userRef.child('users').child(userData.uid).set({
               'uid': userData.uid,
               'picture': picture,
@@ -147,6 +146,8 @@
             app.$.toast.duration = 5000;
             app.$.toast.show();
             page.redirect(app.baseUrl + 'login');
+            console.log('Successfully created user account with uid:', userData.uid);
+
           }
         });
       }

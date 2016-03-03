@@ -15,7 +15,9 @@
     "upload-image": "thiruppathi/upload-image",
     "highcharts-chart": "~0.0.4",
     "vaadin-grid": "~1.0.0",
-    "iron-data-table": "^1.0.0-alpha3"
+    "iron-data-table": "^1.0.0-alpha3",
+    "paper-chip": "^1.0.0",
+    "paper-tags-input": "^1.2.2"
   },
   "devDependencies": {
     "web-component-tester": "*"
@@ -25,6 +27,7 @@
     "paper-menu": "4fecb43601",
     "polymer": "^1.2.0",
     "paper-styles": "~1.0.12",
-    "webcomponentsjs": "^0.7.20"
+    "webcomponentsjs": "^0.7.20",
+    "paper-input": "^1.1.5"
   }
 }

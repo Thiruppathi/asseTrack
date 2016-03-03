@@ -38,18 +38,30 @@
       margin: 1em;
       width: 100px;
     }
+
+    iron-image {
+      padding: 0.5em;
+      display: block;
+      color: #777;
+      width: 100px;
+      height: 100px;
+      margin: 10px auto 10px auto;
+    }
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeCurrentUserHref(asset)]]" data="{{currentUserOfAsset}}"></firebase-document>
     <firebase-document id="getAssetFB" location="[[computeAssetHref(assetid)]]" data="{{asset}}"></firebase-document>
 
     <paper-material class="assetData" id="[[assetid]]" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
-      <iron-icon icon="{{computeAssetIcon(asset)}}" class="assetIcon"></iron-icon>
+      <!-- <iron-icon icon="{{computeAssetIcon(asset)}}" class="assetIcon"></iron-icon> -->
+
+      <iron-image src="{{asset.picture}}" preload sizing="cover"></iron-image>
       <p>{{asset.assetid}}</p>
       <p>{{computeFullName(asset)}}</p>
       <p><b>Asset ID: </b>
         <span>{{computeAssetId(asset)}}</span>
       </p>
+      <p>{{asset.currentCompany}}</p>
 
       <!-- If asset avaialble for check out-->
       <template is="dom-if" if="{{asset.availability}}">

@@ -164,6 +164,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-toolbar>
         <!-- Main Content -->
         <div class="content">
+          <!-- <template is="dom-if" if="{{loggedInUserEmailId}}">
+          <paper-chip>
+            <iron-icon class="icon" icon="avatars:avatar-1"></iron-icon>
+            <h1>{{loggedInUserEmailId}}</h1>
+          </paper-chip>
+        </template> -->
           <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
             <section data-route="home">

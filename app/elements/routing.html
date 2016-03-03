@@ -108,6 +108,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       rootRef.unauth();
       app.isAuth = false;
       page.redirect(app.baseUrl);
+      app.loggedInUserEmailId = app.getLoggedInUserEmailId();
+      app.loggedInUserUID = app.getLoggedInUserId();
       app.$.toast.text = 'You have been successfully logged out';
       app.$.toast.show();
     });

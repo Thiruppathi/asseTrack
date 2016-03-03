@@ -56,6 +56,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
+  app.loggedInUserEmailId = app.getLoggedInUserEmailId();
+  app.loggedInUserUID = app.getLoggedInUserId();
   app.isAuth = app.isAuthenticated();
 
   // Sets app default base URL

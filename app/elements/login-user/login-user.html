@@ -124,10 +124,12 @@
             app.isAuth = true;
             console.log('Authenticated successfully using ', authData.provider);
             page.redirect(app.requestedUrl);
+            app.loggedInUserEmailId = app.getLoggedInUserEmailId();
+            app.loggedInUserUID = app.getLoggedInUserId();
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();
           }
-        });
+        },{remember: 'sessionOnly'});
       }
     });
   </script>

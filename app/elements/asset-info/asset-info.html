@@ -5,7 +5,7 @@
       padding: 1em;
       margin: 1em;
       text-align: center;
-      max-width: 300px;
+      max-width: 350px;
     }
 
     .asset-image {
@@ -127,7 +127,7 @@
       isCheckInAvailableForLoggedInUser: function(asset, currentUserOfAsset) {
         if (asset) {
           if (!asset.availability) {
-            if (currentUserOfAsset && currentUserOfAsset.uid === this.getLoggedInUserId()) {
+            if (currentUserOfAsset && currentUserOfAsset.uid === app.getLoggedInUserId()) {
               return true;
             }
           } else {
@@ -141,23 +141,26 @@
         var assetid = this.assetid;
         if (authData) {
           var uid = authData.uid;
-          var checkInDateTime = new Date().toString();
+          var lastModifiedDateTime = new Date().toString();
+          var lastActionByUserName = app.getLoggedInUserEmailId();
           console.log('User ' + uid + ' checked in ' + this.assetid);
           ref.child('assets').child(this.assetid).update({
             'availability': true,
             'currentUser': '',
-            'lastCheckInBy': uid,
-            'lastCheckInDateTime': checkInDateTime,
+            'lastActionByUid': uid,
+            'lastModifiedDateTime': lastModifiedDateTime,
           });
           ref.child('assets').child(this.assetid).child('checkInHistory').push({
-            'checkedInBy': uid,
-            'checkInDateTime': checkInDateTime
+            'checkedInByUid': uid,
+            'checkedInByUserName': lastActionByUserName,
+            'lastModifiedDateTime': lastModifiedDateTime
           });
           ref.child('users').child(uid).child('assets').child(assetid).remove();
           ref.child('history').push({
             'action': 'CHECK IN',
-            'checkedInBy': uid,
-            'checkInDateTime': checkInDateTime,
+            'lastActionByUid': uid,
+            'lastActionByUserName': lastActionByUserName,
+            'lastModifiedDateTime': lastModifiedDateTime,
             'assetId': assetid
           });
         } else {
@@ -170,7 +173,9 @@
       checkOut: function() {
         var ref = new Firebase(app.env.db.baseUrl);
         var authData = ref.getAuth();
-        var checkOutDateTime = new Date().toString();
+        var lastModifiedDateTime = new Date().toString();
+        var lastActionByUserName = app.getLoggedInUserEmailId();
+
         var assetid = this.assetid;
         // Refactor this
         if (authData) {
@@ -179,21 +184,23 @@
           ref.child('assets').child(this.assetid).update({
             'availability': false,
             'currentUser': uid,
-            'lastCheckOutBy': uid,
-            'lastCheckOutDateTime': checkOutDateTime
+            'lastActionByUid': uid,
+            'lastCheckOutDateTime': lastModifiedDateTime
           });
           ref.child('assets').child(this.assetid).child('checkOutHistory').push({
-            'checkedOutBy': uid,
-            'checkOutDateTime': checkOutDateTime
+            'checkedOutByUid': uid,
+            'checkedOutByUserName': lastActionByUserName,
+            'lastModifiedDateTime': lastModifiedDateTime
           });
           ref.child('users').child(uid).child('assets').child(assetid).set({
             'assetId': assetid,
-            'checkOutDateTime': checkOutDateTime
+            'lastModifiedDateTime': lastModifiedDateTime
           });
           ref.child('history').push({
             'action': 'CHECK OUT',
-            'checkedOutBy': uid,
-            'checkOutDateTime': checkOutDateTime,
+            'lastActionByUid': uid,
+            'lastActionByUserName': lastActionByUserName,
+            'lastModifiedDateTime': lastModifiedDateTime,
             'assetId': assetid
           });
         } else {

@@ -1,77 +1,34 @@
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="log-book">
-  <template>
     <style include="shared-styles"></style>
     <style>
       :host {
         display: block;
       }
-      div {
-        clear: both;
-      }
-
     </style>
+    <template>
     <h2 class="page-title">Log Book</h2>
-    <firebase-collection location="{{getDbLocation()}}" order-by-child="checkOutDateTime" data="{{history}}" id="historyCollection"></firebase-collection>
-      <iron-data-table selection-enabled items="[[history]]">
-        <data-table-column name="#" width="20px" flex="0">
-          <template>[[index]]</template>
-        </data-table-column>
-        <data-table-column name="Asset ID" flex="0" filter-by="assetId" sort-by="assetId">
-            <template>[[item.assetId]]</template>
-        </data-table-column>
-        <data-table-column name="Action" filter-by="action" sort-by="action">
-          <template>[[item.action]]</template>
-        </data-table-column>
-        <data-table-column name="User">
-          <template>[[computeUser(item)]]</template>
-        </data-table-column>
-        <data-table-column name="Date &amp; Time">
-          <template>[[computeDateTime(item)]]</template>
-        </data-table-column>
-      </iron-data-table>
+    <firebase-collection location="{{getDbLocation()}}" order-by-child="lastModifiedDateTime" data="{{history}}" id="historyCollection"></firebase-collection>
+
+    <paper-datatable data="{{history}}" >
+      <paper-datatable-column header="Asset ID" property="assetId" sortable></paper-datatable-column>
+      <paper-datatable-column header="Action" property="action" sortable></paper-datatable-column>
+      <paper-datatable-column header="User" property="lastActionByUserName" sortable></paper-datatable-column>
+      <paper-datatable-column header="Date &amp; Time" property="lastModifiedDateTime" sortable></paper-datatable-column>
+    </paper-datatable>
+
   </template>
 
   <script>
-    (function () {
+    (function() {
       'use strict';
 
       Polymer({
         is: 'log-book',
 
-        getDbLocation: function () {
+        getDbLocation: function() {
           return app.env.db.history;
-        },
-
-        properties: {},
-        isCheckIn: function (action) {
-          return (action === 'CHECK IN')
-            ? true
-            : false;
-        },
-        computeUser: function(record) {
-          if(record.action === 'CHECK IN') {
-            return record.checkedInBy;
-          } else {
-            return record.checkedOutBy;
-          }
-        },
-        computeDateTime: function(record) {
-          if(record.action === 'CHECK IN') {
-            return record.checkInDateTime;
-          } else {
-            return record.checkOutDateTime;
-          }
         }
       });
     })();

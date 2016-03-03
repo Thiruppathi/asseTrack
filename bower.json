@@ -14,13 +14,17 @@
     "gold-email-input": "PolymerElements/gold-email-input#~1.0.6",
     "upload-image": "thiruppathi/upload-image",
     "highcharts-chart": "~0.0.4",
-    "vaadin-grid": "~1.0.0"
+    "vaadin-grid": "~1.0.0",
+    "iron-data-table": "^1.0.0-alpha3"
   },
   "devDependencies": {
     "web-component-tester": "*"
   },
   "ignore": [],
   "resolutions": {
-    "paper-menu": "4fecb43601"
+    "paper-menu": "4fecb43601",
+    "polymer": "^1.2.0",
+    "paper-styles": "~1.0.12",
+    "webcomponentsjs": "^0.7.20"
   }
 }

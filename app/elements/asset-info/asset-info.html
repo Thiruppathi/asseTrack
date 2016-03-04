@@ -2,8 +2,6 @@
 
   <style type="text/css">
     .assetData {
-      padding: 1em;
-      margin: 1em;
       max-width: 350px;
     }
 
@@ -48,8 +46,16 @@
     }
     .asset-header {
       text-align: center;
+      padding: 1em;
     }
-    .asset-details p span {
+    .asset-details {
+      padding: 1em;
+    }
+    .asset-details .label {
+      text-align: right;
+      font-weight: bold;
+    }
+    .asset-details .value {
       text-align: left;
     }
   </style>
@@ -78,40 +84,28 @@
             <iron-icon class="cart-icon" icon="icons:assignment-turned-in"></iron-icon>Check In</paper-button>
         </template>
       </div>
-      <hr>
       <div class="asset-details">
         <h2>Asset Details</h2>
-        <p><b>Asset ID: </b>
-          <span>{{computeAssetId(asset)}}</span>
+        <p><span class="label">Asset ID: </span>
+          <span class="value">{{computeAssetId(asset)}}</span>
         </p>
-        <p><b>Currently Owned By: </b>
-          <span>{{asset.currentCompany}}</span>
+        <p><span class="label">Currently Owned By: </span>
+          <span class="value">{{asset.currentCompany}}</span>
         </p>
-        <p><b>Description: </b>
-          <span>{{asset.description}}</span>
+        <p><span class="label">Description: </span>
+          <span class="value">{{asset.description}}</span>
         </p>
-        <p><b>OS: </b>
-          <span>{{asset.platform}}</span>&nbsp;<span>{{asset.osVersion}}</span>
+        <p><span class="label">OS: </span>
+          <span class="value">{{asset.platform}}</span>&nbsp;<span>{{asset.osVersion}}</span>
         </p>
-        <p><b>Screen Resolution: </b>
-          <span>{{asset.screenResolution}}</span>
+        <p><span class="label">Screen Resolution: </span>
+          <span class="value">{{asset.screenResolution}}</span>
         </p>
-        <p><b>Location: </b>
-          <span>{{asset.location}}</span>
+        <p><span class="label">Location: </span>
+          <span class="value">{{asset.location}}</span>
         </p>
       </div>
-      <!-- If asset not available for check out -->
-      <!-- <template is="dom-if" if="{{isCheckInAvailableForLoggedInUser(asset,currentUserOfAsset)}}">
-        <p><b>Checked Out By:</b>
-          <span>{{computeLastCheckedOutName(currentUserOfAsset)}}</span>
-        </p>
-        <p><b>Checked Out Time:</b>
-          <span>{{asset.lastCheckOutDateTime}}</span>
-        </p>
-        <paper-button raised class="colorful" on-click="notifyMe">
-          <iron-icon class="cart-icon" icon="icons:add-alert"></iron-icon>Notify</paper-button>
-      </template> -->
-
+      <!-- TODO: If asset not available for check out, Send notification -->
     </paper-material>
   </template>
 

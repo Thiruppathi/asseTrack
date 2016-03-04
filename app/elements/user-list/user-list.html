@@ -62,6 +62,7 @@
       </firebase-collection>
       <template is="dom-repeat" items="[[users]]" as="user" id="usersList" filter="{{_filter(filterVal)}}" id="userListDom">
         <user-card user="{{user}}" class="user-card"></user-card>
+        <!-- <user-info empid="[[user.uid]]"></user-info> -->
       </template>
     </section>
 

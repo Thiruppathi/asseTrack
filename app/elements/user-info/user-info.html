@@ -1,24 +1,34 @@
 <dom-module id="user-info">
 
   <style type="text/css">
-    .userData {
+    .user-header {
       padding: 1em;
       margin: 1em;
+      max-width: 350px;
+      text-align: center;
     }
 
     #user-image {
       text-align: center;
       border-radius: 100%;
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       position: relative;
     }
+
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeFbHref(empid)]]" data="{{user}}"></firebase-document>
-    <paper-material class="userData" id="[[empid]]">
+    <paper-material class="user-header" id="[[empid]]">
       <img src={{computeProfilePic(user)}} id="user-image">
-      <span>{{computeFullName(user)}}</span>
+      <h3>{{computeFullName(user)}}</h3>
+      <p>{{user.emailId}}</p>
+      <p><span>{{user.practice}}</span>&nbsp;|&nbsp;<span>{{user.companyName}}</span></p>
+      <p>{{user.projects}}</p>
+      <p><span>{{user.location}}</span>&nbsp;|&nbsp;<span>{{user.phoneNo}}</span></p>
+      <p>
+        <span>No of Devices: </span>&nbsp;<span>{{computeNoOfDevices(user)}}</span>
+      </p>
     </paper-material>
     <section class="layout horizontal wrap">
       <template is="dom-repeat" items="[[computeAssetHistory(user)]]" as="asset" id="assetList">
@@ -51,6 +61,16 @@
           });
         }
         return arr;
+      },
+      computeNoOfDevices: function(user) {
+        var obj = (user) ? user.assets : null;
+        var arr = [];
+        if (obj) {
+          arr = Object.keys(obj).map(function(k) {
+            return obj[k];
+          });
+        }
+        return arr.length;
       }
     });
   </script>

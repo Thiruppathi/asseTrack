@@ -81,7 +81,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     });
 
     page('/editProfile', function(data) {
-      app.requestedUrl = data.path;
+      app.loggedInUserEmailId = app.getLoggedInUserEmailId();
+      app.loggedInUserUID = app.getLoggedInUserId();
+      app.requestedUrl = '/editProfile';
       app.route = (!rootRef.getAuth()) ? 'login' : 'editProfile';
     });
 

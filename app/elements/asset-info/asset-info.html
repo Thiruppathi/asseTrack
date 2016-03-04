@@ -4,7 +4,6 @@
     .assetData {
       padding: 1em;
       margin: 1em;
-      text-align: center;
       max-width: 350px;
     }
 
@@ -47,6 +46,12 @@
       height: 100px;
       margin: 10px auto 10px auto;
     }
+    .asset-header {
+      text-align: center;
+    }
+    .asset-details p span {
+      text-align: left;
+    }
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeCurrentUserHref(asset)]]" data="{{currentUserOfAsset}}"></firebase-document>
@@ -54,30 +59,47 @@
 
     <paper-material class="assetData" id="[[assetid]]" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
       <!-- <iron-icon icon="{{computeAssetIcon(asset)}}" class="assetIcon"></iron-icon> -->
+      <div class="asset-header">
+        <iron-image src="{{asset.picture}}" preload sizing="cover"></iron-image>
+        <p>{{asset.assetid}}</p>
+        <p>{{computeFullName(asset)}}</p>
+        <!-- If asset avaialble for check out-->
+        <template is="dom-if" if="{{asset.availability}}">
+          <paper-button raised class="colorful" on-click="checkOut">
+            <iron-icon class="cart-icon" icon="icons:add-shopping-cart"></iron-icon>Check Out</paper-button>
+        </template>
 
-      <iron-image src="{{asset.picture}}" preload sizing="cover"></iron-image>
-      <p>{{asset.assetid}}</p>
-      <p>{{computeFullName(asset)}}</p>
-      <p><b>Asset ID: </b>
-        <span>{{computeAssetId(asset)}}</span>
-      </p>
-      <p>{{asset.currentCompany}}</p>
-
-      <!-- If asset avaialble for check out-->
-      <template is="dom-if" if="{{asset.availability}}">
-        <paper-button raised class="colorful" on-click="checkOut">
-          <iron-icon class="cart-icon" icon="icons:add-shopping-cart"></iron-icon>Check Out</paper-button>
-      </template>
-
-      <!-- If asset checked in by logged in user -->
-      <template is="dom-if" if="{{isCheckInAvailableForLoggedInUser(asset,currentUserOfAsset)}}">
-        <p><b>Checked Out By:</b>
-          <span>{{computeLastCheckedOutName(currentUserOfAsset)}}</span>
+        <!-- If asset checked in by logged in user -->
+        <template is="dom-if" if="{{isCheckInAvailableForLoggedInUser(asset,currentUserOfAsset)}}">
+          <p><b>Checked Out By:</b>
+            <span>{{computeLastCheckedOutName(currentUserOfAsset)}}</span>
+          </p>
+          <paper-button raised class="colorful" on-click="checkIn">
+            <iron-icon class="cart-icon" icon="icons:assignment-turned-in"></iron-icon>Check In</paper-button>
+        </template>
+      </div>
+      <hr>
+      <div class="asset-details">
+        <h2>Asset Details</h2>
+        <p><b>Asset ID: </b>
+          <span>{{computeAssetId(asset)}}</span>
         </p>
-        <paper-button raised class="colorful" on-click="checkIn">
-          <iron-icon class="cart-icon" icon="icons:assignment-turned-in"></iron-icon>Check In</paper-button>
-      </template>
-
+        <p><b>Currently Owned By: </b>
+          <span>{{asset.currentCompany}}</span>
+        </p>
+        <p><b>Description: </b>
+          <span>{{asset.description}}</span>
+        </p>
+        <p><b>OS: </b>
+          <span>{{asset.platform}}</span>&nbsp;<span>{{asset.osVersion}}</span>
+        </p>
+        <p><b>Screen Resolution: </b>
+          <span>{{asset.screenResolution}}</span>
+        </p>
+        <p><b>Location: </b>
+          <span>{{asset.location}}</span>
+        </p>
+      </div>
       <!-- If asset not available for check out -->
       <!-- <template is="dom-if" if="{{isCheckInAvailableForLoggedInUser(asset,currentUserOfAsset)}}">
         <p><b>Checked Out By:</b>

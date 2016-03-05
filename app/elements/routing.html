@@ -80,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       app.route = 'forgotPassword';
     });
 
-    page('/editProfile', function(data) {
+    page('/editProfile', function() {
       app.loggedInUserEmailId = app.getLoggedInUserEmailId();
       app.loggedInUserUID = app.getLoggedInUserId();
       app.requestedUrl = '/editProfile';

@@ -1,23 +1,83 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
 <dom-module id="log-book">
-    <style include="shared-styles"></style>
-    <style>
-      :host {
-        display: block;
+  <style include="shared-styles"></style>
+  <style is="custom-style">
+    :host {
+      display: block;
+    }
+    .cell-image {
+      width: 35px;
+      height: 35px;
+      vertical-align: middle;
+    }
+    .cell-asset-name {
+      vertical-align: middle;
+    }
+    .avatar {
+      border-radius: 100%;
+    }
+    #logBookGrid {
+      --iron-data-table-header: {
+        background-color: #37474F;
+        color: #ccc;
       }
-    </style>
-    <template>
+      --iron-data-table-row: {
+        height: 60px;
+        align-items: center;
+      }
+      --iron-data-table-row-odd: {
+        background-color: #fff;
+      }
+      --iron-data-table-row-even: {
+        background-color: #fafafa;
+      }
+      --iron-data-table-row-hover: {
+        background-color: #eee !important;
+      }
+      --iron-data-table-row-selected: {
+        background-color: #23B5B9 !important;
+        color: #fff;
+      };
+      --iron-data-table-row-after: {
+        background-color: #fff;
+        bottom: 16px;
+        content: '';
+        height: 2px;
+        left: 13px;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        transition: all 1s ease-in-out;
+        -webkit-transform: scaleX(0.0);
+        transform: scaleX(0.0);
+        z-index: 1;
+      }
+    }
+  </style>
+  <template>
     <h2 class="page-title">Log Book</h2>
     <firebase-collection location="{{getDbLocation()}}" order-by-child="lastModifiedDateTime" data="{{history}}" id="historyCollection"></firebase-collection>
-
-    <paper-datatable data="{{history}}" >
-      <paper-datatable-column header="Asset ID" property="assetId" sortable></paper-datatable-column>
-      <paper-datatable-column header="User" property="lastActionByUserName" sortable></paper-datatable-column>
-      <paper-datatable-column header="Date &amp; Time" property="lastModifiedDateTime" sortable></paper-datatable-column>      <paper-datatable-column header="Action" property="action" sortable></paper-datatable-column>
-
-    </paper-datatable>
-
+    <iron-data-table selection-enabled items="[[history]]" id="logBookGrid">
+      <data-table-column name="ID" width="30px" flex="0">
+        <template>[[item.assetId]]</template>
+      </data-table-column>
+      <data-table-column name="Asset">
+        <template>
+          <img src="[[getAssetPicture(item.assetId)]]" class="cell-image">
+          <span class="cell-asset-name">[[getAssetName(item.assetId)]]</span>
+        </template>
+      </data-table-column>
+      <data-table-column name="User">
+        <template>
+          <img src="[[getUserPicture(item.lastActionByUid)]]" class="cell-image avatar">
+          <span class="cell-asset-name">[[getUserName(item.lastActionByUid)]]</span>
+        </template>
+      </data-table-column>
+      <data-table-column name="Date &amp; Time">
+        <template>[[item.lastModifiedDateTime]]</template>
+      </data-table-column>
+    </iron-data-table>
   </template>
 
   <script>
@@ -29,6 +89,36 @@
 
         getDbLocation: function() {
           return app.env.db.history;
+        },
+
+        getAssetPicture: function(assetId) {
+          var picture = '';
+          app.db.child('/assets').child(assetId).on('value', function(snapshot) {
+            picture = snapshot.val().picture;
+          });
+          return picture;
+        },
+        getUserPicture: function(lastActionByUid) {
+          var avatar = '';
+          app.db.child('/users').child(lastActionByUid).on('value', function(snapshot) {
+            avatar = snapshot.val().picture;
+          });
+          return avatar;
+        },
+
+        getUserName: function(lastActionByUid) {
+          var userName = '';
+          app.db.child('/users').child(lastActionByUid).on('value', function(snapshot) {
+            userName = snapshot.val().firstName + ' ' + snapshot.val().lastName;
+          });
+          return userName;
+        },
+        getAssetName: function(assetId) {
+          var name = '';
+          app.db.child('/assets').child(assetId).on('value', function(snapshot) {
+            name = snapshot.val().brand + ' ' + snapshot.val().model;
+          });
+          return name;
         }
       });
     })();

@@ -16,6 +16,14 @@
       position: relative;
     }
 
+    .asset-info-panel {
+      margin: 1em;
+    }
+
+    asset-info {
+      margin-right: 0.5em;
+    }
+
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeFbHref(empid)]]" data="{{user}}"></firebase-document>
@@ -30,7 +38,7 @@
         <span>No of Devices: </span>&nbsp;<span>{{computeNoOfDevices(user)}}</span>
       </p>
     </paper-material>
-    <section class="layout horizontal wrap">
+    <section class="layout horizontal wrap asset-info-panel">
       <template is="dom-repeat" items="[[computeAssetHistory(user)]]" as="asset" id="assetList">
         <asset-info assetid="[[asset.assetId]]"></asset-info>
       </template>

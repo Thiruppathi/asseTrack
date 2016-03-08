@@ -114,8 +114,7 @@
         var location = document.getElementById('location').value;
         var emailId = document.getElementById('emailId').value;
         var password = document.getElementById('password').value;
-        console.log('dataUrl  ' + app.dataUrl);
-        var createdOn = new Date().toString();
+        var createdOn = Firebase.ServerValue.TIMESTAMP;
 
         userRef.createUser({
           email: emailId,
@@ -147,7 +146,6 @@
             app.$.toast.show();
             page.redirect(app.baseUrl + 'login');
             console.log('Successfully created user account with uid:', userData.uid);
-
           }
         });
       }

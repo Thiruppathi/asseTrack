@@ -18,7 +18,7 @@
       white-space: nowrap;
       overflow: hidden;
       display: inline-block;
-      max-width: 200px;
+      max-width: 150px;
     }
     .avatar {
       border-radius: 100%;
@@ -79,8 +79,17 @@
           <p class="cell-asset-name">[[getUserName(item.lastActionByUid)]]</p>
         </template>
       </data-table-column>
-      <data-table-column name="Date &amp; Time">
-        <template>[[item.lastModifiedDateTime]]</template>
+      <data-table-column name="Date" width="100px" flex="0">
+        <template>
+          <moment-js date="[[item.lastModifiedDateTime]]"
+            format="DD-MMM-YY"></moment-js>
+        </template>
+      </data-table-column>
+      <data-table-column name="Time" width="50px" flex="0">
+        <template>
+          <moment-js date="[[item.lastModifiedDateTime]]"
+            format="HH:mm:ss"></moment-js>
+        </template>
       </data-table-column>
     </iron-data-table>
   </template>

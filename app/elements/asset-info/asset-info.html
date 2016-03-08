@@ -169,7 +169,7 @@
         var assetid = this.assetid;
         if (authData) {
           var uid = authData.uid;
-          var lastModifiedDateTime = new Date().toString();
+          var lastModifiedDateTime = Firebase.ServerValue.TIMESTAMP;
           var lastActionByUserName = app.getLoggedInUserEmailId();
           console.log('User ' + uid + ' checked in ' + this.assetid);
           ref.child('assets').child(this.assetid).update({
@@ -201,7 +201,7 @@
       checkOut: function() {
         var ref = new Firebase(app.env.db.baseUrl);
         var authData = ref.getAuth();
-        var lastModifiedDateTime = new Date().toString();
+        var lastModifiedDateTime = Firebase.ServerValue.TIMESTAMP;
         var lastActionByUserName = app.getLoggedInUserEmailId();
 
         var assetid = this.assetid;

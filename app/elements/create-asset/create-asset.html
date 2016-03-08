@@ -111,6 +111,7 @@
         var assetCondition = document.getElementById('assetCondition').selected;
         var isOutdated =  document.getElementById('isOutdated').checked;
         var availability = document.getElementById('availability').selected;
+        var createdOn = Firebase.ServerValue.TIMESTAMP;
 
         assetsRef.child(assetId).set({
           'picture': picture,
@@ -129,7 +130,8 @@
           'osVersion': osVersion,
           'assetCondition': assetCondition,
           'isOutdated': isOutdated,
-          'availability': availability
+          'availability': availability,
+          'createdOn': createdOn
         });
         app.$.toast.text = 'Successfully created asset.';
         app.$.toast.duration = 5000;

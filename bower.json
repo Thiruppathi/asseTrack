@@ -17,7 +17,8 @@
     "vaadin-grid": "~1.0.0",
     "iron-data-table": "^1.0.0-alpha3",
     "paper-chip": "^1.0.0",
-    "paper-tags-input": "^1.2.2"
+    "paper-tags-input": "^1.2.2",
+    "moment-js": "^0.3.0"
   },
   "devDependencies": {
     "web-component-tester": "*"

@@ -10,9 +10,15 @@
       width: 35px;
       height: 35px;
       vertical-align: middle;
+      display: inline-block;
     }
     .cell-asset-name {
       vertical-align: middle;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      max-width: 200px;
     }
     .avatar {
       border-radius: 100%;
@@ -36,8 +42,8 @@
         background-color: #eee !important;
       }
       --iron-data-table-row-selected: {
-        background-color: #23B5B9 !important;
-        color: #fff;
+        background-color: #BEE5E0 !important;
+        color: #19363D;
       };
       --iron-data-table-row-after: {
         background-color: #fff;
@@ -49,7 +55,6 @@
         position: absolute;
         right: 0;
         transition: all 1s ease-in-out;
-        -webkit-transform: scaleX(0.0);
         transform: scaleX(0.0);
         z-index: 1;
       }
@@ -71,7 +76,7 @@
       <data-table-column name="User">
         <template>
           <img src="[[getUserPicture(item.lastActionByUid)]]" class="cell-image avatar">
-          <span class="cell-asset-name">[[getUserName(item.lastActionByUid)]]</span>
+          <p class="cell-asset-name">[[getUserName(item.lastActionByUid)]]</p>
         </template>
       </data-table-column>
       <data-table-column name="Date &amp; Time">

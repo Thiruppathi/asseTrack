@@ -5,31 +5,26 @@
       max-width: 400px;
       margin: 1em;
     }
-
     paper-button.colorful {
       color: #4285f4;
     }
-
     paper-button[raised].colorful {
       background: var(--default-primary-color);
       color: #fff;
       margin: 10px;
     }
-
     .login-card {
       background-color: #fff;
       padding: 1em;
       max-width: 400px;
     }
-
     .login-button-card {
       background-color: #fff;
       text-align: right;
-      padding: 0 1em 0 1em;
+      padding: 0 1em;
       max-width: 400px;
       margin-bottom: 1em;
     }
-
     h2 {
       text-align: center;
       -webkit-font-smoothing: antialiased;
@@ -39,7 +34,6 @@
       margin-top: 0;
       margin-bottom: 20px;
     }
-
     h3 {
       text-align: center;
       font-family: 'Open Sans', arial;
@@ -49,41 +43,37 @@
       font-weight: 400;
       margin-bottom: 20px;
     }
-
     .user-image {
       border-radius: 100%;
       display: block;
       height: 100px;
       width: 100px;
-      margin: 10px auto 10px auto;
+      margin: 10px auto;
     }
-
     .signUpLink {
       padding: 1em;
       text-decoration: none;
     }
-
     .forgotPassword {
       text-align: center;
       display: block;
     }
-
     .forgotPassword a,
     .forgotPassword a:visited {
       text-decoration: none;
     }
-
     .forgotPassword a:hover {
       text-decoration: underline;
     }
+
   </style>
   <template>
     <paper-material elevation="1" class="animated bounceInUp login-card">
       <h2 class="paper-font-display2">Sign In</h2>
       <h3>Sign in to use Jarvis.</h3>
       <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{getDefaultAvatar()}}"></iron-image>
-      <gold-email-input id="email" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
-      <paper-input label="Password" error-message="Please enter a valid password" id="loginPassword" type="password" required></paper-input>
+      <gold-email-input id="email" label="User ID (yourname@domain.com)" on-keypress="_keyPressed" error-message="Please enter a valid email" auto-validate required></gold-email-input>
+      <paper-input id="loginPassword" label="Password" on-keypress="_keyPressed" type="password" error-message="Please enter a valid password" required></paper-input>
     </paper-material>
 
     <paper-material class="animated bounceInUp login-button-card">
@@ -129,8 +119,15 @@
             app.$.toast.text = 'Successfully logged in.';
             app.$.toast.show();
           }
-        },{remember: 'sessionOnly'});
+        }, {remember: 'sessionOnly'});
+      },
+
+      _keyPressed: function(e) {
+        if (e.which === 13 || e.keyCode === 13) {
+          this.logIn();
+        }
       }
+
     });
   </script>
 </dom-module>

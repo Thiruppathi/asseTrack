@@ -164,13 +164,22 @@
 
       validateAndCreateAsset: function() {
         var assetForm = document.getElementById('createAssetForm');
-        if (assetForm.checkValidity()) {
+
+        if (assetForm.checkValidity() && this.hasPicture()) {
           this.createAsset();
+        } else if (assetForm.checkValidity() && !this.hasPicture()) {
+          document.getElementById('assetErrToast').text = 'Upload a Photo of your asset.';
+          document.getElementById('assetErrToast').show();
         } else {
           this.validateForm();
           document.getElementById('assetErrToast').text = 'Enter values for highlighted fields.';
           document.getElementById('assetErrToast').show();
         }
+      },
+
+      hasPicture: function() {
+        var pictureValue = document.querySelector('#squareImage').querySelector('iron-image').src;
+        return (pictureValue==="" ? false : true);
       },
 
       createAsset: function() {
@@ -179,13 +188,10 @@
         var picture = document.querySelector('#squareImage').querySelector('iron-image').src || app.defaultAssetIcon;
         var brand = document.getElementById('brand').value;
         var model = document.getElementById('model').value;
-        var assignedTo = document.getElementById('assignedTo').value;
-        var checkedOutBy = document.getElementById('checkedOutBy').value;
         var description = document.getElementById('description').value;
         var imei = document.getElementById('imei').value;
         var location = document.getElementById('location').value;
         var currentCompany = document.getElementById('currentCompany').value;
-        var currentUser = document.getElementById('currentUser').value;
         var oldAssetId = document.getElementById('oldAssetId').value;
         var screenResolution = document.getElementById('screenResolution').value;
         var platform = document.getElementById('platform').selected;
@@ -212,13 +218,10 @@
             'oldAssetId': oldAssetId,
             'brand': brand,
             'model': model,
-            'assignedTo': assignedTo,
-            'checkedOutBy': checkedOutBy,
             'description': description,
             'imei': imei,
             'location': location,
             'currentCompany': currentCompany,
-            'currentUser': currentUser,
             'screenResolution': screenResolution,
             'platform': platform,
             'osVersion': osVersion,

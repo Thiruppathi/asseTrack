@@ -3,99 +3,177 @@
     :host {
       display: block;
     }
-
     paper-button.colorful {
       color: #4285f4;
     }
-
     paper-material {
-      max-width: 764px;
-      padding: 1em;
+      max-width: 670px;
+      min-width: 300px;
+      padding: 0 0 5em;
     }
-
     paper-button[raised].colorful {
       background: var(--default-primary-color);
       color: #fff;
       margin: 10px;
+      vertical-align: middle;
     }
-
     h4 {
       display: inline-block;
+      margin-bottom: 0.25em;
+      padding: 0 1em 0 1em;
     }
-
     h2 {
       text-align: center;
+      color: var(--default-primary-color);
     }
-    #osVersion {
+    paper-input {
+      display: inline-block;
+      min-width: 300px;
+      padding-right: 1em;
+      text-align: left;
+    }
+    #platform {
       display: inline-block;
     }
-
+    #osVersion {
+      width: 150px;
+      max-width: 150px;
+      min-width: 150px;
+      display: inline-block;
+      padding-left: 1em;
+    }
     #squareImage {
-      text-align: center;
+      text-align: right;
+    }
+    .right {
+      float: right;
+    }
+
+    .left {
+      float: left;
+    }
+    #assetErrToast {
+      --paper-toast-background-color: #db4437;
+      --paper-toast-color: white;
+      z-index: 1;
+    }
+    #assetErrToast .toast-hide-button {
+      color: #eeff41;
+      font-weight: bold;
+      margin: 10px;
+    }
+    .assetHeader {
       padding: 1em;
-      margin: 1em;
+      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+    }
+    .assetFields {
+      padding: 1em;
     }
 
   </style>
   <template>
     <paper-material elevation="1" class="animated bounceInUp">
-    <h2 class="paper-font-display2">Create Asset</h2>
-    <img-base64 id="squareImage" width="150px" height="150px" title="Select your profile Image" placeholder="" class="circle"></img-base64>
-    <paper-input label="Asset Id" id="assetId" error-message="Enter an Asset Id" auto-validate required></paper-input>
-    <paper-input label="Brand" id="brand" error-message="Enter Brand Name (Apple, Samsung, LG, Nokia, etc.,)" auto-validate required></paper-input>
-    <paper-input label="Model" id="model" error-message="Enter Model Name (iPhone5, iPhone6s, Nexus5)" auto-validate required></paper-input>
+      <form is="iron-form" id="createAssetForm">
+        <div class="assetHeader">
+          <h2 class="paper-font-display2 left">Create Asset</h2>
+          <img-base64 id="squareImage" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAssetIcon()}}" class="circle"></img-base64>
+        </div>
 
-    <paper-input label="Assigned To" id="assignedTo" error-message="Enter name " auto-validate required></paper-input>
-    <paper-input label="Checked Out By" id="checkedOutBy"></paper-input>
-    <paper-input label="Description" id="description" error-message="" auto-validate required></paper-input>
-    <paper-input label="IMEI Number" id="imei" error-message="" auto-validate required></paper-input>
-    <paper-input label="Location" id="location" error-message="" auto-validate required></paper-input>
-    <paper-input label="Currently Owned By Company" id="currentCompany" error-message="" auto-validate required></paper-input>
-    <paper-input label="Currently Owned By User" id="currentUser" error-message="" ></paper-input>
-    <paper-input label="Screen Resolution" id="screenResolution" error-message="" auto-validate required></paper-input>
+        <div class="assetFields">
+          <paper-input label="Brand" id="brand" error-message="Brand Name (Apple, Samsung, LG, Nokia, etc.,)" auto-validate required></paper-input>
+          <paper-input label="Model" id="model" error-message="Model Name (iPhone5, iPhone6s, Nexus5)" auto-validate required></paper-input>
+          <paper-input label="Description" id="description" error-message="Additional Details e.g. White Color, Jelly Bean, Marshmallow, etc.," auto-validate required></paper-input>
+          <paper-input label="IMEI Number" id="imei" error-message="IMEI Number" auto-validate required></paper-input>
+          <paper-input label="Location" id="location" error-message="the Location of the asset. e.g. Leeds, Padington, Bangalore, Minsk" auto-validate required></paper-input>
+          <paper-input label="Currently Owned By Company" id="currentCompany" error-message="the Current Owner of the Asset. e.g. NTT Data, EE, Accenture"></paper-input>
+          <paper-input label="Screen Resolution" id="screenResolution" error-message="Screen Resolution" auto-validate required></paper-input>
+          <paper-input label="Old Asset Id" id="oldAssetId" error-message="Old Asset Id"></paper-input>
+        </div>
 
-    <div>
-      <h4><b>Operating System</b></h4>
-      <paper-radio-group selected="android" id="platform" auto-validate required>
-        <paper-radio-button name="android">Android</paper-radio-button>
-        <paper-radio-button name="ios">iOS</paper-radio-button>
-        <paper-radio-button name="windows">Windows</paper-radio-button>
-        <paper-radio-button name="blackberry">Black Berry</paper-radio-button>
-      </paper-radio-group>
-      <paper-input label="OS Version" id="osVersion" auto-validate required></paper-input>
+        <h4>
+          <b>Operating System</b>
+        </h4>
+        <div>
+          <paper-radio-group selected="android" id="platform" auto-validate required>
+            <paper-radio-button name="android">Android</paper-radio-button>
+            <paper-radio-button name="ios">iOS</paper-radio-button>
+            <paper-radio-button name="windows">Windows</paper-radio-button>
+            <paper-radio-button name="blackberry">Black Berry</paper-radio-button>
+          </paper-radio-group>
+          <paper-input label="OS Version" id="osVersion" error-message="OS version" auto-validate required></paper-input>
 
-    </div>
+        </div>
 
-    <div>
-      <h4><b>Condition</b></h4>
-      <paper-radio-group selected="yes" id="assetCondition" auto-validate required>
-        <paper-radio-button name="yes">Working</paper-radio-button>
-        <paper-radio-button name="no">Faulty</paper-radio-button>
-      </paper-radio-group>
-      <paper-checkbox id="isOutdated">Outdated</paper-checkbox>
-    </div>
+        <h4>
+          <b>Condition</b>
+        </h4>
+        <div>
 
-    <div>
-      <h4><b>Available</b></h4>
-      <paper-radio-group selected="yes" id="availability" auto-validate required>
-        <paper-radio-button name="yes">Yes</paper-radio-button>
-        <paper-radio-button name="no">No</paper-radio-button>
-      </paper-radio-group>
-    </div>
-    <paper-button tabindex="0" raised class="colorful" on-click="createAsset">Create Asset</paper-button>
-  </paper-material>
+          <paper-radio-group selected="yes" id="assetCondition" auto-validate required>
+            <paper-radio-button name="yes">Working</paper-radio-button>
+            <paper-radio-button name="no">Faulty</paper-radio-button>
+          </paper-radio-group>
+          <paper-checkbox id="isOutdated">Outdated</paper-checkbox>
+        </div>
+
+        <h4>
+          <b>Available</b>
+        </h4>
+        <div>
+          <paper-radio-group selected="yes" id="availability" auto-validate required>
+            <paper-radio-button name="yes">Yes</paper-radio-button>
+            <paper-radio-button name="no">No</paper-radio-button>
+          </paper-radio-group>
+        </div>
+        <paper-toast id="assetErrToast">
+          <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+        </paper-toast>
+        <paper-button tabindex="0" raised class="colorful right" on-click="validateAndCreateAsset" id="createAssetButton">
+          <paper-spinner id="spinner" hidden></paper-spinner>
+          Create Asset
+        </paper-button>
+      </form>
+    </paper-material>
 
   </template>
 
   <script>
     Polymer({
       is: 'create-asset',
+      getTotalAssets: function() {
+        var totalAssets = 0;
+        app.db.child('totalAssets').on('value', function(snapshot) {
+          totalAssets = snapshot.val();
+        });
+        return totalAssets;
+      },
+
+      validateForm: function() {
+        var elements = document.querySelectorAll('paper-input');
+        for (var i = 0; i < elements.length; i++) {
+          elements[i].validate();
+        }
+      },
+
+      getAssetIcon: function() {
+        return app.defaultAssetIcon;
+      },
+
+      validateAndCreateAsset: function() {
+        var assetForm = document.getElementById('createAssetForm');
+        if (assetForm.checkValidity()) {
+          this.createAsset();
+        } else {
+          this.validateForm();
+          document.getElementById('assetErrToast').text = 'Enter values for highlighted fields.';
+          document.getElementById('assetErrToast').show();
+        }
+      },
 
       createAsset: function() {
-        console.log('Initiating Asset Creation');
+        var totalAssets = this.getTotalAssets();
         var assetsRef = new Firebase(app.env.db.assets);
-        var picture = document.querySelector('#squareImage').querySelector('iron-image').src;
-        var assetId = document.getElementById('assetId').value;
+        var picture = document.querySelector('#squareImage').querySelector('iron-image').src || app.defaultAssetIcon;
         var brand = document.getElementById('brand').value;
         var model = document.getElementById('model').value;
         var assignedTo = document.getElementById('assignedTo').value;
@@ -105,38 +183,56 @@
         var location = document.getElementById('location').value;
         var currentCompany = document.getElementById('currentCompany').value;
         var currentUser = document.getElementById('currentUser').value;
+        var oldAssetId = document.getElementById('oldAssetId').value;
         var screenResolution = document.getElementById('screenResolution').value;
         var platform = document.getElementById('platform').selected;
         var osVersion = document.getElementById('osVersion').value;
         var assetCondition = document.getElementById('assetCondition').selected;
-        var isOutdated =  document.getElementById('isOutdated').checked;
+        var isOutdated = document.getElementById('isOutdated').checked;
         var availability = document.getElementById('availability').selected;
         var createdOn = Firebase.ServerValue.TIMESTAMP;
+        var assetId = 0;
 
-        assetsRef.child(assetId).set({
-          'picture': picture,
-          'assetId': assetId,
-          'brand': brand,
-          'model': model,
-          'assignedTo': assignedTo,
-          'checkedOutBy': checkedOutBy,
-          'description': description,
-          'imei': imei,
-          'location': location,
-          'currentCompany': currentCompany,
-          'currentUser': currentUser,
-          'screenResolution': screenResolution,
-          'platform': platform,
-          'osVersion': osVersion,
-          'assetCondition': assetCondition,
-          'isOutdated': isOutdated,
-          'availability': availability,
-          'createdOn': createdOn
-        });
-        app.$.toast.text = 'Successfully created asset.';
-        app.$.toast.duration = 5000;
-        app.$.toast.show();
-        page.redirect(app.baseUrl + 'assets');
+        if (totalAssets !== undefined) {
+          var currentCount = totalAssets + 1;
+          var idPrefix = 'EE';
+          if (currentCount < 10) {
+            idPrefix = idPrefix + '00';
+          } else if (currentCount >= 10 && currentCount < 100) {
+            idPrefix = idPrefix + '0';
+          }
+          assetId = idPrefix + currentCount;
+          console.log('Initiating Asset Creation with assetId', assetId);
+          assetsRef.child(assetId).set({
+            'picture': picture,
+            'assetId': assetId,
+            'oldAssetId': oldAssetId,
+            'brand': brand,
+            'model': model,
+            'assignedTo': assignedTo,
+            'checkedOutBy': checkedOutBy,
+            'description': description,
+            'imei': imei,
+            'location': location,
+            'currentCompany': currentCompany,
+            'currentUser': currentUser,
+            'screenResolution': screenResolution,
+            'platform': platform,
+            'osVersion': osVersion,
+            'assetCondition': assetCondition,
+            'isOutdated': isOutdated,
+            'availability': availability,
+            'createdOn': createdOn
+          });
+          app.db.child('totalAssets').set(currentCount);
+          app.$.toast.text = 'Successfully created asset.';
+          app.$.toast.duration = 5000;
+          app.$.toast.show();
+          page.redirect(app.baseUrl + 'assets');
+        } else {
+          document.getElementById('assetErrToast').text = 'Failure: Asset Creation. RETRY';
+          document.getElementById('assetErrToast').show();
+        }
       }
     });
   </script>

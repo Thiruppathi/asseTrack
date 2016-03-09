@@ -25,6 +25,7 @@
     h2 {
       text-align: center;
       color: var(--default-primary-color);
+      font-weight: lighter;
     }
     paper-input {
       display: inline-block;
@@ -53,18 +54,20 @@
       float: left;
     }
     #assetErrToast {
-      --paper-toast-background-color: #db4437;
-      --paper-toast-color: white;
-      z-index: 1;
+      --paper-toast-background-color: #a94442;
+      --paper-toast-color: #f2dede;
     }
     #assetErrToast .toast-hide-button {
-      color: #eeff41;
+      color: #f2dede;
       font-weight: bold;
       margin: 10px;
     }
     .assetHeader {
       padding: 1em;
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+      background: #ECE9E6; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #ECE9E6 , #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     .assetFields {
       padding: 1em;

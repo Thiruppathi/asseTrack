@@ -27,7 +27,7 @@
       font-weight: lighter;
     }
 
-    #circleImage {
+    #userAvatar {
       text-align: center;
     }
 
@@ -57,12 +57,12 @@
       margin-top: 2em;
     }
 
-    #errorToast {
+    #signUpErrorToast {
       --paper-toast-background-color: #a94442;
       --paper-toast-color: #f2dede;
     }
 
-    #errorToast .toast-hide-button {
+    #signUpErrorToast .toast-hide-button {
       color: #f2dede;
       font-weight: bold;
       margin: 10px;
@@ -89,7 +89,7 @@
       <form is="iron-form" id="createUserForm">
       <div class="userHeader">
         <h2 class="paper-font-display2">Create your Jarvis Account</h2>
-        <img-base64 id="circleImage" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAvatar()}}"></img-base64>
+        <img-base64 id="userAvatar" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAvatar()}}"></img-base64>
       </div>
       <div class="userFields">
         <paper-input label="First Name" id="firstName" error-message="Please enter your First Name" auto-validate required></paper-input>
@@ -106,7 +106,7 @@
         <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
       </div>
       <div class="">
-        <paper-toast id="errorToast">
+        <paper-toast id="signUpErrorToast">
           <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
         </paper-toast>
         <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
@@ -137,21 +137,29 @@
         }
       },
 
+      hasPicture: function() {
+        var pictureValue = document.querySelector('#userAvatar').querySelector('iron-image').src;
+        return (pictureValue === '' ? false : true);
+      },
+
       signUp: function() {
         var userForm = document.getElementById('createUserForm');
-        if (userForm.checkValidity()) {
+        if (userForm.checkValidity() && this.hasPicture()) {
           this.createUserAccount();
+        } else if (userForm.checkValidity() && !this.hasPicture()) {
+          document.getElementById('signUpErrorToast').text = 'Upload an Avatar of yourself.';
+          document.getElementById('signUpErrorToast').show();
         } else {
           this.validateForm();
-          document.getElementById('errorToast').text = 'Enter values for highlighted fields.';
-          document.getElementById('errorToast').show();
+          document.getElementById('signUpErrorToast').text = 'Enter values for highlighted fields.';
+          document.getElementById('signUpErrorToast').show();
         }
       },
 
       createUserAccount: function() {
         console.log('Creating new Account...');
         var userRef = new Firebase(app.env.db.baseUrl);
-        var picture = document.querySelector('#circleImage').querySelector('iron-image').src;
+        var picture = document.querySelector('#userAvatar').querySelector('iron-image').src;
         var firstName = document.getElementById('firstName').value;
         var lastName = document.getElementById('lastName').value;
         var designation = document.getElementById('designation').value;
@@ -172,8 +180,8 @@
         }, function(error, userData) {
           if (error) {
             console.log('Error creating new Account:', error);
-            app.$.errorToast.text = 'Error creating new Account:';
-            app.$.errorToast.show();
+            app.$.signUpErrorToast.text = 'Error creating new Account:';
+            app.$.signUpErrorToast.show();
           } else {
             userRef.child('users').child(userData.uid).set({
               'uid': userData.uid,

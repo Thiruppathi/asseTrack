@@ -23,20 +23,24 @@
     asset-info {
       margin-right: 0.5em;
     }
-
+    paper-badge {
+      --paper-badge-background: var(--default-primary-color);
+    }
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeFbHref(empid)]]" data="{{user}}"></firebase-document>
     <paper-material class="user-header" id="[[empid]]">
+      <template is="dom-if" if="{{computeNoOfDevices(user)}}">
+        <div class="badgeDiv">
+            <paper-badge label="{{computeNoOfDevices(user)}}" for="[[empid]]"></paper-badge>
+        </div>
+      </template>
       <img src={{computeProfilePic(user)}} id="user-image">
       <h3>{{computeFullName(user)}}</h3>
       <p>{{user.emailId}}</p>
       <p><span>{{user.practice}}</span>&nbsp;|&nbsp;<span>{{user.companyName}}</span></p>
       <p>{{user.projects}}</p>
       <p><span>{{user.location}}</span>&nbsp;|&nbsp;<span>{{user.phoneNo}}</span></p>
-      <p>
-        <span>No of Devices: </span>&nbsp;<span>{{computeNoOfDevices(user)}}</span>
-      </p>
     </paper-material>
     <section class="layout horizontal wrap asset-info-panel">
       <template is="dom-repeat" items="[[computeAssetHistory(user)]]" as="asset" id="assetList">

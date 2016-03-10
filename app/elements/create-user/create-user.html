@@ -16,38 +16,34 @@
     }
 
     paper-material {
-      max-width: 700px;
-      padding: 0.5em;
-      text-align: center;
+      max-width: 575px;
       min-width: 350px;
-      margin: 0 auto;
-      padding-bottom: 5em;
+      padding-bottom: 6em;
     }
 
     h2 {
       text-align: center;
+      color: var(--default-primary-color);
+      font-weight: lighter;
     }
 
     #circleImage {
       text-align: center;
-      padding: 1em;
-      margin: 1em;
     }
 
     paper-input,
     gold-email-input {
       display: inline-block;
-      min-width: 300px;
+      min-width: 250px;
       padding-right: 1em;
       text-align: left;
     }
 
     .signInLink {
       text-align: center;
-      max-width: 700px;
+      max-width: 575px;
       text-decoration: none;
-      margin: 0 auto;
-      margin-top: 1em;
+      margin-top: 1.5em;
       margin-bottom: 1em;
 
     }
@@ -75,12 +71,27 @@
     .right {
       float: right;
     }
+
+    .userHeader {
+      padding: 1em;
+      min-height: 135px;
+      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+      background: #ECE9E6; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #ECE9E6 , #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .userFields {
+      padding: 1em 1em 1em 1em;
+    }
   </style>
   <template>
     <paper-material elevation="1" class="animated bounceInUp">
       <form is="iron-form" id="createUserForm">
-      <h2 class="paper-font-display2">Create your Jarvis Account</h2>
+      <div class="userHeader">
+        <h2 class="paper-font-display2">Create your Jarvis Account</h2>
         <img-base64 id="circleImage" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAvatar()}}"></img-base64>
+      </div>
+      <div class="userFields">
         <paper-input label="First Name" id="firstName" error-message="Please enter your First Name" auto-validate required></paper-input>
         <paper-input label="Last Name" id="lastName" error-message="Please enter your Second Name" auto-validate required></paper-input>
         <paper-input label="Designation" id="designation" error-message="Please enter your designation or Job Title" auto-validate required></paper-input>
@@ -93,13 +104,13 @@
         <paper-input label="Location" id="location" error-message="Please enter your work location" auto-validate required></paper-input>
         <gold-email-input id="emailId" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
         <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
-        <div class="">
-          <paper-toast id="errorToast">
-            <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-          </paper-toast>
-          <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
-        </div>
-
+      </div>
+      <div class="">
+        <paper-toast id="errorToast">
+          <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+        </paper-toast>
+        <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
+      </div>
       </form>
     </paper-material>
 

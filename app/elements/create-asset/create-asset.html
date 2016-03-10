@@ -74,6 +74,8 @@
 
   </style>
   <template>
+    <firebase-document id="getStatistics" location="[[computeAssetStatsLocation()]]" data="{{stats}}"></firebase-document>
+    <span hidden>{{computeTotalAssets(stats)}}</span>
     <paper-material elevation="1" class="animated bounceInUp">
       <form is="iron-form" id="createAssetForm">
         <div class="assetHeader">
@@ -82,11 +84,13 @@
         </div>
 
         <div class="assetFields">
+          <paper-input label="Total Assets Available" id="currentAssetTotal" hidden value="{{stats.totalAssets}}"></paper-input>
+
           <paper-input label="Brand" id="brand" error-message="Brand Name (Apple, Samsung, LG, Nokia, etc.,)" auto-validate required></paper-input>
           <paper-input label="Model" id="model" error-message="Model Name (iPhone5, iPhone6s, Nexus5)" auto-validate required></paper-input>
           <paper-input label="Description" id="description" error-message="Additional Details e.g. White Color, Jelly Bean, Marshmallow, etc.," auto-validate required></paper-input>
           <paper-input label="IMEI Number" id="imei" error-message="IMEI Number" auto-validate required></paper-input>
-          <paper-input label="Location" id="location" error-message="the Location of the asset. e.g. Leeds, Padington, Bangalore, Minsk" auto-validate required></paper-input>
+          <paper-input label="Location" id="locatedAt" error-message="the Location of the asset. e.g. Leeds, Padington, Bangalore, Minsk" auto-validate required></paper-input>
           <paper-input label="Currently Owned By Company" id="currentCompany" error-message="the Current Owner of the Asset. e.g. NTT Data, EE, Accenture"></paper-input>
           <paper-input label="Screen Resolution" id="screenResolution" error-message="Screen Resolution" auto-validate required></paper-input>
           <paper-input label="Old Asset Id" id="oldAssetId" error-message="Old Asset Id"></paper-input>
@@ -117,16 +121,6 @@
           </paper-radio-group>
           <paper-checkbox id="isOutdated">Outdated</paper-checkbox>
         </div>
-
-        <h4>
-          <b>Available</b>
-        </h4>
-        <div>
-          <paper-radio-group selected="yes" id="availability" auto-validate required>
-            <paper-radio-button name="yes">Yes</paper-radio-button>
-            <paper-radio-button name="no">No</paper-radio-button>
-          </paper-radio-group>
-        </div>
         <paper-toast id="assetErrToast">
           <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
         </paper-toast>
@@ -142,10 +136,19 @@
   <script>
     Polymer({
       is: 'create-asset',
+      computeAssetStatsLocation: function() {
+        return app.env.db.baseUrl + '/stats';
+      },
+
+      computeTotalAssets: function(stats) {
+        app.totalAssets = stats.totalAssets;
+        return stats.totalAssets;
+      },
 
       computeAssetsSize: function(assets) {
         return assets.length;
       },
+
       validateAndCreateAsset: function() {
         var assetForm = document.getElementById('createAssetForm');
         if (assetForm.checkValidity() && this.hasPicture()) {
@@ -166,19 +169,10 @@
       },
 
       createAsset: function() {
-        var totalAssets = this.getTotalAssets();
-        var assetId = '';
-        if (totalAssets !== undefined) {
-          var currentCount = totalAssets + 1;
-          var idPrefix = 'EE';
-          if (currentCount > 0 && currentCount < 10) {
-            idPrefix = idPrefix + '00';
-          } else if (currentCount >= 10 && currentCount < 100) {
-            idPrefix = idPrefix + '0';
-          }
-          assetId = idPrefix + currentCount;
-          this.pushAssetToDB(assetId, currentCount);
-
+        var counter = 1;
+        if (app.totalAssets !== undefined) {
+          counter = app.totalAssets + 1;
+          this.pushAssetToDB(counter);
         } else {
           document.getElementById('assetErrToast').text = 'Failure: Asset Creation. RETRY';
           document.getElementById('assetErrToast').show();
@@ -196,8 +190,8 @@
         return app.defaultAssetIcon;
       },
 
-      pushAssetToDB: function(assetId, currentCount) {
-        console.log('Initiating Asset Creation with assetId', assetId);
+      pushAssetToDB: function(counter) {
+        var assetId = 'EE' + counter;
         app.db.child('assets').child(assetId).set({
           'assetId': assetId,
           'picture': document.querySelector('#squareImage').querySelector('iron-image').src,
@@ -206,17 +200,17 @@
           'model': document.getElementById('model').value,
           'description': document.getElementById('description').value,
           'imei': document.getElementById('imei').value,
-          'location': document.getElementById('location').value,
+          'locatedAt': document.getElementById('locatedAt').value,
           'currentCompany': document.getElementById('currentCompany').value,
           'screenResolution': document.getElementById('screenResolution').value,
           'platform': document.getElementById('platform').selected,
           'osVersion': document.getElementById('osVersion').value,
           'assetCondition': document.getElementById('assetCondition').selected,
           'isOutdated': document.getElementById('isOutdated').checked,
-          'availability': document.getElementById('availability').selected,
+          'availability': 'yes',
           'createdOn': Firebase.ServerValue.TIMESTAMP
         });
-        app.db.child('totalAssets').set(currentCount);
+        app.db.child('stats').set({'totalAssets': counter});
         app.$.toast.text = 'Successfully created asset.';
         app.$.toast.duration = 5000;
         app.$.toast.show();

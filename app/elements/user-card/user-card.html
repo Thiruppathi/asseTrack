@@ -66,6 +66,25 @@
       color: #777;
       font-size: 13px;
     }
+
+    .deviceStatus {
+      float: right;
+      margin-right: 0.25em;
+    }
+
+    paper-badge {
+      --paper-badge-width: 30px;
+      --paper-badge-height: 30px;
+      --paper-badge-background:var(--default-primary-color);
+    }
+
+    .badgeDiv {
+      position: relative;
+      float: right;
+      margin-right: 25px;
+      margin-top: 5px;
+    }
+
   </style>
   <template>
     <a data-route="user-info" href="[[computeHref(user)]]" class="user-card-inner">
@@ -74,6 +93,11 @@
           <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{computeProfilePic(user)}}"></iron-image>
           <h4>{{computeFullName(user)}}</h4>
           <p class="user-title">{{computeTitle(user)}}</p>
+          <template is="dom-if" if="{{computeNoOfDevices(user)}}">
+            <div class="badgeDiv">
+                <paper-badge label="{{computeNoOfDevices(user)}}"></paper-badge>
+            </div>
+          </template>
         </div>
         <div class="user-card-footer">
           <p class="project-info">{{computeProject(user)}}</p>
@@ -109,6 +133,16 @@
       },
       computeProject: function(user) {
         return user.projects || 'Bench';
+      },
+      computeNoOfDevices: function(user) {
+        var obj = (user) ? user.assets : null;
+        var arr = [];
+        if (obj) {
+          arr = Object.keys(obj).map(function(k) {
+            return obj[k];
+          });
+        }
+        return arr.length;
       }
     });
   </script>

@@ -20,7 +20,7 @@
     h4 {
       display: inline-block;
       margin-bottom: 0.25em;
-      padding: 0 1em 0 1em;
+      padding: 0 1em;
     }
     h2 {
       text-align: center;
@@ -49,7 +49,6 @@
     .right {
       float: right;
     }
-
     .left {
       float: left;
     }
@@ -143,28 +142,12 @@
   <script>
     Polymer({
       is: 'create-asset',
-      getTotalAssets: function() {
-        var totalAssets = 0;
-        app.db.child('totalAssets').on('value', function(snapshot) {
-          totalAssets = snapshot.val();
-        });
-        return totalAssets;
-      },
 
-      validateForm: function() {
-        var elements = document.querySelectorAll('paper-input');
-        for (var i = 0; i < elements.length; i++) {
-          elements[i].validate();
-        }
+      computeAssetsSize: function(assets) {
+        return assets.length;
       },
-
-      getAssetIcon: function() {
-        return app.defaultAssetIcon;
-      },
-
       validateAndCreateAsset: function() {
         var assetForm = document.getElementById('createAssetForm');
-
         if (assetForm.checkValidity() && this.hasPicture()) {
           this.createAsset();
         } else if (assetForm.checkValidity() && !this.hasPicture()) {
@@ -179,66 +162,65 @@
 
       hasPicture: function() {
         var pictureValue = document.querySelector('#squareImage').querySelector('iron-image').src;
-        return (pictureValue==="" ? false : true);
+        return (pictureValue === '' ? false : true);
       },
 
       createAsset: function() {
         var totalAssets = this.getTotalAssets();
-        var assetsRef = new Firebase(app.env.db.assets);
-        var picture = document.querySelector('#squareImage').querySelector('iron-image').src || app.defaultAssetIcon;
-        var brand = document.getElementById('brand').value;
-        var model = document.getElementById('model').value;
-        var description = document.getElementById('description').value;
-        var imei = document.getElementById('imei').value;
-        var location = document.getElementById('location').value;
-        var currentCompany = document.getElementById('currentCompany').value;
-        var oldAssetId = document.getElementById('oldAssetId').value;
-        var screenResolution = document.getElementById('screenResolution').value;
-        var platform = document.getElementById('platform').selected;
-        var osVersion = document.getElementById('osVersion').value;
-        var assetCondition = document.getElementById('assetCondition').selected;
-        var isOutdated = document.getElementById('isOutdated').checked;
-        var availability = document.getElementById('availability').selected;
-        var createdOn = Firebase.ServerValue.TIMESTAMP;
-        var assetId = 0;
-
+        var assetId = '';
         if (totalAssets !== undefined) {
           var currentCount = totalAssets + 1;
           var idPrefix = 'EE';
-          if (currentCount < 10) {
+          if (currentCount > 0 && currentCount < 10) {
             idPrefix = idPrefix + '00';
           } else if (currentCount >= 10 && currentCount < 100) {
             idPrefix = idPrefix + '0';
           }
           assetId = idPrefix + currentCount;
-          console.log('Initiating Asset Creation with assetId', assetId);
-          assetsRef.child(assetId).set({
-            'picture': picture,
-            'assetId': assetId,
-            'oldAssetId': oldAssetId,
-            'brand': brand,
-            'model': model,
-            'description': description,
-            'imei': imei,
-            'location': location,
-            'currentCompany': currentCompany,
-            'screenResolution': screenResolution,
-            'platform': platform,
-            'osVersion': osVersion,
-            'assetCondition': assetCondition,
-            'isOutdated': isOutdated,
-            'availability': availability,
-            'createdOn': createdOn
-          });
-          app.db.child('totalAssets').set(currentCount);
-          app.$.toast.text = 'Successfully created asset.';
-          app.$.toast.duration = 5000;
-          app.$.toast.show();
-          page.redirect(app.baseUrl + 'assets');
+          this.pushAssetToDB(assetId, currentCount);
+
         } else {
           document.getElementById('assetErrToast').text = 'Failure: Asset Creation. RETRY';
           document.getElementById('assetErrToast').show();
         }
+      },
+
+      validateForm: function() {
+        var elements = document.querySelectorAll('paper-input');
+        for (var i = 0; i < elements.length; i++) {
+          elements[i].validate();
+        }
+      },
+
+      getAssetIcon: function() {
+        return app.defaultAssetIcon;
+      },
+
+      pushAssetToDB: function(assetId, currentCount) {
+        console.log('Initiating Asset Creation with assetId', assetId);
+        app.db.child('assets').child(assetId).set({
+          'assetId': assetId,
+          'picture': document.querySelector('#squareImage').querySelector('iron-image').src,
+          'oldAssetId': document.getElementById('oldAssetId').value,
+          'brand': document.getElementById('brand').value,
+          'model': document.getElementById('model').value,
+          'description': document.getElementById('description').value,
+          'imei': document.getElementById('imei').value,
+          'location': document.getElementById('location').value,
+          'currentCompany': document.getElementById('currentCompany').value,
+          'screenResolution': document.getElementById('screenResolution').value,
+          'platform': document.getElementById('platform').selected,
+          'osVersion': document.getElementById('osVersion').value,
+          'assetCondition': document.getElementById('assetCondition').selected,
+          'isOutdated': document.getElementById('isOutdated').checked,
+          'availability': document.getElementById('availability').selected,
+          'createdOn': Firebase.ServerValue.TIMESTAMP
+        });
+        app.db.child('totalAssets').set(currentCount);
+        app.$.toast.text = 'Successfully created asset.';
+        app.$.toast.duration = 5000;
+        app.$.toast.show();
+        page.redirect(app.baseUrl + 'assets');
       }
     });
   </script>

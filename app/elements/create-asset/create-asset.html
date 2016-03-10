@@ -63,6 +63,7 @@
     }
     .assetHeader {
       padding: 1em;
+      min-height: 135px;
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
       background: #ECE9E6; /* fallback for old browsers */
       background: -webkit-linear-gradient(to right, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
@@ -80,7 +81,7 @@
       <form is="iron-form" id="createAssetForm">
         <div class="assetHeader">
           <h2 class="paper-font-display2 left">Create Asset</h2>
-          <img-base64 id="squareImage" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAssetIcon()}}" class="circle"></img-base64>
+          <img-base64 id="squareImage" width="125px" height="125px" title="Select your profile Image" placeholder="{{getAssetIcon()}}" class="circle"></img-base64>
         </div>
 
         <div class="assetFields">

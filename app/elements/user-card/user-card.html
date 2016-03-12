@@ -86,7 +86,7 @@
   </style>
   <template>
     <a data-route="user-info" href="[[computeHref(user)]]" class="user-card-inner">
-      <paper-material class="animated bounceInUp user-card" id="[[user.uid]]">
+      <paper-material class="animated bounceInUp user-card" id="[[user.empId]]">
         <div class="user-card-header">
           <iron-image class="user-image" size="50" sizing="contain" preload fade src="{{computeProfilePic(user)}}"></iron-image>
           <h4>{{computeFullName(user)}}</h4>

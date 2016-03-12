@@ -150,7 +150,7 @@
           <div class="batteryInfo">
             <iron-icon icon="{{computeBatteryLevel(asset)}}" class$="{{computeLevelColor(asset)}}"></iron-icon>
             <span class="batteryLevelInfo">
-              {{asset.batteryStatus.level}}<span>%</span></span>
+              {{computeBatteryStatusLevel(asset.batteryStatus.level)}}</span>
           </div>
 
           <iron-image src="{{asset.picture}}" preload sizing="cover"></iron-image>
@@ -218,6 +218,9 @@
         }
 
         return levelColor;
+      },
+      computeBatteryStatusLevel: function(level) {
+        return (level) ? (level + '%') : '';
       },
       computeBatteryLevel: function(asset) {
         var levelIcon = 'device:battery-unknown';

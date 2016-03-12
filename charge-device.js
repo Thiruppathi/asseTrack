@@ -11,10 +11,17 @@ board.once('ready', function() {
 
   var ee1_led13 = new five.Led(13);
 
-  assetsRef.child('EE1').child('batteryStatus').on("value", function(snapshot) {
+  assetsRef.child('EE4').child('batteryStatus').on("value", function(snapshot) {
     var ee1BatteryLevel = snapshot.child('level').val();
     var isDocked = snapshot.child('isDocked').val();
-    isOn = (isDocked && ee1BatteryLevel<=20) ? true : false;
+    if (isDocked && ee1BatteryLevel === 100) {
+      isOn = false;
+    } else if (isDocked && ee1BatteryLevel !== 100) {
+      isOn = true;
+    } else if (!isDocked) {
+      isOn = false;
+    }
+
     isOn ? ee1_led13.on() : ee1_led13.off();
     console.log('At End ' + isOn);
   });

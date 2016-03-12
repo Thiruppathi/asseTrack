@@ -58,6 +58,29 @@
     .asset-details .value {
       text-align: left;
     }
+
+    .level-icon {
+      padding: 5px 1px 5px 5px;
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      margin: 2px auto;
+      vertical-align: middle;
+    }
+    .batteryLevelInfo {
+      display: inline-block;
+      vertical-align: middle;
+      text-decoration: none;
+    }
+    .level-icon.red {
+      color: var(--paper-red-500);
+    }
+    .level-icon.green {
+      color: var(--paper-green-500);
+    }
+    .level-icon.amber {
+      color: var(--paper-orange-500);
+    }
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeCurrentUserHref(asset)]]" data="{{currentUserOfAsset}}"></firebase-document>

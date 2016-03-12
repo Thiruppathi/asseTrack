@@ -80,7 +80,7 @@
           <p class="cell-asset-name">[[getUserName(item.lastActionByUid)]]</p>
         </template>
       </data-table-column>
-      <data-table-column name="Action" >
+      <data-table-column name="Action" width="100px" flex="0">
         <template>[[item.action]]</template>
       </data-table-column>
       <data-table-column name="Date" width="100px" flex="0">
@@ -127,7 +127,7 @@
         getUserName: function(lastActionByUid) {
           var userName = '';
           app.db.child('/users').child(lastActionByUid).on('value', function(snapshot) {
-            userName = snapshot.val().firstName + ' ' + snapshot.val().lastName;
+            userName = snapshot.val().firstName;
           });
           return userName;
         },

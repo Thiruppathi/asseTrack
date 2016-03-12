@@ -208,7 +208,7 @@
           'osVersion': document.getElementById('osVersion').value,
           'assetCondition': document.getElementById('assetCondition').selected,
           'isOutdated': document.getElementById('isOutdated').checked,
-          'availability': 'yes',
+          'availability': 'true',
           'createdOn': Firebase.ServerValue.TIMESTAMP
         });
         app.db.child('stats').set({'totalAssets': counter});

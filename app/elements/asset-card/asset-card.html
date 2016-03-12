@@ -204,39 +204,46 @@
         return (asset.availability) ? 'Available' : this.computeUserName(user);
       },
       computeLevelColor: function(asset) {
-        var _level = asset.batteryStatus.level;
         var levelColor = 'level-icon ';
-        if (_level > 0 && _level <= 20) {
-          levelColor = levelColor + 'red';
-        } else if (_level > 20 && _level < 60) {
-          levelColor = levelColor + 'amber';
-        } else if (_level >= 60 && _level <= 100) {
-          levelColor = levelColor + 'green';
+
+        if (asset.batteryStatus !== undefined && asset.batteryStatus.level !== undefined) {
+          var _level = asset.batteryStatus.level;
+          if (_level > 0 && _level <= 20) {
+            levelColor = levelColor + 'red';
+          } else if (_level > 20 && _level < 60) {
+            levelColor = levelColor + 'amber';
+          } else if (_level >= 60 && _level <= 100) {
+            levelColor = levelColor + 'green';
+          }
         }
+
         return levelColor;
       },
       computeBatteryLevel: function(asset) {
-        var level = asset.batteryStatus.level;
-        var isCharging = asset.batteryStatus.isCharging ? '-charging' : '';
         var levelIcon = 'device:battery-unknown';
-        if (level > 0 && level <= 20) {
-          levelIcon = asset.batteryStatus.isCharging ? 'device:battery' + isCharging + '-20' : 'device:battery-alert';
-        } else if (level > 20 && level <= 30) {
-          levelIcon = 'device:battery' + isCharging + '-20';
-        } else if (level > 30 && level <= 40) {
-          levelIcon = 'device:battery' + isCharging + '-30';
-        } else if (level > 40 && level <= 50) {
-          levelIcon = 'device:battery' + isCharging + '-50';
-        } else if (level > 50 && level <= 60) {
-          levelIcon = 'device:battery' + isCharging + '-50';
-        } else if (level > 60 && level <= 80) {
-          levelIcon = 'device:battery' + isCharging + '-60';
-        } else if (level > 80 && level <= 90) {
-          levelIcon = 'device:battery' + isCharging + '-80';
-        } else if (level > 80 && level <= 99) {
-          levelIcon = 'device:battery' + isCharging + '-90';
-        } else if (level === 100) {
-          levelIcon = 'device:battery' + isCharging + '-full';
+
+        if (asset.batteryStatus !== undefined && asset.batteryStatus.level !== undefined) {
+          var level = asset.batteryStatus.level;
+          var isCharging = asset.batteryStatus.isCharging ? '-charging' : '';
+          if (level > 0 && level <= 20) {
+            levelIcon = asset.batteryStatus.isCharging ? 'device:battery' + isCharging + '-20' : 'device:battery-alert';
+          } else if (level > 20 && level <= 30) {
+            levelIcon = 'device:battery' + isCharging + '-20';
+          } else if (level > 30 && level <= 40) {
+            levelIcon = 'device:battery' + isCharging + '-30';
+          } else if (level > 40 && level <= 50) {
+            levelIcon = 'device:battery' + isCharging + '-50';
+          } else if (level > 50 && level <= 60) {
+            levelIcon = 'device:battery' + isCharging + '-50';
+          } else if (level > 60 && level <= 80) {
+            levelIcon = 'device:battery' + isCharging + '-60';
+          } else if (level > 80 && level <= 90) {
+            levelIcon = 'device:battery' + isCharging + '-80';
+          } else if (level > 80 && level <= 99) {
+            levelIcon = 'device:battery' + isCharging + '-90';
+          } else if (level === 100) {
+            levelIcon = 'device:battery' + isCharging + '-full';
+          }
         }
         return levelIcon;
       },

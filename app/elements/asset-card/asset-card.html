@@ -7,19 +7,16 @@
       color: #727272;
       background-color: white;
     }
-
     .asset-card-header {
       width: 100%;
       background: #fff;
-      padding: 6px 0 6px 0;
+      padding: 6px 0;
     }
-
     .asset-info {
       font-weight: 500;
       color: #777;
       font-size: 13px;
     }
-
     .asset-card-header h4 {
       font-size: 20px;
       font-weight: 500;
@@ -28,50 +25,40 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 100%;
-      margin: 5px auto 25px auto;
+      margin: 5px auto 25px;
     }
-
     a,
     a:link {
       text-decoration: none;
     }
-
     a span {
       color: #111111;
     }
-
     .asset-card-inner {
       display: block;
     }
-
     .asset-card-inner:hover {
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
     }
-
     .asset-card-footer {
-      padding: 8px 10px 10px 10px;
+      padding: 8px 10px 10px;
       display: block;
       text-decoration: none;
       background-color: #EFEFEF;
     }
-
     .available {
       color: #4F8A10;
       background-color: #DFF2BF;
     }
-
     .available p {
       color: #4F8A10;
     }
-
     .not-available {
       background-color: #EFEFEF;
     }
-
     .not-available p {
       color: #777;
     }
-
     .asset-icon {
       border: 2px solid #e3e3e3;
       border-radius: 100%;
@@ -80,59 +67,49 @@
       color: #777;
       width: 50px;
       height: 50px;
-      margin: 10px auto 10px auto;
+      margin: 10px auto;
     }
-
     .asset-card .user-image {
       border-radius: 100%;
       display: block;
       height: 25px;
       width: 25px;
-      margin: 10px auto 10px auto;
+      margin: 10px auto;
     }
-
     paper-fab {
       display: block;
     }
-
     paper-fab.grey {
       --paper-fab-background: #777;
       --paper-fab-keyboard-focus-background: #e5e5e5;
     }
-
     paper-fab.blue {
       --paper-fab-background: var(--paper-light-blue-500);
       --paper-fab-keyboard-focus-background: var(--paper-light-blue-900);
     }
-
     paper-fab.red {
       --paper-fab-background: var(--paper-red-500);
       --paper-fab-keyboard-focus-background: var(--paper-red-900);
     }
-
     paper-fab.green {
       --paper-fab-background: var(--paper-green-500);
       --paper-fab-keyboard-focus-background: var(--paper-green-900);
     }
-
     paper-fab.orange {
       --paper-fab-background: var(--paper-orange-500);
       --paper-fab-keyboard-focus-background: var(--paper-orange-900);
     }
-
     .fab {
       position: relative;
       float: right;
       margin-right: 15px;
       margin-top: -15px;
     }
-
     paper-dialog.size-position {
       position: fixed;
       top: 16px;
       right: 16px;
     }
-
     paper-dialog.size-position {
       width: 300px;
       height: 300px;
@@ -143,17 +120,23 @@
       color: #777;
       width: 100px;
       height: 100px;
-      margin: 10px auto 10px auto;
+      margin: 10px auto;
     }
+
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeUserHref(asset)]]" data="{{user}}"></firebase-document>
     <a data-route="asset-info" href="[[computeHref(asset)]]" class="asset-card-inner">
       <paper-material class="animated bounceInUp asset-card" id="[[asset.assetId]]">
         <div class="asset-card-header">
-          <!-- <iron-icon icon="{{computeAssetIcon(asset)}}" class="asset-icon"></iron-icon> -->
+          <iron-icon icon="{{computeBatteryLevel(asset)}}" class="asset-icon"></iron-icon>
           <iron-image src="{{asset.picture}}" preload sizing="cover"></iron-image>
           <h4>{{computeFullName(asset)}}</h4>
+          <p>{{asset.batteryStatus.level}}</p>
+          <p>
+            <span>isCharging</span>&nbsp;<span>{{asset.batteryStatus.isCharging}}</span>
+          </p>
+
           <template is="dom-if" if="{{asset.availability}}">
             <div class="fab">
               <paper-fab mini icon="add-shopping-cart" class="green"></paper-fab>
@@ -185,7 +168,9 @@
         return asset.brand + ' ' + asset.model;
       },
       computeUserName: function(user) {
-        return (user) ? ((user.firstName || '') + ' ' + (user.lastName || '')) : '';
+        return (user)
+          ? ((user.firstName || '') + ' ' + (user.lastName || ''))
+          : '';
       },
       computeAssetId: function(asset) {
         return asset.assetId;
@@ -200,7 +185,32 @@
         return asset.lastActionByUid || '';
       },
       computeLastCheckedOutName: function(asset, user) {
-        return (asset.availability) ? 'Available' : this.computeUserName(user);
+        return (asset.availability)
+          ? 'Available'
+          : this.computeUserName(user);
+      },
+      computeBatteryLevel: function(asset) {
+        var level = asset.batteryStatus.level;
+        var isCharging = asset.batteryStatus.isCharging;
+        var levelIcon = 'device:battery-unknown';
+        if (level !== undefined) {
+          switch (level) {
+            case(level > 10 && level <= 20):
+              return levelIcon = 'device:battery-20';
+              break;
+            case(level > 20 && level <= 30):
+              return levelIcon = 'device:battery-30';
+              break;
+            case(level <= 20):
+              return levelIcon = 'device:battery-20';
+              break;
+            case(level <= 20):
+              return levelIcon = 'device:battery-20';
+              break;
+            default:
+              return levelIcon = 'device:battery-unknown';
+          }
+        }
       },
       computeAssetIcon: function(asset) {
         var platform = asset.platform;

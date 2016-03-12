@@ -1,0 +1,26 @@
+<dom-module id="battery-status">
+  <style>
+
+  .batteryStatusPaper {
+    padding: 1em;
+    margin: 0.5em;
+    width: 250px;
+    color: #727272;
+    background-color: white;
+  }
+
+  h1 {
+    font-family: 'Roboto-Mono';
+  }
+  </style>
+  <template>
+      <paper-material class="animated bounceInUp batteryStatusPaper" id="">
+        <h1>Battery Status</h1>
+      </paper-material>
+  </template>
+  <script>
+    Polymer({
+      is: 'battery-status'
+    });
+  </script>
+</dom-module>

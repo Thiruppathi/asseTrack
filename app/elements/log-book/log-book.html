@@ -73,11 +73,15 @@
           <span class="cell-asset-name">[[getAssetName(item.assetId)]]</span>
         </template>
       </data-table-column>
+
       <data-table-column name="User">
         <template>
           <img src="[[getUserPicture(item.lastActionByUid)]]" class="cell-image avatar">
           <p class="cell-asset-name">[[getUserName(item.lastActionByUid)]]</p>
         </template>
+      </data-table-column>
+      <data-table-column name="Action" >
+        <template>[[item.action]]</template>
       </data-table-column>
       <data-table-column name="Date" width="100px" flex="0">
         <template>

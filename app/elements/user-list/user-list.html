@@ -88,10 +88,14 @@
             return false;
           }
           return (user.firstName && ~user.firstName.toLowerCase().indexOf(val.toLowerCase())) ||
-            (user.email && ~user.email.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.emailId && ~user.emailId.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.practice && ~user.practice.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.projects && ~user.projects.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.tags && ~user.tags.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.empId && ~user.empId.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.designation && ~user.designation.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.location && ~user.location.toLowerCase().indexOf(val.toLowerCase())) ||
+            (user.phoneNo && ~user.phoneNo.toLowerCase().indexOf(val.toLowerCase())) ||
             (user.lastName && ~user.lastName.toLowerCase().indexOf(val.toLowerCase()));
         };
       }

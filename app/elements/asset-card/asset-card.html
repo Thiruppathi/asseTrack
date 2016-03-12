@@ -59,15 +59,27 @@
     .not-available p {
       color: #777;
     }
-    .asset-icon {
-      border: 2px solid #e3e3e3;
-      border-radius: 100%;
-      padding: 0.5em;
-      display: block;
-      color: #777;
-      width: 50px;
-      height: 50px;
-      margin: 10px auto;
+    .level-icon {
+      padding: 5px 1px 5px 5px;
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      margin: 2px auto;
+      vertical-align: middle;
+    }
+    .batteryLevelInfo {
+      display: inline-block;
+      vertical-align: middle;
+      text-decoration: none;
+    }
+    .level-icon.red {
+      color: var(--paper-red-500);
+    }
+    .level-icon.green {
+      color: var(--paper-green-500);
+    }
+    .level-icon.amber {
+      color: var(--paper-orange-500);
     }
     .asset-card .user-image {
       border-radius: 100%;
@@ -122,21 +134,27 @@
       height: 100px;
       margin: 10px auto;
     }
-
+    .batteryInfo {
+      padding-right: 10px;
+      position: absolute;
+    }
+    a.asset-card span.asset-card {
+        font-size: 0.85em;
+      }
   </style>
   <template>
     <firebase-document id="getUserFB" location="[[computeUserHref(asset)]]" data="{{user}}"></firebase-document>
     <a data-route="asset-info" href="[[computeHref(asset)]]" class="asset-card-inner">
       <paper-material class="animated bounceInUp asset-card" id="[[asset.assetId]]">
         <div class="asset-card-header">
-          <iron-icon icon="{{computeBatteryLevel(asset)}}" class="asset-icon"></iron-icon>
+          <div class="batteryInfo">
+            <iron-icon icon="{{computeBatteryLevel(asset)}}" class$="{{computeLevelColor(asset)}}"></iron-icon>
+            <span class="batteryLevelInfo">
+              {{asset.batteryStatus.level}}<span>%</span></span>
+          </div>
+
           <iron-image src="{{asset.picture}}" preload sizing="cover"></iron-image>
           <h4>{{computeFullName(asset)}}</h4>
-          <p>{{asset.batteryStatus.level}}</p>
-          <p>
-            <span>isCharging</span>&nbsp;<span>{{asset.batteryStatus.isCharging}}</span>
-          </p>
-
           <template is="dom-if" if="{{asset.availability}}">
             <div class="fab">
               <paper-fab mini icon="add-shopping-cart" class="green"></paper-fab>
@@ -168,9 +186,7 @@
         return asset.brand + ' ' + asset.model;
       },
       computeUserName: function(user) {
-        return (user)
-          ? ((user.firstName || '') + ' ' + (user.lastName || ''))
-          : '';
+        return (user) ? ((user.firstName || '') + ' ' + (user.lastName || '')) : '';
       },
       computeAssetId: function(asset) {
         return asset.assetId;
@@ -185,32 +201,44 @@
         return asset.lastActionByUid || '';
       },
       computeLastCheckedOutName: function(asset, user) {
-        return (asset.availability)
-          ? 'Available'
-          : this.computeUserName(user);
+        return (asset.availability) ? 'Available' : this.computeUserName(user);
+      },
+      computeLevelColor: function(asset) {
+        var _level = asset.batteryStatus.level;
+        var levelColor = 'level-icon ';
+        if (_level > 0 && _level <= 20) {
+          levelColor = levelColor + 'red';
+        } else if (_level > 20 && _level < 60) {
+          levelColor = levelColor + 'amber';
+        } else if (_level >= 60 && _level <= 100) {
+          levelColor = levelColor + 'green';
+        }
+        return levelColor;
       },
       computeBatteryLevel: function(asset) {
         var level = asset.batteryStatus.level;
-        var isCharging = asset.batteryStatus.isCharging;
+        var isCharging = asset.batteryStatus.isCharging ? '-charging' : '';
         var levelIcon = 'device:battery-unknown';
-        if (level !== undefined) {
-          switch (level) {
-            case(level > 10 && level <= 20):
-              return levelIcon = 'device:battery-20';
-              break;
-            case(level > 20 && level <= 30):
-              return levelIcon = 'device:battery-30';
-              break;
-            case(level <= 20):
-              return levelIcon = 'device:battery-20';
-              break;
-            case(level <= 20):
-              return levelIcon = 'device:battery-20';
-              break;
-            default:
-              return levelIcon = 'device:battery-unknown';
-          }
+        if (level > 0 && level <= 20) {
+          levelIcon = asset.batteryStatus.isCharging ? 'device:battery' + isCharging + '-20' : 'device:battery-alert';
+        } else if (level > 20 && level <= 30) {
+          levelIcon = 'device:battery' + isCharging + '-20';
+        } else if (level > 30 && level <= 40) {
+          levelIcon = 'device:battery' + isCharging + '-30';
+        } else if (level > 40 && level <= 50) {
+          levelIcon = 'device:battery' + isCharging + '-50';
+        } else if (level > 50 && level <= 60) {
+          levelIcon = 'device:battery' + isCharging + '-50';
+        } else if (level > 60 && level <= 80) {
+          levelIcon = 'device:battery' + isCharging + '-60';
+        } else if (level > 80 && level <= 90) {
+          levelIcon = 'device:battery' + isCharging + '-80';
+        } else if (level > 80 && level <= 99) {
+          levelIcon = 'device:battery' + isCharging + '-90';
+        } else if (level === 100) {
+          levelIcon = 'device:battery' + isCharging + '-full';
         }
+        return levelIcon;
       },
       computeAssetIcon: function(asset) {
         var platform = asset.platform;

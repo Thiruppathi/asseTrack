@@ -33,6 +33,15 @@
       margin: 1em;
       width: 300px;
     }
+
+    paper-radio-button {
+      --paper-radio-button-checked-color: #19363D;
+      --paper-radio-button-checked-ink-color: #19363D;
+      --paper-radio-button-unchecked-color: #19363D;
+      --paper-radio-button-unchecked-ink-color: #19363D;
+      --paper-radio-button-label-color: #19363D;
+    }
+
   </style>
   <template>
     <section>
@@ -76,7 +85,9 @@
       },
       applyFilter: function(event) {
         this.filterVal = event.currentTarget.name;
-        this.$.userListDom.render();
+        if (this.$.userListDom) {
+          this.$.userListDom.render();
+        }
       },
       _filter: function(val) {
         return function(user) {

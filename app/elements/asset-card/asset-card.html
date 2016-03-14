@@ -81,6 +81,9 @@
     .level-icon.amber {
       color: var(--paper-orange-500);
     }
+    .level-icon.grey {
+      color: var(--paper-grey-500);
+    }
     .asset-card .user-image {
       border-radius: 100%;
       display: block;
@@ -215,6 +218,8 @@
           } else if (_level >= 50 && _level <= 100) {
             levelColor = levelColor + 'green';
           }
+        } else {
+          levelColor = levelColor + 'grey';
         }
 
         return levelColor;

@@ -18,7 +18,8 @@
     "iron-data-table": "^1.0.0-alpha3",
     "paper-chip": "^1.0.0",
     "paper-tags-input": "^1.2.2",
-    "moment-js": "^0.3.0"
+    "moment-js": "^0.3.0",
+    "re-captcha": "^1.1.1"
   },
   "devDependencies": {
     "web-component-tester": "*"

@@ -3,34 +3,28 @@
     :host {
       display: block;
     }
-
     paper-button.colorful {
       color: #4285f4;
       margin-top: 1em;
     }
-
     paper-button[raised].colorful {
       background: var(--default-primary-color);
       color: #fff;
       margin: 10px;
     }
-
     paper-material {
       max-width: 575px;
       min-width: 350px;
       padding-bottom: 6em;
     }
-
     h2 {
       text-align: center;
       color: var(--default-primary-color);
       font-weight: lighter;
     }
-
     #userAvatar {
       text-align: center;
     }
-
     paper-input,
     gold-email-input {
       display: inline-block;
@@ -38,88 +32,92 @@
       padding-right: 1em;
       text-align: left;
     }
-
     .signInLink {
-      text-align: center;
+      text-align: right;
       max-width: 575px;
       text-decoration: none;
       margin-top: 1.5em;
       margin-bottom: 1em;
-
     }
-
     a.style-scope.create-user {
       color: inherit;
       margin-left: 0.5em;
     }
-
     paper-button.colorful.signUpButton {
       margin-top: 2em;
     }
-
     #signUpErrorToast {
       --paper-toast-background-color: #a94442;
       --paper-toast-color: #f2dede;
     }
-
     #signUpErrorToast .toast-hide-button {
       color: #f2dede;
       font-weight: bold;
-      margin: 10px;
+      margin: 5px;
     }
-
     .right {
       float: right;
     }
-
     .userHeader {
       padding: 1em;
       min-height: 135px;
       box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
-      background: #ECE9E6; /* fallback for old browsers */
-      background: -webkit-linear-gradient(to right, #ECE9E6 , #FFFFFF); /* Chrome 10-25, Safari 5.1-6 */
-      background: linear-gradient(to right, #ECE9E6 , #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      background: #ECE9E6;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #ECE9E6 , #FFFFFF);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #ECE9E6 , #FFFFFF);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
     .userFields {
-      padding: 1em 1em 1em 1em;
+      padding: 1em;
+      padding-bottom: 2em;
     }
+
+    re-captcha {
+      float: left;
+      padding:2em 0 2em 0em;
+    }
+
   </style>
   <template>
-    <paper-material elevation="1" class="animated bounceInUp">
       <form is="iron-form" id="createUserForm">
-      <div class="userHeader">
-        <h2 class="paper-font-display2">Create your Jarvis Account</h2>
-        <img-base64 id="userAvatar" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAvatar()}}"></img-base64>
-      </div>
-      <div class="userFields">
-        <paper-input label="First Name" id="firstName" error-message="Please enter your First Name" auto-validate required></paper-input>
-        <paper-input label="Last Name" id="lastName" error-message="Please enter your Second Name" auto-validate required></paper-input>
-        <paper-input label="Designation" id="designation" error-message="Please enter your designation or Job Title" auto-validate required></paper-input>
-        <paper-input label="Practice" id="practice" error-message="Please enter your practice. (QA, Developer)" auto-validate required></paper-input>
-        <paper-input label="Project" id="project" error-message="Please enter your project name.(DTO, v4)" auto-validate required></paper-input>
-        <paper-input label="Reporting Manager" id="reportingTo" error-message="Please enter your Reporting Manager" auto-validate required></paper-input>
-        <paper-input label="Company Name" id="companyName" error-message="Please enter your Company Name (EE, NTT Data, epam)" auto-validate required></paper-input>
-        <paper-input label="Phone Number" id="phoneNo" error-message="Please enter your Phone Number" auto-validate required></paper-input>
-        <paper-input label="Employee Id" id="empId" error-message="Please enter a valid Employee Id" auto-validate required></paper-input>
-        <paper-input label="Location" id="location" error-message="Please enter your work location" auto-validate required></paper-input>
-        <gold-email-input id="emailId" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
-        <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
-      </div>
-      <div class="">
-        <paper-toast id="signUpErrorToast">
-          <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-        </paper-toast>
-        <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
-      </div>
-      </form>
-    </paper-material>
+        <paper-material elevation="1" class="animated bounceInUp">
+        <div class="userHeader">
+          <h2 class="paper-font-display2">Create your Jarvis Account</h2>
+          <img-base64 id="userAvatar" width="150px" height="150px" title="Select your profile Image" placeholder="{{getAvatar()}}"></img-base64>
+        </div>
+        <div class="userFields">
+          <paper-input label="First Name" id="firstName" error-message="Please enter your First Name" auto-validate required></paper-input>
+          <paper-input label="Last Name" id="lastName" error-message="Please enter your Second Name" auto-validate required></paper-input>
+          <paper-input label="Designation" id="designation" error-message="Please enter your designation or Job Title" auto-validate required></paper-input>
+          <paper-input label="Practice" id="practice" error-message="Please enter your practice. (QA, Developer)" auto-validate required></paper-input>
+          <paper-input label="Project" id="project" error-message="Please enter your project name.(DTO, v4)" auto-validate required></paper-input>
+          <paper-input label="Reporting Manager" id="reportingTo" error-message="Please enter your Reporting Manager" auto-validate required></paper-input>
+          <paper-input label="Company Name" id="companyName" error-message="Please enter your Company Name (EE, NTT Data, epam)" auto-validate required></paper-input>
+          <paper-input label="Phone Number" id="phoneNo" error-message="Please enter your Phone Number" auto-validate required></paper-input>
+          <paper-input label="Employee Id" id="empId" error-message="Please enter a valid Employee Id" auto-validate required></paper-input>
+          <paper-input label="Location" id="location" error-message="Please enter your work location" auto-validate required></paper-input>
+          <gold-email-input id="emailId" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
+          <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
+            <re-captcha sitekey="6LdS9hoTAAAAALhzCvudMVqjlAfIavVKOskStt9N"></re-captcha>
+            <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
+        </div>
+      </paper-material>
 
-    <div class="signInLink animated bounceInUp">
-      Already have an account?
-      <a data-route="login" href="{{baseUrl}}login">
-        <span>Sign In</span>
-      </a>
-    </div>
+        <div class="signInLink animated bounceInUp">
+
+          <paper-toast id="signUpErrorToast">
+            <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+          </paper-toast>
+          Already have an account?
+          <a data-route="login" href="{{baseUrl}}login">
+            <span>Sign In</span>
+          </a>
+        </div>
+    </form>
+
+
   </template>
 
   <script>
@@ -142,12 +140,19 @@
         return (pictureValue === '' ? false : true);
       },
 
+      isValidCaptcha: function() {
+        return (document.querySelector('re-captcha').getResponse() === '' ? false : true);
+      },
+
       signUp: function() {
         var userForm = document.getElementById('createUserForm');
-        if (userForm.checkValidity() && this.hasPicture()) {
+        if (userForm.checkValidity() && this.hasPicture() && this.isValidCaptcha()) {
           this.createUserAccount();
         } else if (userForm.checkValidity() && !this.hasPicture()) {
           document.getElementById('signUpErrorToast').text = 'Upload an Avatar of yourself.';
+          document.getElementById('signUpErrorToast').show();
+        } else if (userForm.checkValidity() && this.hasPicture() && !this.isValidCaptcha()) {
+          document.getElementById('signUpErrorToast').text = 'Prove you are not a robot.';
           document.getElementById('signUpErrorToast').show();
         } else {
           this.validateForm();

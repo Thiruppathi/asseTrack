@@ -99,9 +99,8 @@
           <paper-input label="Location" id="location" error-message="Please enter your work location" auto-validate required></paper-input>
           <gold-email-input id="emailId" label="User ID (yourname@domain.com)" error-message="Please enter a valid email" auto-validate required></gold-email-input>
           <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
-            <re-captcha sitekey=""></re-captcha>
-            <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
-
+          <re-captcha sitekey=""></re-captcha>
+          <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
         </div>
         <paper-toast id="signUpErrorToast" class="fit-bottom">
           <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>

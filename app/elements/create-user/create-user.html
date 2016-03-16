@@ -10,7 +10,6 @@
     paper-button[raised].colorful {
       background: var(--default-primary-color);
       color: #fff;
-      margin: 10px;
     }
     paper-material {
       max-width: 575px;
@@ -33,7 +32,7 @@
       text-align: left;
     }
     .signInLink {
-      text-align: right;
+      text-align: center;
       max-width: 575px;
       text-decoration: none;
       margin-top: 1.5em;
@@ -71,7 +70,7 @@
     }
     .userFields {
       padding: 1em;
-      padding-bottom: 2em;
+      padding-bottom: 2.5em;
     }
 
     re-captcha {
@@ -102,14 +101,14 @@
           <paper-input label="Password" type="password" id="password" error-message="Please enter a valid password" auto-validate required></paper-input>
             <re-captcha sitekey="6LdS9hoTAAAAALhzCvudMVqjlAfIavVKOskStt9N"></re-captcha>
             <paper-button tabindex="0" raised class="colorful signUpButton right" on-click="signUp">Sign Up</paper-button>
+
         </div>
+        <paper-toast id="signUpErrorToast" class="fit-bottom">
+          <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+        </paper-toast>
       </paper-material>
 
         <div class="signInLink animated bounceInUp">
-
-          <paper-toast id="signUpErrorToast">
-            <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-          </paper-toast>
           Already have an account?
           <a data-route="login" href="{{baseUrl}}login">
             <span>Sign In</span>

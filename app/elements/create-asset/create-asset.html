@@ -20,7 +20,6 @@
     h4 {
       display: inline-block;
       margin-bottom: 0.25em;
-      padding: 0 1em;
     }
     h2 {
       text-align: center;
@@ -73,6 +72,15 @@
       padding: 1em;
     }
 
+    re-captcha {
+      float: left;
+      padding-left: 1em;
+    }
+
+    .asset-footer {
+      padding-bottom: 2em;
+    }
+
   </style>
   <template>
     <firebase-document id="getStatistics" location="[[computeAssetStatsLocation()]]" data="{{stats}}"></firebase-document>
@@ -95,40 +103,42 @@
           <paper-input label="Currently Owned By Company" id="currentCompany" error-message="the Current Owner of the Asset. e.g. NTT Data, EE, Accenture"></paper-input>
           <paper-input label="Screen Resolution" id="screenResolution" error-message="Screen Resolution" auto-validate required></paper-input>
           <paper-input label="Old Asset Id" id="oldAssetId" error-message="Old Asset Id"></paper-input>
+          <h4>
+            <b>Operating System</b>
+          </h4>
+          <div>
+            <paper-radio-group selected="android" id="platform" auto-validate required>
+              <paper-radio-button name="android">Android</paper-radio-button>
+              <paper-radio-button name="ios">iOS</paper-radio-button>
+              <paper-radio-button name="windows">Windows</paper-radio-button>
+              <paper-radio-button name="blackberry">Black Berry</paper-radio-button>
+            </paper-radio-group>
+            <paper-input label="OS Version" id="osVersion" error-message="OS version" auto-validate required></paper-input>
+          </div>
+
+          <h4>
+            <b>Condition</b>
+          </h4>
+          <div>
+            <paper-radio-group selected="yes" id="assetCondition" auto-validate required>
+              <paper-radio-button name="yes">Working</paper-radio-button>
+              <paper-radio-button name="no">Faulty</paper-radio-button>
+            </paper-radio-group>
+            <paper-checkbox id="isOutdated">Outdated</paper-checkbox>
+          </div>
         </div>
 
-        <h4>
-          <b>Operating System</b>
-        </h4>
-        <div>
-          <paper-radio-group selected="android" id="platform" auto-validate required>
-            <paper-radio-button name="android">Android</paper-radio-button>
-            <paper-radio-button name="ios">iOS</paper-radio-button>
-            <paper-radio-button name="windows">Windows</paper-radio-button>
-            <paper-radio-button name="blackberry">Black Berry</paper-radio-button>
-          </paper-radio-group>
-          <paper-input label="OS Version" id="osVersion" error-message="OS version" auto-validate required></paper-input>
-
-        </div>
-
-        <h4>
-          <b>Condition</b>
-        </h4>
-        <div>
-
-          <paper-radio-group selected="yes" id="assetCondition" auto-validate required>
-            <paper-radio-button name="yes">Working</paper-radio-button>
-            <paper-radio-button name="no">Faulty</paper-radio-button>
-          </paper-radio-group>
-          <paper-checkbox id="isOutdated">Outdated</paper-checkbox>
-        </div>
-        <paper-toast id="assetErrToast">
-          <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-        </paper-toast>
+        <div class="asset-footer">
+        <re-captcha sitekey=""></re-captcha>
         <paper-button tabindex="0" raised class="colorful right" on-click="validateAndCreateAsset" id="createAssetButton">
           <paper-spinner id="spinner" hidden></paper-spinner>
           Create Asset
         </paper-button>
+        <paper-toast id="assetErrToast" class="fit-bottom">
+          <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+        </paper-toast>
+      </div>
+
       </form>
     </paper-material>
 

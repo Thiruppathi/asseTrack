@@ -1,9 +1,9 @@
+asset-photos
 node_modules
 dist
 bower_components
 .tmp
 .publish/
-
 app/index_.html
 
 npm-debug.log
